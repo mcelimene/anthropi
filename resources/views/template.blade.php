@@ -31,7 +31,7 @@
       <div class="sidebar-wrapper">
         <ul class="nav">
           <li class="nav-item {{ Request::is('/*') ? 'active' : '' }}">
-            <a class="nav-link" href="#0">
+            <a class="nav-link" href="#">
               <i class="material-icons">dashboard</i>
               <p>Tableau de bord</p>
             </a>
@@ -48,8 +48,8 @@
               <p>Formations</p>
             </a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#0">
+          <li class="nav-item {{ Request::is('/trainers*') ? 'active' : '' }}">
+            <a class="nav-link" href="{{ route('trainers.index') }}">
               <i class="material-icons">people</i>
               <p>Formateurs</p>
             </a>
@@ -86,7 +86,11 @@
       <!-- End Navbar -->
       <div class="content">
         <div class="container-fluid">
-          @yield('content')
+          <div class="row">
+            <div class="col-md-12">
+              @yield('content')
+            </div>
+          </div>
         </div>
       </div>
       <footer class="footer">
