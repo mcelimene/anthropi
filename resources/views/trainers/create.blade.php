@@ -4,6 +4,16 @@
 @section('pageName', 'Gestion des formateurs')
 
 @section('content')
+  @if($errors->any())
+    <div class="alert alert-danger" role="alert">
+      <ul>
+        @foreach ($errors->all() as $error)
+          <li>{{ $error }}</li>
+        @endforeach
+      </ul>
+    </div>
+  @endif
+  
   <a href="{{ route('trainers.index') }}">
     <button class="btn btn-default btn-sm">
       <i class="material-icons">arrow_back_ios</i>

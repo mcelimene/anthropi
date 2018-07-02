@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Level;
 use App\Region;
 use App\Trainer;
+use App\Http\Requests\EditTrainerRequest;
 
 class TrainersController extends Controller
 {
@@ -38,20 +39,20 @@ class TrainersController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
+    public function store(EditTrainerRequest $request)
+    {   // Création automatique du pseudo et du mot de passe
         $first_name = $request->input('first_name');
         $last_name = $request->input('last_name');
         $pseudo = $this->getPseudo($first_name, $last_name);
         $password = $this->getPassword();
         $password_crypt = $this->getPasswordCrypt($password);
 
-        //$pseudo = $request->input('pseudo', $this->getPseudo())
-        $trainer = Trainer::create(array_merge($request->all(), [
-                                                                  'password' => $password,
-                                                                  'password_crypt' => $password_crypt,
-                                                                  'pseudo' => $pseudo
-                                                                ]));
+        $trainer = Trainer::create(array_merge($request->all(),
+          [
+            'password' => $password,
+            'password_crypt' => $password_crypt,
+            'pseudo' => $pseudo
+          ]));
         return redirect(route('trainers.index'));
     }
 
@@ -87,11 +88,11 @@ class TrainersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(EditTrainerRequest $request, $id)
     {
         $trainer = Trainer::findOrFail($id);
         $trainer->update($request->all());
-        return redirect('trainers');
+        return redirect(route('trainers.index'));
     }
 
     /**
