@@ -17,7 +17,7 @@
 
 <body class="">
   <div class="wrapper ">
-    <div class="sidebar" data-color="azure" data-background-color="white" data-image="{{ URL::asset("images/image1.jpg") }}">
+    <div class="sidebar" data-color="purple" data-background-color="white" data-image="{{ URL::asset("images/image1.jpg") }}">
       <!--
         Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger"
 
@@ -31,7 +31,7 @@
       <div class="sidebar-wrapper">
         <ul class="nav">
           <li class="nav-item {{ Request::is('/*') ? 'active' : '' }}">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="{{ url('/') }}">
               <i class="material-icons">dashboard</i>
               <p>Tableau de bord</p>
             </a>
@@ -48,7 +48,7 @@
               <p>Formations</p>
             </a>
           </li>
-          <li class="nav-item {{ Request::is('/trainers*') ? 'active' : '' }}">
+          <li class="nav-item {{ Request::is('trainers', 'trainers/*') ? 'active' : '' }}">
             <a class="nav-link" href="{{ route('trainers.index') }}">
               <i class="material-icons">people</i>
               <p>Formateurs</p>
