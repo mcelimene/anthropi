@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use PDF;
 use App\Level;
 use App\Region;
 use App\Trainer;
@@ -122,6 +123,17 @@ class TrainersController extends Controller
         return redirect('trainers');
     }
 
+    public function pdfView(Request $request){
+      $trainers = Trainer::get();
+      view()->share('trainers', $trainers);
+
+      if($request->has('download')){
+        $pdf = PDF::loadView('pdfview');
+        return $pdf->download('liste_formateurs.pdf');
+      }
+      return view('pdfview');
+    }
+
     private function getPassword(){
       $caracters = 'ABCDEFGHIJKMLNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
       $mixed = str_shuffle($caracters);
@@ -151,4 +163,5 @@ class TrainersController extends Controller
       $pseudo = $this->skip_accents($pseudo);
       return $pseudo;
     }
+
 }

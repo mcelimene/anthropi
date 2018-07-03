@@ -42,8 +42,8 @@
               <p>Calendrier</p>
             </a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#0">
+          <li class="nav-item {{ Request::is('formations', 'formations/*') ? 'active' : '' }}">
+            <a class="nav-link" href="{{ route('formations.index') }}">
               <i class="material-icons">assignment</i>
               <p>Formations</p>
             </a>
@@ -93,7 +93,7 @@
           </div>
         </div>
       </div>
-      <footer class="footer">
+      <!---<footer class="footer">
         <div class="container-fluid">
           <nav class="float-left">
             <ul>
@@ -111,9 +111,9 @@
             </script>, made with <i class="material-icons">favorite</i> by
             <a href="https://www.creative-tim.com" target="_blank">Creative Tim</a> for a better web.
           </div>
-          <!-- your footer here -->
+           your footer here
         </div>
-      </footer>
+      </footer>-->
     </div>
   </div>
   <!--   Core JS Files   -->

@@ -5,9 +5,19 @@
 
 @section('content')
   <div class="card">
-    <div class="card-header card-header-primary">
-      <h4 class="card-title ">Tous les Formateurs</h4>
-      <p class="card-category">Liste</p>
+    <div class="card-header card-header-primary d-flex justify-content-between">
+      <div>
+        <h4 class="card-title ">Tous les Formateurs</h4>
+        <p class="card-category">Liste</p>
+      </div>
+      <div>
+        <a href="{{ route('pdfview',['download'=>'pdf']) }}">
+          <button class="btn btn-warning btn-sm">
+            <i class="material-icons">save_alt</i>
+             PDF
+          </button>          
+        </a>
+      </div>
     </div>
     <div class="card-body">
       <div class="table-responsive">

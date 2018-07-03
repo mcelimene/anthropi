@@ -13,3 +13,5 @@
 
 Route::get('/', 'HomeController@index');
 Route::resource('trainers', 'TrainersController');
+Route::resource('formations', 'FormationsController');
+Route::get('pdfview',array('as'=>'pdfview','uses'=>'TrainersController@pdfview'));

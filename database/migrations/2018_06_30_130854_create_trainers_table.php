@@ -20,9 +20,9 @@ class CreateTrainersTable extends Migration
             $table->string('email')->unique();
             $table->string('password_crypt')->nullable();
             $table->string('password')->nullable();
-            $table->string('pseudo')->nullable();
-            $table->string('rank')->nullable();
-            $table->string('speciality')->nullable();
+            $table->string('pseudo');
+            $table->string('rank');
+            $table->string('speciality');
             $table->timestamps();
         });
     }

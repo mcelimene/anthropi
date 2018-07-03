@@ -3,6 +3,7 @@
 use App\Region;
 use App\Trainer;
 use App\Level;
+use App\Formation;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -17,6 +18,7 @@ class DatabaseSeeder extends Seeder
         $this->call(RegionTableSeeder::class);
         $this->call(LevelTableSeeder::class);
         $this->call(TrainerTableSeeder::class);
+        $this->call(FormationTableSeeder::class);
     }
 }
 
@@ -79,16 +81,22 @@ class TrainerTableSeeder extends Seeder
           [
             'first_name' => 'Mélodie',
             'last_name' => 'Célimène',
-            'email' => 'm@m.fr',
+            'email' => 'm@gmail.fr',
+            'pseudo' => 'mcelimene',
+            'rank' => 'Caporal',
+            'speciality' => 'Pompier',
             'level_id' => 2,
             'region_id' => 2
           ]
         );
         Trainer::create(
           [
-            'first_name' => 'Lucie',
-            'last_name' => 'Célimène',
-            'email' => 'l@m.fr',
+            'first_name' => 'Martin',
+            'last_name' => 'Dupont',
+            'email' => 'martin@gmail.fr',
+            'pseudo' => 'mdupont',
+            'rank' => 'Caporal',
+            'speciality' => 'Pompier',
             'level_id' => 4,
             'region_id' => 5
           ]
@@ -98,8 +106,45 @@ class TrainerTableSeeder extends Seeder
             'first_name' => 'Toto',
             'last_name' => 'Tata',
             'email' => 'toto@tata.fr',
+            'pseudo' => 'ttata',
+            'rank' => 'Caporal',
+            'speciality' => 'Pompier',
             'level_id' => 4,
             'region_id' => 2
+          ]
+        );
+    }
+}
+
+class FormationTableSeeder extends Seeder
+{
+    /**
+     * Seed the region's table.
+     *
+     * @return void
+     */
+    public function run()
+    {
+        Formation::create(
+          [
+            'name' => 'Formation n°1',
+            'place' => 'Rue de la Liberté 21000 DIJON',
+            'date_start' => '20/08/2018 - 10h',
+            'date_end' => '21/08/2018 - 19h',
+            'number_of_vacancies' => 3,
+            'educational_objective' => "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin lacus odio, blandit in consectetur eu, varius a ipsum. Etiam efficitur, magna eget fermentum accumsan, orci nisl aliquet purus, non hendrerit ipsum sapien in ex. Donec interdum, velit cursus blandit volutpat, mauris erat blandit felis, in euismod diam tellus lobortis felis. Vestibulum nunc neque, sagittis eget est quis, laoreet eleifend dolor. Quisque aliquet sed nulla vitae ullamcorper. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec vestibulum lectus vitae urna porta, nec pretium tortor cursus. Donec ut laoreet est. Nullam venenatis enim non diam tristique vehicula. Nunc massa lacus, finibus quis odio eu, euismod consectetur nunc. Etiam eu urna ante. Duis eu vestibulum eros, at condimentum nisi. Etiam consectetur tincidunt tortor, id porttitor nunc mattis ac. Pellentesque urna nulla, dictum a tristique sit amet, egestas sed odio. Suspendisse tempor neque quis magna mollis, vitae molestie sapien dignissim. Aliquam imperdiet feugiat risus, ut vulputate justo elementum et. ",
+            'send_email' => false
+          ]
+        );
+        Formation::create(
+          [
+            'name' => 'Formation n°2',
+            'place' => 'Rue Monge 21000 DIJON',
+            'date_start' => '21/08/2018 - 9h',
+            'date_end' => '23/08/2018 - 20h',
+            'number_of_vacancies' => 3,
+            'educational_objective' => "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin lacus odio, blandit in consectetur eu, varius a ipsum. Etiam efficitur, magna eget fermentum accumsan, orci nisl aliquet purus, non hendrerit ipsum sapien in ex. Donec interdum, velit cursus blandit volutpat, mauris erat blandit felis, in euismod diam tellus lobortis felis. Vestibulum nunc neque, sagittis eget est quis, laoreet eleifend dolor. Quisque aliquet sed nulla vitae ullamcorper. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec vestibulum lectus vitae urna porta, nec pretium tortor cursus. Donec ut laoreet est. Nullam venenatis enim non diam tristique vehicula. Nunc massa lacus, finibus quis odio eu, euismod consectetur nunc. Etiam eu urna ante. Duis eu vestibulum eros, at condimentum nisi. Etiam consectetur tincidunt tortor, id porttitor nunc mattis ac. Pellentesque urna nulla, dictum a tristique sit amet, egestas sed odio. Suspendisse tempor neque quis magna mollis, vitae molestie sapien dignissim. Aliquam imperdiet feugiat risus, ut vulputate justo elementum et. ",
+            'send_email' => false
           ]
         );
     }
