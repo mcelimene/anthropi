@@ -1,0 +1,11 @@
+.card-header-blue{
+  box-shadow: 0 4px 20px 0 rgba(0,0,0,.14),0 7px 10px -5px rgba(3, 169, 244, 0.3);
+}
+
+.card .card-header-blue:not(.card-header-icon):not(.card-header-text){
+  background:linear-gradient(60deg,#03a9f4,#0086e2);
+}
+
+.card .card-header-blue:not(.card-header-icon):not(.card-header-text){
+  box-shadow: 0 4px 20px 0 rgba(0,0,0,.14),0 7px 10px -5px rgba(3,169,244,0.3);
+}

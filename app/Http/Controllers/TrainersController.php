@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Level;
 use App\Region;
 use App\Trainer;
+use Illuminate\Support\Facades\Mail;
 use App\Http\Requests\EditTrainerRequest;
 
 class TrainersController extends Controller
@@ -53,6 +54,19 @@ class TrainersController extends Controller
             'password_crypt' => $password_crypt,
             'pseudo' => $pseudo
           ]));
+
+        // Envoi mail d'inscription au nouveau formateur
+        $data = array(
+          'email' => $trainer->email,
+          'first_name' => $trainer->first_name,
+          'pseudo' => $pseudo,
+          'password' => $password
+          );
+
+        Mail::send('emails.registration', $data, function($message) use ($data) {
+                $message->to($data['email'])->subject('Inscription AnthroPi');
+        });
+
         return redirect(route('trainers.index'));
     }
 
@@ -120,8 +134,21 @@ class TrainersController extends Controller
       return $password;
     }
 
+    private function skip_accents($str, $charset='utf-8') {
+      $str = htmlentities( $str, ENT_NOQUOTES, $charset );
+      $str = preg_replace( '#&([A-za-z])(?:acute|cedil|caron|circ|grave|orn|ring|slash|th|tilde|uml);#', '\1', $str );
+      $str = preg_replace( '#&([A-za-z]{2})(?:lig);#', '\1', $str );
+      $str = preg_replace( '#&[^;]+;#', '', $str );
+      return $str;
+    }
+
+
     private function getPseudo($first_name, $last_name){
-      $pseudo = substr($first_name, 0, 3) . substr($last_name, 0, 3);
+      $pseudo = substr($first_name, 0, 1) . $last_name;
+      // Minuscules
+      $pseudo = strtolower($pseudo);
+      // sans accent
+      $pseudo = $this->skip_accents($pseudo);
       return $pseudo;
     }
 }

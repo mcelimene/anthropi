@@ -55,7 +55,7 @@
   </div>
   <div class="d-flex justify-content-center">
     <a href="{{ route('trainers.create') }}">
-      <button class="btn btn-primary">Ajouter un nouveau formateur</button>
+      <button class="btn btn-info">Ajouter un nouveau formateur</button>
     </a>
   </div>
 </div>

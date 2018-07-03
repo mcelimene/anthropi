@@ -13,7 +13,7 @@
       </ul>
     </div>
   @endif
-  
+
   <a href="{{ route('trainers.index') }}">
     <button class="btn btn-default btn-sm">
       <i class="material-icons">arrow_back_ios</i>
@@ -69,7 +69,7 @@
     </div>
   </div>
   <div class="d-flex justify-content-center">
-    <button type="submit" class="btn btn-primary">Ajouter</button>
+    <button type="submit" class="btn btn-info">Ajouter</button>
   </div>
   {!! Form::close() !!}
 @endsection

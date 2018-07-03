@@ -66,7 +66,7 @@
     </div>
   </div>
   <div class="d-flex justify-content-center">
-    <button type="submit" class="btn btn-primary">Modifier</button>
+    <button type="submit" class="btn btn-info">Modifier</button>
   </div>
   {!! Form::close() !!}
 @endsection
