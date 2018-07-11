@@ -22,7 +22,7 @@ class CreateTrainersTable extends Migration
             $table->string('pseudo');
             $table->string('rank');
             $table->string('speciality');
-            $table->enum('role', ['admin', 'user']);
+            $table->string('role')->default('utilisateur');
             $table->rememberToken();
             $table->timestamps();
         });

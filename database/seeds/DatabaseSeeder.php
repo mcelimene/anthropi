@@ -17,7 +17,7 @@ class DatabaseSeeder extends Seeder
     {
         $this->call(RegionTableSeeder::class);
         $this->call(LevelTableSeeder::class);
-        /*$this->call(TrainerTableSeeder::class);*/
+        $this->call(TrainerTableSeeder::class);
         $this->call(FormationTableSeeder::class);
     }
 }
@@ -68,53 +68,95 @@ class LevelTableSeeder extends Seeder
     }
 }
 
-/*class TrainerTableSeeder extends Seeder
-{*/
+class TrainerTableSeeder extends Seeder
+{
     /**
      * Seed the user's table.
      *
      * @return void
      */
-  /*  public function run()
+  public function run()
     {
         Trainer::create(
           [
-            'first_name' => 'Mélodie',
-            'last_name' => 'Célimène',
-            'email' => 'm@gmail.fr',
-            'pseudo' => 'mcelimene',
-            'rank' => 'Caporal',
+            'first_name' => 'Pierre',
+            'last_name' => 'Martin',
+            'email' => 'martin@gmail.com',
+            'password' => '$2y$10$cRj0nd/4HyP5Vx6sVHwwpOe0qAnlKIW/UY/pf8sDibMHPS.hiDme6',
+            'pseudo' => 'pmartin',
+            'rank' => 'Sergent',
             'speciality' => 'Pompier',
-            'level_id' => 2,
+            'level_id' => 1,
             'region_id' => 2
           ]
         );
         Trainer::create(
           [
-            'first_name' => 'Martin',
-            'last_name' => 'Dupont',
-            'email' => 'martin@gmail.fr',
-            'pseudo' => 'mdupont',
-            'rank' => 'Caporal',
+            'first_name' => 'Jacques',
+            'last_name' => 'Leroux',
+            'email' => 'jacques@gmail.com',
+            'password' => '$2y$10$t8EhzbsZp8ISuGOHyjJBl.Dhf4AQHtLSNJQOOy7mZufg6PZ8ULmFS',
+            'pseudo' => 'jleroux',
+            'rank' => 'Commandant',
             'speciality' => 'Pompier',
-            'level_id' => 4,
-            'region_id' => 5
+            'level_id' => 2,
+            'region_id' => 9
           ]
         );
         Trainer::create(
           [
-            'first_name' => 'Toto',
-            'last_name' => 'Tata',
-            'email' => 'toto@tata.fr',
-            'pseudo' => 'ttata',
-            'rank' => 'Caporal',
-            'speciality' => 'Pompier',
+            'first_name' => 'Nathalie',
+            'last_name' => 'Moreaux',
+            'email' => 'nathalie@gmail.com',
+            'password' => '$2y$10$kW0Tz.t9/a/ZQIQBVDD6M.P2p9rRztWMyh15Vjzhyz1pdPh8WORsS',
+            'pseudo' => 'nmoreaux',
+            'rank' => 'Assistant Médico-Administratif (AMA) de classe normale',
+            'speciality' => 'SAMU',
+            'level_id' => 1,
+            'region_id' => 3
+          ]
+        );
+        Trainer::create(
+          [
+            'first_name' => 'Zoé',
+            'last_name' => 'Richard',
+            'email' => 'zoe@gmail.com',
+            'password' => '$2y$10$iGsowG9RCv50gORU8G01we4lIM9mtgCN3q4xDny7tKz4FZdBhfZ3C',
+            'pseudo' => 'zrichard',
+            'rank' => 'Assistant Médico-Administratif (AMA) de classe exceptionnelle',
+            'speciality' => 'SAMU',
+            'level_id' => 3,
+            'region_id' => 2
+          ]
+        );
+        Trainer::create(
+          [
+            'first_name' => 'Laurent',
+            'last_name' => 'Dubois',
+            'email' => 'laurent@gmail.com',
+            'password' => '$2y$10$eo.o3Dnzd8sA46V/7a8b/.moz5h6NkAMx0HVxocWhe13P7XYLMJmq',
+            'pseudo' => 'ldubois',
+            'rank' => 'Chef de service',
+            'speciality' => 'Médecin',
             'level_id' => 4,
+            'region_id' => 11
+          ]
+        );
+        Trainer::create(
+          [
+            'first_name' => 'Clément',
+            'last_name' => 'Durant',
+            'email' => 'clement@gmail.com',
+            'password' => '$2y$10$fUmhcZxRno7mY2X6PDZIx.MzuNfbc18pem9r6O2hxZluBJbLVJtn6',
+            'pseudo' => 'cdurant',
+            'rank' => 'Capitaine',
+            'speciality' => 'Police',
+            'level_id' => 3,
             'region_id' => 2
           ]
         );
     }
-}*/
+}
 
 class FormationTableSeeder extends Seeder
 {
