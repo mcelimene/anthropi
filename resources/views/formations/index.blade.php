@@ -15,8 +15,8 @@
           <thead class=" text-primary">
             <th>Nom</th>
             <th>Lieu</th>
-            <th>Date de départ</th>
-            <th>Date de fin</th>
+            <th>Date et heure de début</th>
+            <th>Date et heure de fin</th>
             <th>E-mail envoyé ?</th>
             <th>Actions</th>
           </thead>

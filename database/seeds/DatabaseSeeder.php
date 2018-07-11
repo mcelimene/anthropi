@@ -17,7 +17,7 @@ class DatabaseSeeder extends Seeder
     {
         $this->call(RegionTableSeeder::class);
         $this->call(LevelTableSeeder::class);
-        $this->call(TrainerTableSeeder::class);
+        /*$this->call(TrainerTableSeeder::class);*/
         $this->call(FormationTableSeeder::class);
     }
 }
@@ -68,14 +68,14 @@ class LevelTableSeeder extends Seeder
     }
 }
 
-class TrainerTableSeeder extends Seeder
-{
+/*class TrainerTableSeeder extends Seeder
+{*/
     /**
      * Seed the user's table.
      *
      * @return void
      */
-    public function run()
+  /*  public function run()
     {
         Trainer::create(
           [
@@ -114,7 +114,7 @@ class TrainerTableSeeder extends Seeder
           ]
         );
     }
-}
+}*/
 
 class FormationTableSeeder extends Seeder
 {
@@ -131,7 +131,10 @@ class FormationTableSeeder extends Seeder
             'place' => 'Rue de la Liberté 21000 DIJON',
             'date_start' => '20/08/2018 - 10h',
             'date_end' => '21/08/2018 - 19h',
-            'number_of_vacancies' => 3,
+            'number_of_trainers' => 2,
+            'number_of_assistant_trainers' => 1,
+            'number_of_instructors' => 1,
+            'number_of_course_directors' => 1,
             'educational_objective' => "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin lacus odio, blandit in consectetur eu, varius a ipsum. Etiam efficitur, magna eget fermentum accumsan, orci nisl aliquet purus, non hendrerit ipsum sapien in ex. Donec interdum, velit cursus blandit volutpat, mauris erat blandit felis, in euismod diam tellus lobortis felis. Vestibulum nunc neque, sagittis eget est quis, laoreet eleifend dolor. Quisque aliquet sed nulla vitae ullamcorper. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec vestibulum lectus vitae urna porta, nec pretium tortor cursus. Donec ut laoreet est. Nullam venenatis enim non diam tristique vehicula. Nunc massa lacus, finibus quis odio eu, euismod consectetur nunc. Etiam eu urna ante. Duis eu vestibulum eros, at condimentum nisi. Etiam consectetur tincidunt tortor, id porttitor nunc mattis ac. Pellentesque urna nulla, dictum a tristique sit amet, egestas sed odio. Suspendisse tempor neque quis magna mollis, vitae molestie sapien dignissim. Aliquam imperdiet feugiat risus, ut vulputate justo elementum et. ",
             'send_email' => false
           ]
@@ -142,7 +145,10 @@ class FormationTableSeeder extends Seeder
             'place' => 'Rue Monge 21000 DIJON',
             'date_start' => '21/08/2018 - 9h',
             'date_end' => '23/08/2018 - 20h',
-            'number_of_vacancies' => 3,
+            'number_of_trainers' => 2,
+            'number_of_assistant_trainers' => 1,
+            'number_of_instructors' => 1,
+            'number_of_course_directors' => 1,
             'educational_objective' => "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin lacus odio, blandit in consectetur eu, varius a ipsum. Etiam efficitur, magna eget fermentum accumsan, orci nisl aliquet purus, non hendrerit ipsum sapien in ex. Donec interdum, velit cursus blandit volutpat, mauris erat blandit felis, in euismod diam tellus lobortis felis. Vestibulum nunc neque, sagittis eget est quis, laoreet eleifend dolor. Quisque aliquet sed nulla vitae ullamcorper. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec vestibulum lectus vitae urna porta, nec pretium tortor cursus. Donec ut laoreet est. Nullam venenatis enim non diam tristique vehicula. Nunc massa lacus, finibus quis odio eu, euismod consectetur nunc. Etiam eu urna ante. Duis eu vestibulum eros, at condimentum nisi. Etiam consectetur tincidunt tortor, id porttitor nunc mattis ac. Pellentesque urna nulla, dictum a tristique sit amet, egestas sed odio. Suspendisse tempor neque quis magna mollis, vitae molestie sapien dignissim. Aliquam imperdiet feugiat risus, ut vulputate justo elementum et. ",
             'send_email' => false
           ]

@@ -37,9 +37,15 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#0">
+            <a class="nav-link" href="#">
               <i class="material-icons">calendar_today</i>
               <p>Calendrier</p>
+            </a>
+          </li>
+          <li class="nav-item {{ Request::is('training-follow-up', 'training-follow-up/*') ? 'active' : '' }}">
+            <a class="nav-link" href="{{ url('training-follow-up') }}">
+              <i class="material-icons">bookmarks</i>
+              <p>Suivi des formations</p>
             </a>
           </li>
           <li class="nav-item {{ Request::is('formations', 'formations/*') ? 'active' : '' }}">

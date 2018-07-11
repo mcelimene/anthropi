@@ -30,34 +30,106 @@
       {!! Form::open(['method' => 'PUT', 'url' => route('formations.update', $formation)]) !!}
 
       <div class="form-group">
-        {!! Form::label('name', 'Nom', ['class' => 'bmd-label-floating']) !!}
+        {!! Form::label('name', 'Nom*', ['class' => 'bmd-label-floating']) !!}
         {!! Form::text('name', $formation->name, ['class' => 'form-control', 'id' => 'name']) !!}
       </div>
+      @if ($errors->has('name'))
+        <div class="alert alert-danger" role="alert">
+          <strong>{{ $errors->first('name') }}</strong>
+        </div>
+      @endif
 
       <div class="form-group">
-        {!! Form::label('place', 'Lieu', ['class' => 'bmd-label-floating']) !!}
+        {!! Form::label('place', 'Lieu*', ['class' => 'bmd-label-floating']) !!}
         {!! Form::text('place', $formation->place, ['class' => 'form-control', 'id' => 'place']) !!}
       </div>
+      @if ($errors->has('place'))
+        <div class="alert alert-danger" role="alert">
+          <strong>{{ $errors->first('place') }}</strong>
+        </div>
+      @endif
 
-      <div class="form-group">
-        {!! Form::label('date_start', 'Date de début', ['class' => 'bmd-label-floating']) !!}
-        {!! Form::text('date_start', $formation->date_start, ['class' => 'form-control', 'id' => 'date_start']) !!}
+      <div class="row">
+        <div class="col">
+          <div class="form-group">
+            {!! Form::label('date_start', 'Date de début*', ['class' => 'bmd-label-floating']) !!}
+            {!! Form::text('date_start', $formation->date_start, ['class' => 'form-control', 'id' => 'date_start']) !!}
+          </div>
+          @if ($errors->has('date_start'))
+            <div class="alert alert-danger" role="alert">
+              <strong>{{ $errors->first('date_start') }}</strong>
+            </div>
+          @endif
+        </div>
+        <div class="col">
+          <div class="form-group">
+            {!! Form::label('date_end', 'Date de fin*', ['class' => 'bmd-label-floating']) !!}
+            {!! Form::text('date_end', $formation->date_end, ['class' => 'form-control', 'id' => 'date_end']) !!}
+          </div>
+          @if ($errors->has('date_end'))
+            <div class="alert alert-danger" role="alert">
+              <strong>{{ $errors->first('date_end') }}</strong>
+            </div>
+          @endif
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <div class="form-group">
+            {!! Form::label('number_of_trainers', 'Nombre de formateurs', ['class' => 'bmd-label-floating']) !!}
+            {!! Form::number('number_of_trainers', $formation->number_of_trainers, ['class' => 'form-control', 'id' => 'number_of_trainers']) !!}
+          </div>
+          @if ($errors->has('number_of_trainers'))
+            <div class="alert alert-danger" role="alert">
+              <strong>{{ $errors->first('number_of_trainers') }}</strong>
+            </div>
+          @endif
+        </div>
+        <div class="col">
+          <div class="form-group">
+            {!! Form::label('number_of_assistant_trainers', "Nombre d'assistant-formateurs", ['class' => 'bmd-label-floating']) !!}
+            {!! Form::number('number_of_assistant_trainers', $formation->number_of_assistant_trainers, ['class' => 'form-control', 'id' => 'number_of_assistant_trainers']) !!}
+          </div>
+          @if ($errors->has('number_of_assistant_trainers'))
+            <div class="alert alert-danger" role="alert">
+              <strong>{{ $errors->first('number_of_assistant_trainers') }}</strong>
+            </div>
+          @endif
+        </div>
+        <div class="col">
+          <div class="form-group">
+            {!! Form::label('number_of_instructors', "Nombre d'instructeurs", ['class' => 'bmd-label-floating']) !!}
+            {!! Form::number('number_of_instructors', $formation->number_of_instructors, ['class' => 'form-control', 'id' => 'number_of_instructors']) !!}
+          </div>
+          @if ($errors->has('number_of_instructors'))
+            <div class="alert alert-danger" role="alert">
+              <strong>{{ $errors->first('number_of_instructors') }}</strong>
+            </div>
+          @endif
+        </div>
+        <div class="col">
+          <div class="form-group">
+            {!! Form::label('number_of_course_directors', 'Nombre de directeurs de cours', ['class' => 'bmd-label-floating']) !!}
+            {!! Form::number('number_of_course_directors', $formation->number_of_course_directors, ['class' => 'form-control', 'id' => 'number_of_course_directors']) !!}
+          </div>
+          @if ($errors->has('number_of_course_directors'))
+            <div class="alert alert-danger" role="alert">
+              <strong>{{ $errors->first('number_of_course_directors') }}</strong>
+            </div>
+          @endif
+        </div>
       </div>
 
       <div class="form-group">
-        {!! Form::label('date_end', 'Date de fin', ['class' => 'bmd-label-floating']) !!}
-        {!! Form::text('date_end', $formation->date_end, ['class' => 'form-control', 'id' => 'date_end']) !!}
-      </div>
-
-      <div class="form-group">
-        {!! Form::label('number_of_vacancies', 'Nombre de participant', ['class' => 'bmd-label-floating']) !!}
-        {!! Form::number('number_of_vacancies', $formation->number_of_vacancies, ['class' => 'form-control', 'id' => 'number_of_vacancies']) !!}
-      </div>
-
-      <div class="form-group">
-        {!! Form::label('educational_objective', 'Objectifs pédagogiques', ['class' => 'bmd-label-floating']) !!}
+        {!! Form::label('educational_objective', 'Objectifs pédagogiques*', ['class' => 'bmd-label-floating']) !!}
         {!! Form::textarea('educational_objective', $formation->educational_objective, ['class' => 'form-control', 'id' => 'educational_objective']) !!}
       </div>
+      @if ($errors->has('educational_objective'))
+        <div class="alert alert-danger" role="alert">
+          <strong>{{ $errors->first('educational_objective') }}</strong>
+        </div>
+      @endif
 
       @if($formation->send_email == false)
         <div class="form-check">

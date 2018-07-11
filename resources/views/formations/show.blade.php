@@ -26,7 +26,19 @@
           <strong>Dates</strong> : Du {{ $formation->date_start }} au {{ $formation->date_end }}
         </li>
         <li>
-          <strong>Nombre de participant</strong> : {{ $formation->number_of_vacancies }} participants
+          <strong>Nombre de participants</strong> :
+          @if($formation->number_of_trainers > 0)
+            {{ $formation->number_of_trainers }} formateur(s)/
+          @endif
+          @if($formation->number_of_assistant_trainers > 0)
+            {{ $formation->number_of_assistant_trainers }} assistant-formateur(s)/
+          @endif
+          @if($formation->number_of_instructors > 0)
+            {{ $formation->number_of_instructors }} instructeur(s)/
+          @endif
+          @if($formation->number_of_course_directors > 0)
+            {{ $formation->number_of_course_directors }} directeur(s) de cours
+          @endif
         </li>
         <li>
           <strong>Objectifs pédagogiques</strong> : {{ $formation->educational_objective }}

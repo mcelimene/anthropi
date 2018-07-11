@@ -18,7 +18,10 @@ class CreateFormationsTable extends Migration
             $table->string('name');
             $table->string('place');
             $table->text('educational_objective');
-            $table->smallInteger('number_of_vacancies');
+            $table->smallInteger('number_of_trainers')->default(0);
+            $table->smallInteger('number_of_assistant_trainers')->default(0);
+            $table->smallInteger('number_of_instructors')->default(0);
+            $table->smallInteger('number_of_course_directors')->default(0);
             $table->text('date_start');
             $table->text('date_end');
             $table->boolean('send_email')->default(false);

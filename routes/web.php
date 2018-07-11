@@ -12,6 +12,9 @@
 */
 
 Route::get('/', 'HomeController@index');
+
 Route::resource('trainers', 'TrainersController');
 Route::resource('formations', 'FormationsController');
+
+Route::get('training-follow-up', 'TrainingFollowUpController@index');
 Route::get('pdfview',array('as'=>'pdfview','uses'=>'TrainersController@pdfview'));

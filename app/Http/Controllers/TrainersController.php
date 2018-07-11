@@ -51,8 +51,7 @@ class TrainersController extends Controller
 
         $trainer = Trainer::create(array_merge($request->all(),
           [
-            'password' => $password,
-            'password_crypt' => $password_crypt,
+            'password' => $password_crypt,
             'pseudo' => $pseudo
           ]));
 
