@@ -1,4 +1,4 @@
-.card-header-blue{
+/*.card-header-blue{
   box-shadow: 0 4px 20px 0 rgba(0,0,0,.14),0 7px 10px -5px rgba(3, 169, 244, 0.3);
 }
 
@@ -8,4 +8,33 @@
 
 .card .card-header-blue:not(.card-header-icon):not(.card-header-text){
   box-shadow: 0 4px 20px 0 rgba(0,0,0,.14),0 7px 10px -5px rgba(3,169,244,0.3);
+}*/
+
+
+#logoLogin{
+  height: 200px;
+}
+
+.card .card-header-perso .card-icon, .card .card-header-perso .card-text, .card .card-header-perso:not(.card-header-icon):not(.card-header-text) {
+    box-shadow: 0 4px 20px 0 rgba(0,0,0,.14),0 7px 10px -5px rgb(189, 187, 188);
+}
+.card.bg-perso, .card .card-header-perso .card-icon, .card .card-header-perso .card-text, .card .card-header-perso:not(.card-header-icon):not(.card-header-text), .card.card-rotate.bg-perso .back, .card.card-rotate.bg-perso .front {
+    background: linear-gradient(60deg,#94b5e5,#bdbbbc);
+}
+
+.btn.btn-perso {
+    color: #fff;
+    background-color: #94b5e5;
+    border-color: #94b5e5;
+	  box-shadow: 0 14px 26px -12px rgba(149, 181, 228, 0.75),0 4px 23px 0 rgba(0,0,0,.12),0 8px 10px -5px rgba(149, 181, 228, 0.52);
+}
+
+.sidebar .nav li.active > a, .sidebar .nav li.active > a i {
+	color: #fff;
+	background: #94b5e5;
+}
+
+.sidebar .nav li.active > a {
+  border-color: #94b5e5;
+  box-shadow: 0 14px 26px -12px rgba(149, 181, 228, 0.75),0 4px 23px 0 rgba(0,0,0,.12),0 8px 10px -5px rgba(149, 181, 228, 0.52);
 }

@@ -11,7 +11,7 @@
     </button>
   </a>
   <div class="card">
-    <div class="card-header card-header-primary">
+    <div class="card-header card-header-perso">
       <h4 class="card-title ">Fiche Formation</h4>
     </div>
     <div class="card-body">

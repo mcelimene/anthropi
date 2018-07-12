@@ -22,7 +22,6 @@ class CreateTrainersTable extends Migration
             $table->string('pseudo');
             $table->string('rank');
             $table->string('speciality');
-            $table->string('role')->default('utilisateur');
             $table->rememberToken();
             $table->timestamps();
         });

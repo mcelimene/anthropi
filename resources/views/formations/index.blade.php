@@ -5,7 +5,7 @@
 
 @section('content')
   <div class="card">
-    <div class="card-header card-header-primary">
+    <div class="card-header card-header-perso">
       <h4 class="card-title ">Toutes les Formations</h4>
       <p class="card-category">Liste</p>
     </div>
@@ -58,7 +58,7 @@
   </div>
   <div class="d-flex justify-content-center">
     <a href="{{ route('formations.create') }}">
-      <button class="btn btn-info">Ajouter une nouvelle formation</button>
+      <button class="btn btn-perso">Ajouter une nouvelle formation</button>
     </a>
   </div>
 </div>

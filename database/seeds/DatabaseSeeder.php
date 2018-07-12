@@ -4,6 +4,7 @@ use App\Region;
 use App\Trainer;
 use App\Level;
 use App\Formation;
+use App\Role;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -19,6 +20,7 @@ class DatabaseSeeder extends Seeder
         $this->call(LevelTableSeeder::class);
         $this->call(TrainerTableSeeder::class);
         $this->call(FormationTableSeeder::class);
+        $this->call(RoleTableSeeder::class);
     }
 }
 
@@ -68,6 +70,20 @@ class LevelTableSeeder extends Seeder
     }
 }
 
+class RoleTableSeeder extends Seeder
+{
+    /**
+     * Seed the region's table.
+     *
+     * @return void
+     */
+    public function run()
+    {
+        Role::create(['name' => 'Admin']);
+        Role::create(['name' => 'Utilisateur']);
+    }
+}
+
 class TrainerTableSeeder extends Seeder
 {
     /**
@@ -77,6 +93,19 @@ class TrainerTableSeeder extends Seeder
      */
   public function run()
     {
+        Trainer::create(
+          [
+            'first_name' => 'Mélodie',
+            'last_name' => 'Célimène',
+            'email' => 'melodie@gmail.com',
+            'password' => '$2y$10$cRj0nd/4HyP5Vx6sVHwwpOe0qAnlKIW/UY/pf8sDibMHPS.hiDme6',
+            'pseudo' => 'mcelimene',
+            'rank' => 'Sergent',
+            'speciality' => 'Pompier',
+            'level_id' => 1,
+            'region_id' => 2
+          ]
+        );
         Trainer::create(
           [
             'first_name' => 'Pierre',

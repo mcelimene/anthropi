@@ -13,7 +13,7 @@
   </a>
 
   <div class="card">
-    <div class="card-header card-header-primary">
+    <div class="card-header card-header-perso">
       <h4 class="card-title ">Modifier le formateur : {{ $trainer->first_name }} {{ $trainer->last_name }}</h4>
       <p class="card-category">Formulaire</p>
     </div>
@@ -107,7 +107,7 @@
   </div>
 
   <div class="d-flex justify-content-center">
-    <button type="submit" class="btn btn-info">Modifier</button>
+    <button type="submit" class="btn btn-perso">Modifier</button>
   </div>
   {!! Form::close() !!}
 @endsection

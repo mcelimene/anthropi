@@ -13,11 +13,12 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
   <!-- CSS Files -->
   <link href="{{ URL::asset("css/material-dashboard.min.css")}}" rel="stylesheet" />
+  <link href="{{ URL::asset("css/style.css")}}" rel="stylesheet" />
 </head>
 
 <body class="">
   <div class="wrapper ">
-    <div class="sidebar" data-color="azure" data-background-color="white" data-image="{{ URL::asset("images/image1.jpg") }}">
+    <div class="sidebar" data-background-color="white" data-image="{{ URL::asset("images/image1.jpg") }}">
       <!--
         Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger"
 
@@ -30,14 +31,14 @@
       </div>
       <div class="sidebar-wrapper">
         <ul class="nav">
-          <li class="nav-item {{ Request::is('/*') ? 'active' : '' }}">
+          <li class="nav-item {{ Request::is('/') ? 'active' : '' }}">
             <a class="nav-link" href="{{ url('/') }}">
               <i class="material-icons">dashboard</i>
               <p>Tableau de bord</p>
             </a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">
+          <li class="nav-item {{ Request::is('calendar') ? 'active' : '' }}">
+            <a class="nav-link" href="{{ url('calendar')}}">
               <i class="material-icons">calendar_today</i>
               <p>Calendrier</p>
             </a>
@@ -82,6 +83,11 @@
               <li class="nav-item">
                 <a class="nav-link" href="#pablo">
                   <i class="material-icons">notifications</i> Notifications
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{{ route('logout')}}">
+                  <i class="material-icons">power_settings_new</i> Déconnexion
                 </a>
               </li>
               <!-- your navbar here -->

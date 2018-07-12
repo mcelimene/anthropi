@@ -8,10 +8,20 @@ use App\Level;
 use App\Region;
 use App\Trainer;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\EditTrainerRequest;
 
 class TrainersController extends Controller
 {
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -47,7 +57,7 @@ class TrainersController extends Controller
         $last_name = $request->input('last_name');
         $pseudo = $this->getPseudo($first_name, $last_name);
         $password = $this->getPassword();
-        $password_crypt = $this->getPasswordCrypt($password);
+        $password_crypt = HASH::make($password);
 
         $trainer = Trainer::create(array_merge($request->all(),
           [

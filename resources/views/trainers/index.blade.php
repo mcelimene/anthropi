@@ -5,7 +5,7 @@
 
 @section('content')
   <div class="card">
-    <div class="card-header card-header-primary d-flex justify-content-between">
+    <div class="card-header card-header-perso d-flex justify-content-between">
       <div>
         <h4 class="card-title ">Tous les Formateurs</h4>
         <p class="card-category">Liste</p>
@@ -15,7 +15,7 @@
           <button class="btn btn-warning btn-sm">
             <i class="material-icons">save_alt</i>
              PDF
-          </button>          
+          </button>
         </a>
       </div>
     </div>
@@ -65,7 +65,7 @@
   </div>
   <div class="d-flex justify-content-center">
     <a href="{{ route('trainers.create') }}">
-      <button class="btn btn-info">Ajouter un nouveau formateur</button>
+      <button class="btn btn-perso">Ajouter un nouveau formateur</button>
     </a>
   </div>
 </div>

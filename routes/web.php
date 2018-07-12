@@ -18,3 +18,9 @@ Route::resource('formations', 'FormationsController');
 
 Route::get('training-follow-up', 'TrainingFollowUpController@index');
 Route::get('pdfview',array('as'=>'pdfview','uses'=>'TrainersController@pdfview'));
+
+Auth::routes();
+Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
+Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('calendar', 'CalendarController@index');
