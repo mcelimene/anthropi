@@ -37,30 +37,32 @@
               <p>Tableau de bord</p>
             </a>
           </li>
-          <li class="nav-item {{ Request::is('calendar') ? 'active' : '' }}">
-            <a class="nav-link" href="{{ url('calendar')}}">
-              <i class="material-icons">calendar_today</i>
-              <p>Calendrier</p>
-            </a>
-          </li>
-          <li class="nav-item {{ Request::is('training-follow-up', 'training-follow-up/*') ? 'active' : '' }}">
-            <a class="nav-link" href="{{ url('training-follow-up') }}">
-              <i class="material-icons">bookmarks</i>
-              <p>Suivi des candidatures</p>
-            </a>
-          </li>
-          <li class="nav-item {{ Request::is('formations', 'formations/*') ? 'active' : '' }}">
-            <a class="nav-link" href="{{ route('formations.index') }}">
-              <i class="material-icons">assignment</i>
-              <p>Formations</p>
-            </a>
-          </li>
-          <li class="nav-item {{ Request::is('trainers', 'trainers/*') ? 'active' : '' }}">
-            <a class="nav-link" href="{{ route('trainers.index') }}">
-              <i class="material-icons">people</i>
-              <p>Formateurs</p>
-            </a>
-          </li>
+          @if(auth()->user()->isAdmin())
+            <li class="nav-item {{ Request::is('calendar') ? 'active' : '' }}">
+              <a class="nav-link" href="{{ url('calendar')}}">
+                <i class="material-icons">calendar_today</i>
+                <p>Calendrier</p>
+              </a>
+            </li>
+            <li class="nav-item {{ Request::is('training-follow-up', 'training-follow-up/*') ? 'active' : '' }}">
+              <a class="nav-link" href="{{ url('training-follow-up') }}">
+                <i class="material-icons">bookmarks</i>
+                <p>Suivi des candidatures</p>
+              </a>
+            </li>
+            <li class="nav-item {{ Request::is('formations', 'formations/*') ? 'active' : '' }}">
+              <a class="nav-link" href="{{ route('formations.index') }}">
+                <i class="material-icons">assignment</i>
+                <p>Formations</p>
+              </a>
+            </li>
+            <li class="nav-item {{ Request::is('trainers', 'trainers/*') ? 'active' : '' }}">
+              <a class="nav-link" href="{{ route('trainers.index') }}">
+                <i class="material-icons">people</i>
+                <p>Formateurs</p>
+              </a>
+            </li>
+          @endif
           <!-- your sidebar here -->
         </ul>
       </div>

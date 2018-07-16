@@ -16,10 +16,5 @@ class Trainer extends Model
     public function region(){
       return $this->belongsTo('App\Region');
     }
-    
-    // Fonction => retourne si la personne est admin ou pas
-    /*public function isAdministrator() {
-     return $this->role()->where('name', 'Admin')->exists();
-   }*/
 
 }

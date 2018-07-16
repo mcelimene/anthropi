@@ -43,17 +43,6 @@
             </div>
           @endif
         </div>
-        <div class="col">
-          <div class="form-group">
-            {!! Form::label('email', 'E-mail*', ['class' => 'bmd-label-floating']) !!}
-            {!! Form::email('email', $trainer->email, ['class' => 'form-control', 'id' => 'email']) !!}
-          </div>
-          @if ($errors->has('email'))
-            <div class="alert alert-danger" role="alert">
-              <strong>{{ $errors->first('email') }}</strong>
-            </div>
-          @endif
-        </div>
       </div>
       <div class="form-group">
         {!! Form::label('region_id', 'Région*', ['class' => 'bmd-label-floating']) !!}
