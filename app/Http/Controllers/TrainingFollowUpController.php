@@ -18,7 +18,6 @@ class TrainingFollowUpController extends Controller
     }
     public function index(){
       $formations = Formation::where('send_email', true)->get();
-      dd($formations);
       return view('trainingFollowUp.index');
     }
 }

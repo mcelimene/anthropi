@@ -46,7 +46,7 @@
           <li class="nav-item {{ Request::is('training-follow-up', 'training-follow-up/*') ? 'active' : '' }}">
             <a class="nav-link" href="{{ url('training-follow-up') }}">
               <i class="material-icons">bookmarks</i>
-              <p>Suivi des formations</p>
+              <p>Suivi des candidatures</p>
             </a>
           </li>
           <li class="nav-item {{ Request::is('formations', 'formations/*') ? 'active' : '' }}">
