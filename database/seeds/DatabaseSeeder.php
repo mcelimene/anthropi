@@ -5,6 +5,7 @@ use App\Trainer;
 use App\Level;
 use App\Formation;
 use App\Role;
+use App\User;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -17,6 +18,7 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         $this->call(RegionTableSeeder::class);
+        $this->call(UserTableSeeder::class);
         $this->call(LevelTableSeeder::class);
         $this->call(TrainerTableSeeder::class);
         $this->call(FormationTableSeeder::class);
@@ -95,24 +97,9 @@ class TrainerTableSeeder extends Seeder
     {
         Trainer::create(
           [
-            'first_name' => 'Mélodie',
-            'last_name' => 'Célimène',
-            'email' => 'melodie@gmail.com',
-            'password' => '$2y$10$cRj0nd/4HyP5Vx6sVHwwpOe0qAnlKIW/UY/pf8sDibMHPS.hiDme6',
-            'pseudo' => 'mcelimene',
-            'rank' => 'Sergent',
-            'speciality' => 'Pompier',
-            'level_id' => 1,
-            'region_id' => 2
-          ]
-        );
-        Trainer::create(
-          [
             'first_name' => 'Pierre',
             'last_name' => 'Martin',
-            'email' => 'martin@gmail.com',
-            'password' => '$2y$10$cRj0nd/4HyP5Vx6sVHwwpOe0qAnlKIW/UY/pf8sDibMHPS.hiDme6',
-            'pseudo' => 'pmartin',
+            //'pseudo' => 'pmartin',
             'rank' => 'Sergent',
             'speciality' => 'Pompier',
             'level_id' => 1,
@@ -123,9 +110,7 @@ class TrainerTableSeeder extends Seeder
           [
             'first_name' => 'Jacques',
             'last_name' => 'Leroux',
-            'email' => 'jacques@gmail.com',
-            'password' => '$2y$10$t8EhzbsZp8ISuGOHyjJBl.Dhf4AQHtLSNJQOOy7mZufg6PZ8ULmFS',
-            'pseudo' => 'jleroux',
+            //'pseudo' => 'jleroux',
             'rank' => 'Commandant',
             'speciality' => 'Pompier',
             'level_id' => 2,
@@ -136,9 +121,7 @@ class TrainerTableSeeder extends Seeder
           [
             'first_name' => 'Nathalie',
             'last_name' => 'Moreaux',
-            'email' => 'nathalie@gmail.com',
-            'password' => '$2y$10$kW0Tz.t9/a/ZQIQBVDD6M.P2p9rRztWMyh15Vjzhyz1pdPh8WORsS',
-            'pseudo' => 'nmoreaux',
+            //'pseudo' => 'nmoreaux',
             'rank' => 'Assistant Médico-Administratif (AMA) de classe normale',
             'speciality' => 'SAMU',
             'level_id' => 1,
@@ -149,9 +132,7 @@ class TrainerTableSeeder extends Seeder
           [
             'first_name' => 'Zoé',
             'last_name' => 'Richard',
-            'email' => 'zoe@gmail.com',
-            'password' => '$2y$10$iGsowG9RCv50gORU8G01we4lIM9mtgCN3q4xDny7tKz4FZdBhfZ3C',
-            'pseudo' => 'zrichard',
+            //'pseudo' => 'zrichard',
             'rank' => 'Assistant Médico-Administratif (AMA) de classe exceptionnelle',
             'speciality' => 'SAMU',
             'level_id' => 3,
@@ -162,9 +143,7 @@ class TrainerTableSeeder extends Seeder
           [
             'first_name' => 'Laurent',
             'last_name' => 'Dubois',
-            'email' => 'laurent@gmail.com',
-            'password' => '$2y$10$eo.o3Dnzd8sA46V/7a8b/.moz5h6NkAMx0HVxocWhe13P7XYLMJmq',
-            'pseudo' => 'ldubois',
+            //'pseudo' => 'ldubois',
             'rank' => 'Chef de service',
             'speciality' => 'Médecin',
             'level_id' => 4,
@@ -175,13 +154,73 @@ class TrainerTableSeeder extends Seeder
           [
             'first_name' => 'Clément',
             'last_name' => 'Durant',
-            'email' => 'clement@gmail.com',
-            'password' => '$2y$10$fUmhcZxRno7mY2X6PDZIx.MzuNfbc18pem9r6O2hxZluBJbLVJtn6',
-            'pseudo' => 'cdurant',
+            //'pseudo' => 'cdurant',
             'rank' => 'Capitaine',
             'speciality' => 'Police',
             'level_id' => 3,
             'region_id' => 2
+          ]
+        );
+    }
+}
+
+class UserTableSeeder extends Seeder
+{
+    /**
+     * Seed the user's table.
+     *
+     * @return void
+     */
+  public function run()
+    {
+        User::create(
+          [
+            'name' => 'Administrateur',
+            'email' => 'admin@gmail.com',
+            'password' => '$2y$10$cRj0nd/4HyP5Vx6sVHwwpOe0qAnlKIW/UY/pf8sDibMHPS.hiDme6',
+            'role_id' => 1
+          ]
+        );
+        User::create(
+          [
+            'email' => 'martin@gmail.com',
+            'password' => '$2y$10$cRj0nd/4HyP5Vx6sVHwwpOe0qAnlKIW/UY/pf8sDibMHPS.hiDme6',
+            'trainer_id' => 1
+          ]
+        );
+        User::create(
+          [
+            'email' => 'jacques@gmail.com',
+            'password' => '$2y$10$t8EhzbsZp8ISuGOHyjJBl.Dhf4AQHtLSNJQOOy7mZufg6PZ8ULmFS',
+            'trainer_id' => 2
+          ]
+        );
+        User::create(
+          [
+            'email' => 'nathalie@gmail.com',
+            'password' => '$2y$10$kW0Tz.t9/a/ZQIQBVDD6M.P2p9rRztWMyh15Vjzhyz1pdPh8WORsS',
+            'trainer_id' => 3
+          ]
+        );
+        User::create(
+          [
+            'email' => 'zoe@gmail.com',
+            'password' => '$2y$10$iGsowG9RCv50gORU8G01we4lIM9mtgCN3q4xDny7tKz4FZdBhfZ3C',
+            'trainer_id' => 4
+          ]
+        );
+        User::create(
+          [
+            'email' => 'laurent@gmail.com',
+            'password' => '$2y$10$eo.o3Dnzd8sA46V/7a8b/.moz5h6NkAMx0HVxocWhe13P7XYLMJmq',
+            'trainer_id' => 5
+          ]
+        );
+        User::create(
+          [
+            'email' => 'clement@gmail.com',
+            'password' => '$2y$10$fUmhcZxRno7mY2X6PDZIx.MzuNfbc18pem9r6O2hxZluBJbLVJtn6',
+            'trainer_id' => 6
           ]
         );
     }

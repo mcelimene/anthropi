@@ -18,7 +18,7 @@ class CreateRolesTable extends Migration
             $table->string('name');
         });
 
-        Schema::table('trainers', function(Blueprint $table){
+        Schema::table('users', function(Blueprint $table){
           $table->integer('role_id')->unsigned()->default(2);
         });
     }

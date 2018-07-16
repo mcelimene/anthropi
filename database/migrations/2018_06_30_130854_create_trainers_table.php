@@ -17,13 +17,14 @@ class CreateTrainersTable extends Migration
             $table->increments('id');
             $table->string('first_name');
             $table->string('last_name');
-            $table->string('email')->unique();
-            $table->string('password');
-            $table->string('pseudo');
+            //$table->string('pseudo');
             $table->string('rank');
             $table->string('speciality');
-            $table->rememberToken();
             $table->timestamps();
+        });
+
+        Schema::table('users', function (Blueprint $table){
+            $table->integer('trainer_id')->unsigned()->index()->nullable();
         });
     }
 

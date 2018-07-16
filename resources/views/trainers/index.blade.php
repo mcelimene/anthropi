@@ -25,8 +25,6 @@
           <thead class=" text-primary">
             <th>Nom</th>
             <th>Prénom</th>
-            <th>Pseudo</th>
-            <th>E-mail</th>
             <th>Région</th>
             <th>Grade</th>
             <th>Spécialité</th>
@@ -38,8 +36,6 @@
               <tr>
                 <td>{{ $trainer->last_name }}</td>
                 <td>{{ $trainer->first_name }}</td>
-                <td>{{ $trainer->pseudo }}</td>
-                <td>{{ $trainer->email }}</td>
                 <td>{{ $trainer->region->name }}</td>
                 <td>{{ $trainer->rank }}</td>
                 <td>{{ $trainer->speciality }}</td>

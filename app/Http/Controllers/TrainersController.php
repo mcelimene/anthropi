@@ -7,9 +7,11 @@ use PDF;
 use App\Level;
 use App\Region;
 use App\Trainer;
+use App\User;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\EditTrainerRequest;
+use App\Http\Requests\EditUserRequest;
 
 class TrainersController extends Controller
 {
@@ -51,25 +53,25 @@ class TrainersController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(EditTrainerRequest $request)
-    {   // Création automatique du pseudo et du mot de passe
-        $first_name = $request->input('first_name');
-        $last_name = $request->input('last_name');
-        $pseudo = $this->getPseudo($first_name, $last_name);
+    public function store(EditTrainerRequest $requestTrainer, EditUserRequest $requestUser)
+    {   // Création du mot de passe (et du pseudo en commentaires)
+        /*$first_name = $requestTrainer->input('first_name');
+        $last_name = $requestTrainer->input('last_name');
+        $pseudo = $this->getPseudo($first_name, $last_name);*/
         $password = $this->getPassword();
         $password_crypt = HASH::make($password);
-
-        $trainer = Trainer::create(array_merge($request->all(),
+        // Insertion du formateur dans la base de données
+        $trainer = Trainer::create($requestTrainer->except('email'));
+        // Insertion de l'utilisateur dans la base de donnée
+        $user = User::create(array_merge($requestUser->only('email'),
           [
             'password' => $password_crypt,
-            'pseudo' => $pseudo
+            'trainer_id' => $trainer->id
           ]));
-
         // Envoi mail d'inscription au nouveau formateur
         $data = array(
-          'email' => $trainer->email,
+          'email' => $user->email,
           'first_name' => $trainer->first_name,
-          'pseudo' => $pseudo,
           'password' => $password
           );
 
@@ -155,22 +157,22 @@ class TrainersController extends Controller
       return $password;
     }
 
-    private function skip_accents($str, $charset='utf-8') {
+    /*private function skip_accents($str, $charset='utf-8') {
       $str = htmlentities( $str, ENT_NOQUOTES, $charset );
       $str = preg_replace( '#&([A-za-z])(?:acute|cedil|caron|circ|grave|orn|ring|slash|th|tilde|uml);#', '\1', $str );
       $str = preg_replace( '#&([A-za-z]{2})(?:lig);#', '\1', $str );
       $str = preg_replace( '#&[^;]+;#', '', $str );
       return $str;
-    }
+    }*/
 
 
-    private function getPseudo($first_name, $last_name){
+    /*private function getPseudo($first_name, $last_name){
       $pseudo = substr($first_name, 0, 1) . $last_name;
       // Minuscules
       $pseudo = strtolower($pseudo);
       // sans accent
       $pseudo = $this->skip_accents($pseudo);
       return $pseudo;
-    }
+    }*/
 
 }
