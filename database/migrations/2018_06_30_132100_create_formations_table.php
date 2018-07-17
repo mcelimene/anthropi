@@ -22,10 +22,21 @@ class CreateFormationsTable extends Migration
             $table->smallInteger('number_of_assistant_trainers')->default(0);
             $table->smallInteger('number_of_instructors')->default(0);
             $table->smallInteger('number_of_course_directors')->default(0);
-            $table->text('date_start');
-            $table->text('date_end');
+            $table->date('date_start');
+            $table->time('time_start');
+            $table->date('date_end');
+            $table->time('time_end');
             $table->boolean('send_email')->default(false);
             $table->timestamps();
+        });
+
+        Schema::create('formation_trainer', function(Blueprint $table){
+          $table->increments('id');
+          $table->integer('formation_id')->unsigned()->index();
+          $table->integer('trainer_id')->unsigned()->index();
+          $table->string('answer')->default('en attente');
+          $table->foreign('formation_id')->references('id')->on('formations')->onDelete('cascade');
+          $table->foreign('trainer_id')->references('id')->on('trainers')->onDelete('cascade');
         });
     }
 

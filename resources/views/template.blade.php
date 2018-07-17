@@ -62,6 +62,13 @@
                 <p>Formateurs</p>
               </a>
             </li>
+          @else
+            <li class="nav-item {{ Request::is('registration-formations', 'registration-formations/*') ? 'active' : '' }}">
+              <a class="nav-link" href="{{ url('registration-formations') }}">
+                <i class="material-icons">assignment</i>
+                <p>Inscriptions</p>
+              </a>
+            </li>
           @endif
           <!-- your sidebar here -->
         </ul>

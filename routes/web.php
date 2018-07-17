@@ -13,14 +13,20 @@
 
 Route::get('/', 'HomeController@index');
 
-Route::resource('trainers', 'TrainersController');
-Route::resource('formations', 'FormationsController');
 
-Route::get('training-follow-up', 'TrainingFollowUpController@index');
-Route::get('pdfview',array('as'=>'pdfview','uses'=>'TrainersController@pdfview'));
+// Route pour les Admins
+Route::resource('trainers', 'admin\TrainersController');
+Route::resource('formations', 'admin\FormationsController');
 
+Route::get('training-follow-up', 'admin\TrainingFollowUpController@index');
+Route::get('pdfview',array('as'=>'pdfview','uses'=>'admin\TrainersController@pdfview'));
+
+Route::get('calendar', 'admin\CalendarController@index');
+
+// Route pour les Formateurs
+Route::get('registration-formations', 'trainer\RegistrationFormationsController@index');
+
+// Authentification
 Auth::routes();
 Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 Route::get('/home', 'HomeController@index')->name('home');
-
-Route::get('calendar', 'CalendarController@index');

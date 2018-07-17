@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\admin;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use App\Formation;
 use App\Trainer;
 use App\Http\Requests\EditFormationRequest;
@@ -130,7 +131,7 @@ class FormationsController extends Controller
         'date_end' => $formation->date_end
       );
       foreach ($trainers as $trainer) {
-        $data['email'] = $trainer->email;
+        $data['email'] = $trainer->user->email;
         $data['first_name'] = $trainer->first_name;
 
         Mail::send('emails.availabilityRequest', $data, function($message) use ($data) {

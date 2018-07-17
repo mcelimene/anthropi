@@ -17,4 +17,12 @@ class Trainer extends Model
       return $this->belongsTo('App\Region');
     }
 
+    public function user(){
+      return $this->hasOne('App\User');
+    }
+
+    public function formations(){
+      return $this->belongsTo('App\Formation');
+    }
+
 }

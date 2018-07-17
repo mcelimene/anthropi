@@ -52,8 +52,8 @@
       <div class="row">
         <div class="col">
           <div class="form-group">
-            {!! Form::label('date_start', 'Date de début*', ['class' => 'bmd-label-floating']) !!}
-            {!! Form::text('date_start', $formation->date_start, ['class' => 'form-control', 'id' => 'date_start']) !!}
+            {!! Form::label('date_start', 'Date de début*') !!}
+            {!! Form::date('date_start', $formation->date_start, ['class' => 'form-control', 'id' => 'date_start']) !!}
           </div>
           @if ($errors->has('date_start'))
             <div class="alert alert-danger" role="alert">
@@ -63,12 +63,37 @@
         </div>
         <div class="col">
           <div class="form-group">
-            {!! Form::label('date_end', 'Date de fin*', ['class' => 'bmd-label-floating']) !!}
-            {!! Form::text('date_end', $formation->date_end, ['class' => 'form-control', 'id' => 'date_end']) !!}
+            {!! Form::label('time_start', 'Heure de début*') !!}
+            {!! Form::time('time_start', $formation->time_start, ['class' => 'form-control', 'id' => 'time_start']) !!}
+          </div>
+          @if ($errors->has('time_start'))
+            <div class="alert alert-danger" role="alert">
+              <strong>{{ $errors->first('time_start') }}</strong>
+            </div>
+          @endif
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <div class="form-group">
+            {!! Form::label('date_end', 'Date de fin*') !!}
+            {!! Form::date('date_end', $formation->date_end, ['class' => 'form-control', 'id' => 'date_end']) !!}
           </div>
           @if ($errors->has('date_end'))
             <div class="alert alert-danger" role="alert">
               <strong>{{ $errors->first('date_end') }}</strong>
+            </div>
+          @endif
+        </div>
+        <div class="col">
+          <div class="form-group">
+            {!! Form::label('time_end', 'Heure de fin*') !!}
+            {!! Form::time('time_end', $formation->time_end, ['class' => 'form-control', 'id' => 'time_end']) !!}
+          </div>
+          @if ($errors->has('time_end'))
+            <div class="alert alert-danger" role="alert">
+              <strong>{{ $errors->first('time_end') }}</strong>
             </div>
           @endif
         </div>

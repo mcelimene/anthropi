@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\admin;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use PDF;
 use App\Level;
 use App\Region;
@@ -31,7 +32,7 @@ class TrainersController extends Controller
      */
     public function index()
     {
-        $trainers = Trainer::with('level', 'region')->get();
+        $trainers = Trainer::with('level', 'region')->orderBy('last_name', 'ASC')->get();
         return view('trainers.index', compact('trainers'));
     }
 
@@ -130,7 +131,9 @@ class TrainersController extends Controller
     public function destroy($id)
     {
         $trainer = Trainer::findOrFail($id);
+        $user = $trainer->user;
         $trainer->delete();
+        $user->delete();
         return redirect('trainers');
     }
 

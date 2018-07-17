@@ -27,6 +27,10 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    public function trainer(){
+      return $this->hasOne('App\Trainer');
+    }
+
     public function isAdmin() {
       if($this->role == 'admin'){
         return true;

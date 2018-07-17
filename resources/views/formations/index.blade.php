@@ -25,8 +25,8 @@
               <tr>
                 <td>{{ $formation->name }}</td>
                 <td>{{ $formation->place }}</td>
-                <td>{{ $formation->date_start }}</td>
-                <td>{{ $formation->date_end }}</td>
+                <td>{{ \Carbon\Carbon::parse($formation->date_start)->format('d/m/Y')}} à {{ \Carbon\Carbon::parse($formation->time_start)->format('H')}} heures</td>
+                <td>{{ \Carbon\Carbon::parse($formation->date_end)->format('d/m/Y')}} à {{ \Carbon\Carbon::parse($formation->time_end)->format('H')}} heures</td>
                 @if($formation->send_email == false)
                   <td>Non</td>
                 @else
