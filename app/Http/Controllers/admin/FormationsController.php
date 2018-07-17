@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\admin;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 use App\Http\Controllers\Controller;
 use App\Formation;
 use App\Trainer;
@@ -28,8 +29,10 @@ class FormationsController extends Controller
      */
     public function index()
     {
-      $formations = Formation::get();
-      return view('formations.index', compact('formations'));
+      Carbon::setLocale('fr');
+      $formations = Formation::orderBy('date_start', 'ASC')->get();
+      $today = Carbon::today();
+      return view('formations.index', compact('formations', 'today'));
     }
 
     /**
@@ -107,6 +110,24 @@ class FormationsController extends Controller
     {
       $formation = Formation::findOrFail($id);
       $formation->update($request->all());
+      if($formation->send_email){
+        if($formation->number_of_assistant_trainers > 0 ){
+          $trainers = Trainer::where('level_id', '1')->get();
+          $this->sendEmails($trainers, $formation);
+        }
+        if($formation->number_of_trainers > 0 ){
+          $trainers = Trainer::where('level_id', '2')->get();
+          $this->sendEmails($trainers, $formation);
+        }
+        if($formation->number_of_instructors > 0 ){
+          $trainers = Trainer::where('level_id', '3')->get();
+          $this->sendEmails($trainers, $formation);
+        }
+        if($formation->number_of_course_directors > 0 ){
+          $trainers = Trainer::where('level_id', '4')->get();
+          $this->sendEmails($trainers, $formation);
+        }
+      }
       return redirect(route('formations.index'));
     }
 
@@ -128,7 +149,9 @@ class FormationsController extends Controller
         'name' => $formation->name,
         'place' => $formation->place,
         'date_start' => $formation->date_start,
-        'date_end' => $formation->date_end
+        'time_start' => $formation->time_start,
+        'date_end' => $formation->date_end,
+        'time_end' => $formation->time_end
       );
       foreach ($trainers as $trainer) {
         $data['email'] = $trainer->user->email;

@@ -27,6 +27,7 @@ class CreateFormationsTable extends Migration
             $table->date('date_end');
             $table->time('time_end');
             $table->boolean('send_email')->default(false);
+            $table->boolean('validation_registrations')->default(false);
             $table->timestamps();
         });
 
@@ -34,7 +35,8 @@ class CreateFormationsTable extends Migration
           $table->increments('id');
           $table->integer('formation_id')->unsigned()->index();
           $table->integer('trainer_id')->unsigned()->index();
-          $table->string('answer')->default('en attente');
+          $table->string('answer_trainer')->default('en attente');
+          $table->boolean('answer_admin')->default(false);
           $table->foreign('formation_id')->references('id')->on('formations')->onDelete('cascade');
           $table->foreign('trainer_id')->references('id')->on('trainers')->onDelete('cascade');
         });
