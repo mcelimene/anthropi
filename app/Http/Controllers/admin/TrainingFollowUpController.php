@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\admin;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 use App\Http\Controllers\Controller;
 use App\Formation;
 
@@ -19,6 +20,7 @@ class TrainingFollowUpController extends Controller
     }
     public function index(){
       $formations = Formation::where('validation_registrations', false)->where('send_email', true)->get();
-      return view('trainingFollowUp.index', compact('formations'));
+      $today = Carbon::today();
+      return view('trainingFollowUp.index', compact('formations', 'today'));
     }
 }
