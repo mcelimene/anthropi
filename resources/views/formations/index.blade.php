@@ -14,7 +14,7 @@
         </div>
         <div class="card-body">
           <div class="table-responsive">
-            <table class="table">
+            <table class="table table-striped table-bordered">
               <thead class=" text-primary">
                 <th>Date de début</th>
                 <th>Nom</th>
@@ -52,7 +52,7 @@
         </div>
         <div class="card-body">
           <div class="table-responsive">
-            <table class="table">
+            <table class="table table-striped table-bordered">
               <thead class=" text-primary">
                 <th>Date de début</th>
                 <th>Nom</th>
@@ -91,7 +91,7 @@
       </div>
       <div class="card-body">
         <div class="table-responsive">
-          <table class="table">
+          <table class="table table-striped table-bordered">
             <thead class=" text-primary">
               <th>Date de début</th>
               <th>Nom</th>
@@ -137,7 +137,7 @@
     </div>
     <div class="card-body">
       <div class="table-responsive">
-        <table class="table">
+        <table class="table table-striped table-bordered">
           <thead class=" text-primary">
             <th>Nom</th>
             <th>Lieu</th>

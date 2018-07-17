@@ -18,7 +18,7 @@ class TrainingFollowUpController extends Controller
         $this->middleware('admin');
     }
     public function index(){
-      $formations = Formation::where('send_email', true)->get();
-      return view('trainingFollowUp.index');
+      $formations = Formation::where('validation_registrations', false)->where('send_email', true)->get();
+      return view('trainingFollowUp.index', compact('formations'));
     }
 }
