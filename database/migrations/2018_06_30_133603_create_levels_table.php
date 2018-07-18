@@ -21,6 +21,13 @@ class CreateLevelsTable extends Migration
         Schema::table('trainers', function (Blueprint $table){
             $table->integer('level_id')->unsigned()->index();
         });
+
+        Schema::create('formation_level', function(Blueprint $table){
+          $table->increments('id');
+          $table->integer('formation_id')->unsigned()->index();
+          $table->integer('level_id')->unsigned()->index();
+          $table->smallInteger('number_of_vacancies');
+        });
     }
 
     /**

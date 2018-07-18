@@ -18,10 +18,6 @@ class CreateFormationsTable extends Migration
             $table->string('name');
             $table->string('place');
             $table->text('educational_objective');
-            $table->smallInteger('number_of_trainers')->default(0);
-            $table->smallInteger('number_of_assistant_trainers')->default(0);
-            $table->smallInteger('number_of_instructors')->default(0);
-            $table->smallInteger('number_of_course_directors')->default(0);
             $table->date('date_start');
             $table->time('time_start');
             $table->date('date_end');
@@ -37,8 +33,6 @@ class CreateFormationsTable extends Migration
           $table->integer('trainer_id')->unsigned()->index();
           $table->string('answer_trainer')->default('en attente');
           $table->boolean('answer_admin')->default(false);
-          $table->foreign('formation_id')->references('id')->on('formations')->onDelete('cascade');
-          $table->foreign('trainer_id')->references('id')->on('trainers')->onDelete('cascade');
         });
     }
 

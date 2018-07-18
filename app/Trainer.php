@@ -22,7 +22,7 @@ class Trainer extends Model
     }
 
     public function formations(){
-      return $this->belongsTo('App\Formation');
+      return $this->belongsToMany('App\Formation');
     }
 
 }

@@ -228,12 +228,8 @@ class FormationTableSeeder extends Seeder
             'time_start' => '09:00:00',
             'date_end' => '2018-07-20',
             'time_end' => '18:00:00',
-            'number_of_trainers' => 0,
-            'number_of_assistant_trainers' => 2,
-            'number_of_instructors' => 0,
-            'number_of_course_directors' => 1,
             'educational_objective' => "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin lacus odio, blandit in consectetur eu, varius a ipsum. Etiam efficitur, magna eget fermentum accumsan, orci nisl aliquet purus, non hendrerit ipsum sapien in ex. Donec interdum, velit cursus blandit volutpat, mauris erat blandit felis, in euismod diam tellus lobortis felis. Vestibulum nunc neque, sagittis eget est quis, laoreet eleifend dolor. Quisque aliquet sed nulla vitae ullamcorper. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec vestibulum lectus vitae urna porta, nec pretium tortor cursus. Donec ut laoreet est. Nullam venenatis enim non diam tristique vehicula. Nunc massa lacus, finibus quis odio eu, euismod consectetur nunc. Etiam eu urna ante. Duis eu vestibulum eros, at condimentum nisi. Etiam consectetur tincidunt tortor, id porttitor nunc mattis ac. Pellentesque urna nulla, dictum a tristique sit amet, egestas sed odio. Suspendisse tempor neque quis magna mollis, vitae molestie sapien dignissim. Aliquam imperdiet feugiat risus, ut vulputate justo elementum et. ",
-            'send_email' => false
+            'send_email' => true
           ]
         );
         Formation::create(
@@ -244,12 +240,20 @@ class FormationTableSeeder extends Seeder
             'time_start' => '09:00:00',
             'date_end' => '2018-06-20',
             'time_end' => '18:00:00',
-            'number_of_trainers' => 2,
-            'number_of_assistant_trainers' => 1,
-            'number_of_instructors' => 1,
-            'number_of_course_directors' => 1,
             'educational_objective' => "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin lacus odio, blandit in consectetur eu, varius a ipsum. Etiam efficitur, magna eget fermentum accumsan, orci nisl aliquet purus, non hendrerit ipsum sapien in ex. Donec interdum, velit cursus blandit volutpat, mauris erat blandit felis, in euismod diam tellus lobortis felis. Vestibulum nunc neque, sagittis eget est quis, laoreet eleifend dolor. Quisque aliquet sed nulla vitae ullamcorper. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec vestibulum lectus vitae urna porta, nec pretium tortor cursus. Donec ut laoreet est. Nullam venenatis enim non diam tristique vehicula. Nunc massa lacus, finibus quis odio eu, euismod consectetur nunc. Etiam eu urna ante. Duis eu vestibulum eros, at condimentum nisi. Etiam consectetur tincidunt tortor, id porttitor nunc mattis ac. Pellentesque urna nulla, dictum a tristique sit amet, egestas sed odio. Suspendisse tempor neque quis magna mollis, vitae molestie sapien dignissim. Aliquam imperdiet feugiat risus, ut vulputate justo elementum et. ",
-            'send_email' => false
+            'send_email' => true
+          ]
+        );
+        Formation::create(
+          [
+            'name' => 'Formation n°3',
+            'place' => 'Rue Monge 21000 DIJON',
+            'date_start' => '2018-06-19',
+            'time_start' => '09:00:00',
+            'date_end' => '2018-06-20',
+            'time_end' => '18:00:00',
+            'educational_objective' => "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin lacus odio, blandit in consectetur eu, varius a ipsum. Etiam efficitur, magna eget fermentum accumsan, orci nisl aliquet purus, non hendrerit ipsum sapien in ex. Donec interdum, velit cursus blandit volutpat, mauris erat blandit felis, in euismod diam tellus lobortis felis. Vestibulum nunc neque, sagittis eget est quis, laoreet eleifend dolor. Quisque aliquet sed nulla vitae ullamcorper. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec vestibulum lectus vitae urna porta, nec pretium tortor cursus. Donec ut laoreet est. Nullam venenatis enim non diam tristique vehicula. Nunc massa lacus, finibus quis odio eu, euismod consectetur nunc. Etiam eu urna ante. Duis eu vestibulum eros, at condimentum nisi. Etiam consectetur tincidunt tortor, id porttitor nunc mattis ac. Pellentesque urna nulla, dictum a tristique sit amet, egestas sed odio. Suspendisse tempor neque quis magna mollis, vitae molestie sapien dignissim. Aliquam imperdiet feugiat risus, ut vulputate justo elementum et. ",
+            'send_email' => true
           ]
         );
     }

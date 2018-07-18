@@ -9,6 +9,10 @@ class Formation extends Model
     protected $guarded = [];
 
     public function trainers(){
-      return $this->belongsTo('App\Trainer');
+      return $this->belongsToMany('App\Trainer');
+    }
+
+    public function levels(){
+      return $this->belongsToMany('App\Level');
     }
 }

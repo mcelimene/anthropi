@@ -7,6 +7,7 @@ use Illuminate\Support\Carbon;
 use App\Http\Controllers\Controller;
 use App\Formation;
 use App\Trainer;
+use App\Level;
 use App\Http\Requests\EditFormationRequest;
 use Illuminate\Support\Facades\Mail;
 
@@ -42,7 +43,8 @@ class FormationsController extends Controller
      */
     public function create()
     {
-      return view('formations.create');
+      $levels = Level::get();
+      return view('formations.create', compact('levels'));
     }
 
     /**
@@ -54,7 +56,7 @@ class FormationsController extends Controller
     public function store(EditFormationRequest $request)
     {
       $formation = Formation::create($request->all());
-      if($formation->send_email){
+      /*if($formation->send_email){
         if($formation->number_of_assistant_trainers > 0 ){
           $trainers = Trainer::where('level_id', '1')->get();
           $this->sendEmails($trainers, $formation);
@@ -71,7 +73,7 @@ class FormationsController extends Controller
           $trainers = Trainer::where('level_id', '4')->get();
           $this->sendEmails($trainers, $formation);
         }
-      }
+      }*/
       return redirect(route('formations.index'));
     }
 
@@ -110,7 +112,7 @@ class FormationsController extends Controller
     {
       $formation = Formation::findOrFail($id);
       $formation->update($request->all());
-      if($formation->send_email){
+      /*if($formation->send_email){
         if($formation->number_of_assistant_trainers > 0 ){
           $trainers = Trainer::where('level_id', '1')->get();
           $this->sendEmails($trainers, $formation);
@@ -127,7 +129,7 @@ class FormationsController extends Controller
           $trainers = Trainer::where('level_id', '4')->get();
           $this->sendEmails($trainers, $formation);
         }
-      }
+      }*/
       return redirect(route('formations.index'));
     }
 
