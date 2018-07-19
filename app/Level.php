@@ -13,6 +13,6 @@ class Level extends Model
     }
 
     public function formations(){
-      return $this->belongsTo('App\Formation');
+      return $this->belongsTo('App\Formation')->withPivot('number_of_vacancies');
     }
 }

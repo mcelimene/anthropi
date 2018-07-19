@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use App\Http\Controllers\Controller;
 use App\Formation;
+use App\Level;
 
 class TrainingFollowUpController extends Controller
 {
@@ -22,5 +23,9 @@ class TrainingFollowUpController extends Controller
       $formations = Formation::where('validation_registrations', false)->where('send_email', true)->get();
       $today = Carbon::today();
       return view('trainingFollowUp.index', compact('formations', 'today'));
+    }
+
+    public function update(){
+
     }
 }

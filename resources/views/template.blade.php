@@ -39,13 +39,13 @@
           </li>
           @if(auth()->user()->isAdmin())
             <li class="nav-item {{ Request::is('calendar') ? 'active' : '' }}">
-              <a class="nav-link" href="{{ url('calendar')}}">
+              <a class="nav-link" href="{{ route('calendar.index')}}">
                 <i class="material-icons">calendar_today</i>
                 <p>Calendrier</p>
               </a>
             </li>
             <li class="nav-item {{ Request::is('training-follow-up', 'training-follow-up/*') ? 'active' : '' }}">
-              <a class="nav-link" href="{{ url('training-follow-up') }}">
+              <a class="nav-link" href="{{ route('training-follow-up.index') }}">
                 <i class="material-icons">bookmarks</i>
                 <p>Suivi des candidatures</p>
               </a>
@@ -64,7 +64,7 @@
             </li>
           @else
             <li class="nav-item {{ Request::is('registration-formations', 'registration-formations/*') ? 'active' : '' }}">
-              <a class="nav-link" href="{{ url('registration-formations') }}">
+              <a class="nav-link" href="{{ route('registration-formations.index') }}">
                 <i class="material-icons">assignment</i>
                 <p>Inscriptions</p>
               </a>
@@ -139,6 +139,7 @@
   </div>
   <!--   Core JS Files   -->
   <script src="{{ URL::asset("js/core/jquery.min.js")}}" type="text/javascript"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="{{ URL::asset("js/core/popper.min.js")}}" type="text/javascript"></script>
   <script src="{{ URL::asset("js/core/bootstrap-material-design.min.js")}}" type="text/javascript"></script>
   <!--<script src="assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>-->
@@ -149,6 +150,7 @@
   <!--<script src="assets/js/plugins/bootstrap-notify.js"></script>-->
   <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
   <script src="{{ URL::asset("js/material-dashboard.min.js")}}" type="text/javascript"></script>
+  @yield('script')
 </body>
 
 </html>

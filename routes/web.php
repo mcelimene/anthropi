@@ -18,13 +18,14 @@ Route::get('/', 'HomeController@index');
 Route::resource('trainers', 'admin\TrainersController');
 Route::resource('formations', 'admin\FormationsController');
 
-Route::get('training-follow-up', 'admin\TrainingFollowUpController@index');
+Route::get('training-follow-up', 'admin\TrainingFollowUpController@index')->name('training-follow-up.index');
+Route::put('training-follow-up', 'admin\TrainingFollowUpController@update')->name('training-follow-up.update');
 Route::get('pdfview',array('as'=>'pdfview','uses'=>'admin\TrainersController@pdfview'));
 
-Route::get('calendar', 'admin\CalendarController@index');
+Route::get('calendar', 'admin\CalendarController@index')->name('calendar.index');
 
 // Route pour les Formateurs
-Route::get('registration-formations', 'trainer\RegistrationFormationsController@index');
+Route::get('registration-formations', 'trainer\RegistrationFormationsController@index')->name('registration-formations.index');
 
 // Authentification
 Auth::routes();
