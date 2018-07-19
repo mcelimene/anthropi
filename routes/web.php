@@ -33,4 +33,4 @@ Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 Route::get('/home', 'HomeController@index')->name('home');
 
 // Appels à des fonctions Ajax
-Route::post('/ajax', 'AjaxController@ajax_call');
+Route::put('/ajax', 'AjaxController@ajax_call');

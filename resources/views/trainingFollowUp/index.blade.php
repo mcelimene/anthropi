@@ -26,19 +26,28 @@
               <!-- On affiche les niveaux demandés pour la formation en question -->
               @foreach ($formation->levels as $level)
                 <h5 class="text-gray mt-4">
-                  {{ $level->name }} 0/{{ $level->pivot->number_of_vacancies }}
+                  {{ $level->name }} <span class='compteur'></span>/{{ $level->pivot->number_of_vacancies }}
                 </h5>
+
                 <!-- On affiche tous les formateurs inscrits pour chaque niveau et chaque formation -->
                 @foreach ($formation->trainers as $trainer)
+
                   {!! Form::open() !!}
                   @if(($trainer->level_id == $level->id) && ($trainer->pivot->answer_trainer == 'oui'))
                     <div class="d-flex justify-content-between">
                       <span>{{ $trainer->first_name }} {{ strtoupper($trainer->last_name) }}</span>
-                      <input name="answer_admin" value="1" type="checkbox" id="trainer{{ $trainer->id }}-formation{{ $formation->id }}">
+                      <!-- Si answer_admin est true on coche la case sinon on la décoche -->
+                      @if($trainer->pivot->answer_admin == true)
+                        <input name="answer_admin" value="1" checked type="checkbox" id="trainer{{ $trainer->id }}-formation{{ $formation->id }}">
+                      @else
+                        <input name="answer_admin" value="1" type="checkbox" id="trainer{{ $trainer->id }}-formation{{ $formation->id }}">
+                      @endif
                     </div>
                   @endif
                   {!! Form::close() !!}
+
                 @endforeach
+
               @endforeach
             </div>
             <button type="button" class="btn btn-success">Valider</button>
@@ -54,9 +63,25 @@
     $('input').click(function(){
       let infos;
       infos = $(this).attr('id');
-      /*$post(
-        ''
-      )*/
+      $.ajaxSetup({
+        headers: {
+          'X-CSRF-TOKEN': '<?php echo csrf_token(); ?>'
+        }
+      });
+      $.ajax({
+        url: '/ajax',
+        type: 'PUT',
+        data: { infos: infos },
+        dataType: 'JSON',
+        success: function (data) {
+          $('.compteur').html(data);
+          console.log(data);
+        },
+        error: function (e) {
+          console.log('=========== ERREUR ==============');
+          console.log(e.responseText);
+        }
+      });
     });
   </script>
 @endsection

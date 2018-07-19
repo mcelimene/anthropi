@@ -9,7 +9,7 @@ class Formation extends Model
     protected $guarded = [];
 
     public function trainers(){
-      return $this->belongsToMany('App\Trainer')->withPivot('answer_trainer');
+      return $this->belongsToMany('App\Trainer')->withPivot('answer_trainer', 'answer_admin');
     }
 
     public function levels(){

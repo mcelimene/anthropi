@@ -22,7 +22,7 @@ class Trainer extends Model
     }
 
     public function formations(){
-      return $this->belongsToMany('App\Formation');
+      return $this->belongsToMany('App\Formation')->withPivot('answer_trainer', 'answer_admin');
     }
 
 }
