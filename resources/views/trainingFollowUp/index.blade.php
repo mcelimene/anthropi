@@ -30,7 +30,7 @@
                 </h5>
                 <!-- On affiche tous les formateurs inscrits pour chaque niveau et chaque formation -->
                 @foreach ($formation->trainers as $trainer)
-                  {!! Form::open(['method' => 'PUT', 'url' => route('training-follow-up.update')]) !!}
+                  {!! Form::open() !!}
                   @if(($trainer->level_id == $level->id) && ($trainer->pivot->answer_trainer == 'oui'))
                     <div class="d-flex justify-content-between">
                       <span>{{ $trainer->first_name }} {{ strtoupper($trainer->last_name) }}</span>

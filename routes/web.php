@@ -19,7 +19,7 @@ Route::resource('trainers', 'admin\TrainersController');
 Route::resource('formations', 'admin\FormationsController');
 
 Route::get('training-follow-up', 'admin\TrainingFollowUpController@index')->name('training-follow-up.index');
-Route::put('training-follow-up', 'admin\TrainingFollowUpController@update')->name('training-follow-up.update');
+
 Route::get('pdfview',array('as'=>'pdfview','uses'=>'admin\TrainersController@pdfview'));
 
 Route::get('calendar', 'admin\CalendarController@index')->name('calendar.index');
@@ -31,3 +31,6 @@ Route::get('registration-formations', 'trainer\RegistrationFormationsController@
 Auth::routes();
 Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 Route::get('/home', 'HomeController@index')->name('home');
+
+// Appels à des fonctions Ajax
+Route::post('/ajax', 'AjaxController@ajax_call');
