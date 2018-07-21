@@ -33,7 +33,7 @@ class FormationsController extends Controller
       Carbon::setLocale('fr');
       $formations = Formation::orderBy('date_start', 'ASC')->get();
       $today = Carbon::today();
-      return view('formations.index', compact('formations', 'today'));
+      return view('admin.formations.index', compact('formations', 'today'));
     }
 
     /**
@@ -44,7 +44,7 @@ class FormationsController extends Controller
     public function create()
     {
       $levels = Level::get();
-      return view('formations.create', compact('levels'));
+      return view('admin.formations.create', compact('levels'));
     }
 
     /**
@@ -55,6 +55,7 @@ class FormationsController extends Controller
      */
     public function store(EditFormationRequest $request)
     {
+      dd($request->all());
       $formation = Formation::create($request->all());
       /*if($formation->send_email){
         if($formation->number_of_assistant_trainers > 0 ){
@@ -74,7 +75,7 @@ class FormationsController extends Controller
           $this->sendEmails($trainers, $formation);
         }
       }*/
-      return redirect(route('formations.index'));
+      return redirect(route('admin.formations.index'));
     }
 
     /**
@@ -86,7 +87,7 @@ class FormationsController extends Controller
     public function show($id)
     {
       $formation = Formation::findOrFail($id);
-      return view('formations.show', compact('formation'));
+      return view('admin.formations.show', compact('formation'));
     }
 
     /**
@@ -98,7 +99,7 @@ class FormationsController extends Controller
     public function edit($id)
     {
       $formation = Formation::findOrFail($id);
-      return view('formations.edit', compact('formation'));
+      return view('admin.formations.edit', compact('formation'));
     }
 
     /**
@@ -130,7 +131,7 @@ class FormationsController extends Controller
           $this->sendEmails($trainers, $formation);
         }
       }*/
-      return redirect(route('formations.index'));
+      return redirect(route('admin.formations.index'));
     }
 
     /**
@@ -143,7 +144,7 @@ class FormationsController extends Controller
     {
       $formation = Formation::findOrFail($id);
       $formation->delete();
-      return redirect('formations');
+      return redirect('admin.formations');
     }
 
     private function sendEmails($trainers, $formation){

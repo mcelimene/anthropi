@@ -33,7 +33,7 @@ class TrainersController extends Controller
     public function index()
     {
         $trainers = Trainer::with('level', 'region')->orderBy('last_name', 'ASC')->get();
-        return view('trainers.index', compact('trainers'));
+        return view('admin.trainers.index', compact('trainers'));
     }
 
     /**
@@ -45,7 +45,7 @@ class TrainersController extends Controller
     {
         $regions = Region::pluck('name', 'id');
         $levels = Level::pluck('name', 'id');
-        return view('trainers.create', compact('regions', 'levels'));
+        return view('admin.trainers.create', compact('regions', 'levels'));
     }
 
     /**
@@ -105,7 +105,7 @@ class TrainersController extends Controller
         $trainer = Trainer::findOrFail($id);
         $regions = Region::pluck('name', 'id');
         $levels = Level::pluck('name', 'id');
-        return view('trainers.edit', compact('trainer', 'regions', 'levels'));
+        return view('admin.trainers.edit', compact('trainer', 'regions', 'levels'));
     }
 
     /**

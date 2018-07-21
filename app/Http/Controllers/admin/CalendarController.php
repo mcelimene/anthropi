@@ -8,6 +8,6 @@ use App\Http\Controllers\Controller;
 class CalendarController extends Controller
 {
     public function index(){
-      return view('calendar.index');
+      return view('admin.calendar.index');
     }
 }

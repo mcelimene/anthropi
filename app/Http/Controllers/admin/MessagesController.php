@@ -16,7 +16,7 @@ class MessagesController extends Controller
 
     public function create(){
       $levels = Level::pluck('name', 'id');
-      return view('messages.create', compact('levels'));
+      return view('admin.messages.create', compact('levels'));
     }
 
     public function send(MessageRequest $request){
