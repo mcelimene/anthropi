@@ -32,15 +32,8 @@ class AjaxController extends Controller
           }
           // On sauvegarde la réponse dans la base de données
           $trainer_formation->pivot->save();
+          return response()->json(['formation' => $formation_id, 'trainer' => $trainer_id]);
         }
-      }
-
-      foreach($formation->trainers as $formation_trainer){
-        $table = [];
-        if($formation_trainer->pivot->answer_admin == true){
-          array_push($table, $formation_trainer->name);
-        }
-        return response()->json($table);
       }
     }
 }

@@ -26,7 +26,7 @@
               <!-- On affiche les niveaux demandés pour la formation en question -->
               @foreach ($formation->levels as $level)
                 <h5 class="text-gray mt-4">
-                  {{ $level->name }} <span class='compteur'></span>/{{ $level->pivot->number_of_vacancies }}
+                  {{ $level->name }} <span class='compteur'>0</span>/{{ $level->pivot->number_of_vacancies }}
                 </h5>
 
                 <!-- On affiche tous les formateurs inscrits pour chaque niveau et chaque formation -->
@@ -47,10 +47,10 @@
                   {!! Form::close() !!}
 
                 @endforeach
-
+                <hr>
               @endforeach
             </div>
-            <button type="button" class="btn btn-success">Valider</button>
+            <button type="button" class="btn btn-success btn-max">Valider</button>
           </div>
         </div>
       </div>
@@ -74,6 +74,8 @@
         data: { infos: infos },
         dataType: 'JSON',
         success: function (data) {
+          let formationId = data['formation'];
+          let trainerId = data['trainer'];
           $('.compteur').html(data);
           console.log(data);
         },

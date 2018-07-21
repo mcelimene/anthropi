@@ -24,6 +24,9 @@ Route::get('pdfview',array('as'=>'pdfview','uses'=>'admin\TrainersController@pdf
 
 Route::get('calendar', 'admin\CalendarController@index')->name('calendar.index');
 
+Route::get('messages/create', 'admin\MessagesController@create')->name('messages.create');;
+Route::post('messages/create', 'admin\MessagesController@send')->name('messages.send');;
+
 // Route pour les Formateurs
 Route::get('registration-formations', 'trainer\RegistrationFormationsController@index')->name('registration-formations.index');
 
