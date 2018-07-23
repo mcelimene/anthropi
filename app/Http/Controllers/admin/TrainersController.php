@@ -60,13 +60,13 @@ class TrainersController extends Controller
         $last_name = $requestTrainer->input('last_name');
         $pseudo = $this->getPseudo($first_name, $last_name);*/
         $password = $this->getPassword();
-        $password_crypt = HASH::make($password);
+        $password = $this->getPasswordCrypt($password);
         // Insertion du formateur dans la base de données
         $trainer = Trainer::create($requestTrainer->except('email'));
         // Insertion de l'utilisateur dans la base de donnée
         $user = User::create(array_merge($requestUser->only('email'),
           [
-            'password' => $password_crypt,
+            'password' => $password,
             'trainer_id' => $trainer->id
           ]));
         // Envoi mail d'inscription au nouveau formateur
@@ -156,7 +156,7 @@ class TrainersController extends Controller
     }
 
     private function getPasswordCrypt($password){
-      $password = password_hash($password, PASSWORD_DEFAULT);
+      $password = HASH::make($password);
       return $password;
     }
 

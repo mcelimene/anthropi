@@ -31,6 +31,12 @@ Route::get('profils/{profil}/edit', 'admin\ProfilsController@edit')->name('profi
 Route::put('profils/{profil}/edit', 'admin\ProfilsController@update')->name('profils.update');
 Route::delete('profils/{profil}/edit', 'admin\ProfilsController@destroy')->name('profils.destroy');
 
+Route::get('users/create', 'admin\UsersController@create')->name('users.create');
+Route::post('users/create', 'admin\UsersController@store')->name('users.store');
+
+Route::get('levels/create', 'admin\LevelsController@create')->name('levels.create');
+Route::post('levels/create', 'admin\LevelsController@store')->name('levels.store');
+
 // Route pour les Formateurs
 Route::get('registration-formations', 'trainer\RegistrationFormationsController@index')->name('registration-formations.index');
 

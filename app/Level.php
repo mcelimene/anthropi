@@ -8,6 +8,8 @@ class Level extends Model
 {
     public $timestamps = false;
 
+    public $fillable = ['name'];
+
     public function trainers() {
       return $this->hasMany('App\Trainer');
     }

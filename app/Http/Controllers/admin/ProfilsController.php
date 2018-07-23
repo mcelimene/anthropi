@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\EditProfilRequest;
+use App\Http\Requests\UserRequest;
 
 class ProfilsController extends Controller
 {
@@ -28,14 +28,16 @@ class ProfilsController extends Controller
       return view('admin.profils.edit', compact('user'));
     }
 
-    public function update(EditProfilRequest $request, $id){
+    public function update(UserRequest $request, $id){
       $user = User::findOrFail($id);
-      // On hashe le mot de passe
-      $password_crypt = HASH::make($request->input('password'));
+      // Si le champ mot de passe est rempli on le hashe et on l'insère dans la base de données
+      if($request->input('password')){
+        $password_crypt = HASH::make($request->input('password'));
+        $user->password = $password_crypt;
+      }
 
       $user->name = $request->name;
       $user->email = $request->email;
-      $user->password = $password_crypt;
       $user->save();
       return redirect(url('/'));
     }

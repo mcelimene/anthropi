@@ -23,7 +23,7 @@
     </div>
     <div class="col-md-3 offset-md-3">
       <div class="card card-home d-flex align-items-center justify-content-center">
-        <a href="#">
+        <a href="{{ route('users.create') }}">
           <i class="material-icons fa-5x">group_add</i>
           <h4>Nouvel administrateur</h4>
         </a>
@@ -31,7 +31,7 @@
     </div>
     <div class="col-md-3">
       <div class="card card-home d-flex align-items-center justify-content-center">
-        <a href="#">
+        <a href="{{ route('levels.create') }}">
           <i class="material-icons fa-5x">description</i>
           <h4>Nouveau niveau</h4>
         </a>

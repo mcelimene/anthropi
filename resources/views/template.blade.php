@@ -90,11 +90,6 @@
           <div class="collapse navbar-collapse justify-content-end">
             <ul class="navbar-nav">
               <li class="nav-item">
-                <a class="nav-link" href="#pablo">
-                  <i class="material-icons">notifications</i> Notifications
-                </a>
-              </li>
-              <li class="nav-item">
                 <a class="nav-link" href="{{ route('logout')}}">
                   <i class="material-icons">power_settings_new</i> Déconnexion
                 </a>
