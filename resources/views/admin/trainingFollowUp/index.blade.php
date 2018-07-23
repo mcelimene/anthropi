@@ -63,6 +63,7 @@
     $('input').click(function(){
       let infos;
       infos = $(this).attr('id');
+      console.log(infos);
       $.ajaxSetup({
         headers: {
           'X-CSRF-TOKEN': '<?php echo csrf_token(); ?>'

@@ -14,8 +14,9 @@ class AjaxController extends Controller
       $data = $request->all();
       // On la coupe en deux pour récupérer l'ID du formateur et l'ID de la formation
       $infos = explode('-', $data['infos']);
-      $trainer_id = substr($infos[0], -1);
-      $formation_id = substr($infos[1], -1);
+      // On récupère les ID
+      $trainer_id = (int) filter_var($infos[0], FILTER_SANITIZE_NUMBER_INT);
+      $formation_id = (int) filter_var($infos[1], FILTER_SANITIZE_NUMBER_INT);
       // On récupère toutes les données du formateur
       $trainer = Trainer::findOrFail($trainer_id);
       // On récupère toutes les données de la formations
