@@ -14,6 +14,16 @@ use App\Trainer;
 class MessagesController extends Controller
 {
 
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('admin');
+    }
+
     public function create(){
       $levels = Level::pluck('name', 'id');
       return view('admin.messages.create', compact('levels'));

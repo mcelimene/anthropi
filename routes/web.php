@@ -14,7 +14,7 @@
 Route::get('/', 'HomeController@index');
 
 
-// Route pour les Admins
+// Route pour les Adminss
 Route::resource('trainers', 'admin\TrainersController');
 Route::resource('formations', 'admin\FormationsController');
 
@@ -24,8 +24,12 @@ Route::get('pdfview',array('as'=>'pdfview','uses'=>'admin\TrainersController@pdf
 
 Route::get('calendar', 'admin\CalendarController@index')->name('calendar.index');
 
-Route::get('messages/create', 'admin\MessagesController@create')->name('messages.create');;
-Route::post('messages/create', 'admin\MessagesController@send')->name('messages.send');;
+Route::get('messages/create', 'admin\MessagesController@create')->name('messages.create');
+Route::post('messages/create', 'admin\MessagesController@send')->name('messages.send');
+
+Route::get('profils/{profil}/edit', 'admin\ProfilsController@edit')->name('profils.edit');
+Route::put('profils/{profil}/edit', 'admin\ProfilsController@update')->name('profils.update');
+Route::delete('profils/{profil}/edit', 'admin\ProfilsController@destroy')->name('profils.destroy');
 
 // Route pour les Formateurs
 Route::get('registration-formations', 'trainer\RegistrationFormationsController@index')->name('registration-formations.index');

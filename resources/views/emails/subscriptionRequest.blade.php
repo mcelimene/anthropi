@@ -1,8 +1,8 @@
-<h1>Bonjour {{ $first_name }} !</h1>
+<h1>Bonjour {{ $email['nameTrainer'] }} !</h1>
 <p>Une nouvelle formation vient d'être créée par AntroPi.</p>
 
 <p>
-  Elle aura lieu du <strong>{{ \Carbon\Carbon::parse($date_start)->format('d/m/Y')}}</strong> à {{ \Carbon\Carbon::parse($time_start)->format('H')}}h au <strong>{{ \Carbon\Carbon::parse($date_end)->format('d/m/Y')}}</strong> à {{ \Carbon\Carbon::parse($time_end)->format('H')}}h.
+  Elle aura lieu du <strong>{{ \Carbon\Carbon::parse($email['dateStart'])->format('d/m/Y')}}</strong> à {{ \Carbon\Carbon::parse($email['timeStart'])->format('H')}}h au <strong>{{ \Carbon\Carbon::parse($email['dateEnd'])->format('d/m/Y')}}</strong> à {{ \Carbon\Carbon::parse($email['timeEnd'])->format('H')}}h.
 </p>
 
 <p>Etes-vous disponible ?</p>

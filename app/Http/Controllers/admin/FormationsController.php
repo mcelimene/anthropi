@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Formation;
 use App\Trainer;
 use App\Level;
+use App\Mail\RegistrationsFormation;
 use App\Http\Requests\EditFormationRequest;
 use Illuminate\Support\Facades\Mail;
 
@@ -55,27 +56,33 @@ class FormationsController extends Controller
      */
     public function store(EditFormationRequest $request)
     {
-      dd($request->all());
-      $formation = Formation::create($request->all());
-      /*if($formation->send_email){
-        if($formation->number_of_assistant_trainers > 0 ){
-          $trainers = Trainer::where('level_id', '1')->get();
-          $this->sendEmails($trainers, $formation);
+      $levels = Level::get();
+
+      // On enregistre la formation dans la base de données
+      $formation = Formation::create($request->only('name', 'place', 'date_start', 'date_end', 'time_start', 'time_end', 'educational_objective', 'send_email'));
+      if($formation->send_email == true){
+        foreach ($levels as $level) {
+          if($request->input($level->id)){
+            // On enregistre les niveaux correspondant à la formation ainsi que le nombre de formateurs pour chaque
+            $formation->levels()->attach($level->id, ['number_of_vacancies' => $request->input($level->id)]);
+            $trainers = Trainer::where('level_id', $level->id)->get();
+            // Données à envoyer aux formateurs
+            $data = [
+              'dateStart' => $formation->date_start,
+              'timeStart' => $formation->time_start,
+              'dateEnd' => $formation->date_end,
+              'timeEnd' => $formation->time_end
+            ];
+            // On envoie un mail pour chaque formateur appartenant aux niveau correspondant
+            foreach ($trainers as $trainer) {
+              $data['nameTrainer'] = $trainer->first_name;
+              Mail::to($trainer->user->email)
+                  ->send(new RegistrationsFormation($data));
+            }
+          }
         }
-        if($formation->number_of_trainers > 0 ){
-          $trainers = Trainer::where('level_id', '2')->get();
-          $this->sendEmails($trainers, $formation);
-        }
-        if($formation->number_of_instructors > 0 ){
-          $trainers = Trainer::where('level_id', '3')->get();
-          $this->sendEmails($trainers, $formation);
-        }
-        if($formation->number_of_course_directors > 0 ){
-          $trainers = Trainer::where('level_id', '4')->get();
-          $this->sendEmails($trainers, $formation);
-        }
-      }*/
-      return redirect(route('admin.formations.index'));
+      }
+      return redirect(route('formations.index'));
     }
 
     /**
@@ -144,7 +151,7 @@ class FormationsController extends Controller
     {
       $formation = Formation::findOrFail($id);
       $formation->delete();
-      return redirect('admin.formations');
+      return redirect('formations');
     }
 
     private function sendEmails($trainers, $formation){

@@ -15,7 +15,7 @@
     </div>
     <div class="col-md-3">
       <div class="card card-home d-flex align-items-center justify-content-center">
-        <a href="#">
+        <a href="{{ route('profils.edit', $admin->id) }}">
           <i class="material-icons fa-5x">person</i>
           <h4>Profil</h4>
         </a>

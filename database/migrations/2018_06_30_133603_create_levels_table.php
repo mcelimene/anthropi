@@ -27,6 +27,7 @@ class CreateLevelsTable extends Migration
           $table->integer('formation_id')->unsigned()->index();
           $table->integer('level_id')->unsigned()->index();
           $table->smallInteger('number_of_vacancies');
+          $table->foreign('formation_id')->references('id')->on('formations')->onDelete('cascade');
         });
     }
 

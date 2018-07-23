@@ -101,12 +101,12 @@
         @foreach ($levels as $level)
           <div class="col">
             <div class="form-group">
-              {!! Form::label('number_of_vacancies', $level->name . 's', ['class' => 'bmd-label-floating']) !!}
-              {!! Form::number('number_of_vacancies', 0, ['class' => 'form-control', 'id' => 'number_of_vacancies']) !!}
+              {!! Form::label($level->id, $level->name . 's', ['class' => 'bmd-label-floating']) !!}
+              {!! Form::number($level->id, 0, ['class' => 'form-control']) !!}
             </div>
-            @if ($errors->has('number_of_vacancies'))
+            @if ($errors->has($level->id))
               <div class="alert alert-danger" role="alert">
-                <strong>{{ $errors->first('number_of_vacancies') }}</strong>
+                <strong>{{ $errors->first($level->id) }}</strong>
               </div>
             @endif
           </div>

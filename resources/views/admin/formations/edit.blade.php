@@ -100,50 +100,19 @@
       </div>
 
       <div class="row">
-        <div class="col">
-          <div class="form-group">
-            {!! Form::label('number_of_trainers', 'Nombre de formateurs', ['class' => 'bmd-label-floating']) !!}
-            {!! Form::number('number_of_trainers', $formation->number_of_trainers, ['class' => 'form-control', 'id' => 'number_of_trainers']) !!}
-          </div>
-          @if ($errors->has('number_of_trainers'))
-            <div class="alert alert-danger" role="alert">
-              <strong>{{ $errors->first('number_of_trainers') }}</strong>
+        @foreach ($levels as $level)
+          <div class="col">
+            <div class="form-group">
+              {!! Form::label($level->id, $level->name . 's', ['class' => 'bmd-label-floating']) !!}
+              {!! Form::number($level->id, 0, ['class' => 'form-control']) !!}
             </div>
-          @endif
-        </div>
-        <div class="col">
-          <div class="form-group">
-            {!! Form::label('number_of_assistant_trainers', "Nombre d'assistant-formateurs", ['class' => 'bmd-label-floating']) !!}
-            {!! Form::number('number_of_assistant_trainers', $formation->number_of_assistant_trainers, ['class' => 'form-control', 'id' => 'number_of_assistant_trainers']) !!}
+            @if ($errors->has($level->id))
+              <div class="alert alert-danger" role="alert">
+                <strong>{{ $errors->first($level->id) }}</strong>
+              </div>
+            @endif
           </div>
-          @if ($errors->has('number_of_assistant_trainers'))
-            <div class="alert alert-danger" role="alert">
-              <strong>{{ $errors->first('number_of_assistant_trainers') }}</strong>
-            </div>
-          @endif
-        </div>
-        <div class="col">
-          <div class="form-group">
-            {!! Form::label('number_of_instructors', "Nombre d'instructeurs", ['class' => 'bmd-label-floating']) !!}
-            {!! Form::number('number_of_instructors', $formation->number_of_instructors, ['class' => 'form-control', 'id' => 'number_of_instructors']) !!}
-          </div>
-          @if ($errors->has('number_of_instructors'))
-            <div class="alert alert-danger" role="alert">
-              <strong>{{ $errors->first('number_of_instructors') }}</strong>
-            </div>
-          @endif
-        </div>
-        <div class="col">
-          <div class="form-group">
-            {!! Form::label('number_of_course_directors', 'Nombre de directeurs de cours', ['class' => 'bmd-label-floating']) !!}
-            {!! Form::number('number_of_course_directors', $formation->number_of_course_directors, ['class' => 'form-control', 'id' => 'number_of_course_directors']) !!}
-          </div>
-          @if ($errors->has('number_of_course_directors'))
-            <div class="alert alert-danger" role="alert">
-              <strong>{{ $errors->first('number_of_course_directors') }}</strong>
-            </div>
-          @endif
-        </div>
+        @endforeach
       </div>
 
       <div class="form-group">
