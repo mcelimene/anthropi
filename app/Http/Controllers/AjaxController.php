@@ -9,7 +9,7 @@ use App\Formation;
 
 class AjaxController extends Controller
 {
-    public function ajax_call(Request $request){
+    public function ajaxTrainingFollowUp(Request $request){
       // On récupère les données envoyées en ajax
       $data = $request->all();
       // On la coupe en deux pour récupérer l'ID du formateur et l'ID de la formation

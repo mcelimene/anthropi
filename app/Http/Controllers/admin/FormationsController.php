@@ -73,9 +73,12 @@ class FormationsController extends Controller
               'dateEnd' => $formation->date_end,
               'timeEnd' => $formation->time_end
             ];
-            // On envoie un mail pour chaque formateur appartenant aux niveau correspondant
             foreach ($trainers as $trainer) {
+              // On enregistre les formateurs qui peuvent s'inscrire à la formation dans la base de données
+              $formation->trainers()->attach($trainer->id);
+
               $data['nameTrainer'] = $trainer->first_name;
+              // On envoie un mail pour chaque formateur appartenant aux niveau correspondant
               Mail::to($trainer->user->email)
                   ->send(new RegistrationsFormation($data));
             }
@@ -120,24 +123,6 @@ class FormationsController extends Controller
     {
       $formation = Formation::findOrFail($id);
       $formation->update($request->all());
-      /*if($formation->send_email){
-        if($formation->number_of_assistant_trainers > 0 ){
-          $trainers = Trainer::where('level_id', '1')->get();
-          $this->sendEmails($trainers, $formation);
-        }
-        if($formation->number_of_trainers > 0 ){
-          $trainers = Trainer::where('level_id', '2')->get();
-          $this->sendEmails($trainers, $formation);
-        }
-        if($formation->number_of_instructors > 0 ){
-          $trainers = Trainer::where('level_id', '3')->get();
-          $this->sendEmails($trainers, $formation);
-        }
-        if($formation->number_of_course_directors > 0 ){
-          $trainers = Trainer::where('level_id', '4')->get();
-          $this->sendEmails($trainers, $formation);
-        }
-      }*/
       return redirect(route('admin.formations.index'));
     }
 

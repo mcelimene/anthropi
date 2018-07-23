@@ -55,3 +55,8 @@
 .card-home h4 {
   font-weight: bold;
 }
+
+.pagination {
+  display: flex;
+  justify-content: center;
+}

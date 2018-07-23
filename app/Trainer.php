@@ -25,4 +25,10 @@ class Trainer extends Model
       return $this->belongsToMany('App\Formation')->withPivot('answer_trainer', 'answer_admin');
     }
 
+    public function formationsCount(){
+        return $this->belongsToMany('App\Formation')
+            ->selectRaw('count(formations.id) as aggregate')
+            ->groupBy('pivot_trainer_id');
+    }
+
 }

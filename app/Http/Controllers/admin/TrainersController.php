@@ -32,8 +32,9 @@ class TrainersController extends Controller
      */
     public function index()
     {
-        $trainers = Trainer::with('level', 'region')->orderBy('last_name', 'ASC')->get();
-        return view('admin.trainers.index', compact('trainers'));
+        $trainers = Trainer::with('level', 'region')->orderBy('last_name', 'ASC')->paginate(10);
+
+        return view('admin.trainers.index',compact('trainers'));
     }
 
     /**
@@ -91,7 +92,19 @@ class TrainersController extends Controller
      */
     public function show($id)
     {
-        //
+        $trainer = Trainer::findOrFail($id);
+        $nb_offer = $trainer->formations->count();
+        $nb_answer = ['non' => 0, 'oui' => 0, 'en_attente' => 0];
+        foreach ($trainer->formations as $trainer_formation) {
+          if($trainer_formation->pivot->answer_trainer == 'non'){
+            $nb_answer['non']++;
+          } elseif ($trainer_formation->pivot->answer_trainer == 'oui') {
+            $nb_answer['oui']++;
+          } else {
+            $nb_answer['en_attente']++;
+          }
+        }
+        return view('admin.trainers.show', compact('trainer', 'nb_offer', 'nb_answer'));
     }
 
     /**
