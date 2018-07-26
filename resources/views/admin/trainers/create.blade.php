@@ -18,7 +18,7 @@
       <p class="card-category">Formulaire</p>
     </div>
     <div class="card-body">
-      {!! Form::open([ 'url' => route('trainers.store')]) !!}
+      {!! Form::open([ 'url' => route('trainers.store'), 'files' => 'true']) !!}
 
       <div class="row">
         <div class="col">
@@ -151,6 +151,12 @@
           {!! Form::label('senority', 'Ancienneté') !!}
           {!! Form::date('senority', null, ['class' => 'form-control', 'id' => 'senority']) !!}
         </div>
+        <!-- CV -->
+        <div class="mt-3">
+          {!! Form::label('cv', 'CV') !!}
+          {!! Form::file('cv') !!}
+        </div>
+
       </div>
     </div>
 

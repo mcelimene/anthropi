@@ -24,6 +24,7 @@ class CreateTrainersTable extends Migration
             $table->date('senority')->nullable();
             $table->string('job');
             $table->string('speciality');
+            $table->string('cv')->nullable();
             $table->timestamps();
         });
 

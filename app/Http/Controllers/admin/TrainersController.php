@@ -57,11 +57,18 @@ class TrainersController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(EditTrainerRequest $requestTrainer, EditUserRequest $requestUser)
-    {   // Création du mot de passe
+    {
+        // Stockage du CV
+        $cv = $requestTrainer->cv->store('public/dataDock');
+        $cv = str_replace('public/', '', $cv);
+        // Création du mot de passe
         $password = $this->getPassword();
         $password_crypt = $this->getPasswordCrypt($password);
         // Insertion du formateur dans la base de données
-        $trainer = Trainer::create($requestTrainer->except('email'));
+        $trainer = Trainer::create(array_merge($requestTrainer->except('email', 'cv'),
+            [
+              'cv' => $cv
+            ]));
         // Insertion de l'utilisateur dans la base de donnée
         $user = User::create(array_merge($requestUser->only('email'),
           [
@@ -128,11 +135,14 @@ class TrainersController extends Controller
      */
     public function update(EditTrainerRequest $requestTrainer, EditUserRequest $requestUser, $id)
     {
+        // Stockage du CV
+        $cv = $requestTrainer->cv->store('public/dataDock');
+        $cv = str_replace('public/', '', $cv);
         $trainer = Trainer::findOrFail($id);
         $user_id = $trainer->user->id;
         $user = User::findOrFail($user_id);
         // Insertion de l'utilisateur dans la base de données
-        $trainer->update($requestTrainer->except('email'));
+        $trainer->update(array_merge($requestTrainer->except('email','cv'), ['cv' => $cv]));
         $user->update($requestUser->only('email'));
         return redirect(route('trainers.index'));
     }
@@ -192,5 +202,6 @@ class TrainersController extends Controller
       $pseudo = $this->skip_accents($pseudo);
       return $pseudo;
     }*/
+
 
 }

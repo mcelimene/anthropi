@@ -33,8 +33,11 @@
             an
           @else
             ans
-          @endif  
+          @endif
         </li>
+        @if($trainer->cv)
+          <li><strong>CV</strong> : <a href="{{ url('storage/' . $trainer->cv)}}">Voir</a> </li>
+        @endif
       </ul>
       <hr>
       <h5>Statistiques formations</h5>

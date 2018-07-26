@@ -18,7 +18,7 @@
       <p class="card-category">Formulaire</p>
     </div>
     <div class="card-body">
-      {!! Form::open(['method' => 'PUT', 'url' => route('trainers.update', $trainer)]) !!}
+      {!! Form::open(['method' => 'PUT', 'url' => route('trainers.update', $trainer), 'files' => true]) !!}
 
       <div class="row">
         <div class="col">
@@ -150,6 +150,11 @@
         <div class="form-group">
           {!! Form::label('senority', 'Ancienneté') !!}
           {!! Form::date('senority', $trainer->senority, ['class' => 'form-control', 'id' => 'senority']) !!}
+        </div>
+        <!-- CV -->
+        <div class="mt-3">
+          {!! Form::label('cv', 'CV') !!}
+          {!! Form::file('cv') !!}
         </div>
       </div>
   </div>

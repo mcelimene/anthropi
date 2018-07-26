@@ -14,7 +14,7 @@
 Route::get('/', 'HomeController@index');
 
 
-// Route pour les Adminss
+// Route pour les Admins
 Route::resource('trainers', 'admin\TrainersController');
 Route::resource('formations', 'admin\FormationsController');
 
@@ -37,6 +37,7 @@ Route::post('users/create', 'admin\UsersController@store')->name('users.store');
 
 Route::get('levels/create', 'admin\LevelsController@create')->name('levels.create');
 Route::post('levels/create', 'admin\LevelsController@store')->name('levels.store');
+
 
 // Route pour les Formateurs
 Route::get('registration-formations', 'trainer\RegistrationFormationsController@index')->name('registration-formations.index');
