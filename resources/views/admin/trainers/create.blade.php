@@ -55,6 +55,7 @@
           @endif
         </div>
       </div>
+
       <div class="form-group">
         {!! Form::label('region_id', 'Région*', ['class' => 'bmd-label-floating']) !!}
         {!! Form::select('region_id', $regions, null, ['class' => 'form-control', 'id' => 'region_id', 'placeholder' => 'Sélectionnez une région']) !!}
@@ -78,7 +79,7 @@
         </div>
         <div class="col">
           <div class="form-group">
-            {!! Form::label('speciality', 'Spécialité*', ['class' => 'bmd-label-floating']) !!}
+            {!! Form::label('speciality', 'Profession*', ['class' => 'bmd-label-floating']) !!}
             {!! Form::text('speciality', null, ['class' => 'form-control', 'id' => 'speciality']) !!}
           </div>
           @if ($errors->has('speciality'))

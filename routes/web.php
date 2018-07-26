@@ -19,6 +19,7 @@ Route::resource('trainers', 'admin\TrainersController');
 Route::resource('formations', 'admin\FormationsController');
 
 Route::get('training-follow-up', 'admin\TrainingFollowUpController@index')->name('training-follow-up.index');
+Route::put('training-follow-up/{id}', 'admin\TrainingFollowUpController@validateFormation')->name('training-follow-up.validateFormation');
 
 Route::get('pdfview',array('as'=>'pdfview','uses'=>'admin\TrainersController@pdfview'));
 

@@ -10,6 +10,7 @@ use App\Formation;
 class AjaxController extends Controller
 {
     public function ajaxTrainingFollowUp(Request $request){
+      //$nb_accept = [];
       // On récupère les données envoyées en ajax
       $data = $request->all();
       // On la coupe en deux pour récupérer l'ID du formateur et l'ID de la formation
@@ -33,6 +34,7 @@ class AjaxController extends Controller
           }
           // On sauvegarde la réponse dans la base de données
           $trainer_formation->pivot->save();
+
           return response()->json(['formation' => $formation_id, 'trainer' => $trainer_id]);
         }
       }

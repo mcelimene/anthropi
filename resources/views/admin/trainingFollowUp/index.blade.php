@@ -26,7 +26,7 @@
               <!-- On affiche les niveaux demandés pour la formation en question -->
               @foreach ($formation->levels as $level)
                 <h5 class="text-gray mt-4">
-                  {{ $level->name }} <span class='compteur'>0</span>/{{ $level->pivot->number_of_vacancies }}
+                  {{ $level->pivot->number_of_vacancies }} {{ $level->name }}
                 </h5>
 
                 <!-- On affiche tous les formateurs inscrits pour chaque niveau et chaque formation -->
@@ -45,12 +45,13 @@
                     </div>
                   @endif
                   {!! Form::close() !!}
-
                 @endforeach
                 <hr>
               @endforeach
             </div>
-            <button type="button" class="btn btn-success btn-max">Valider</button>
+              {!! Form::open(['method' => 'PUT', 'url' => route('training-follow-up.validateFormation', $formation->id)]) !!}
+              <button type="submit" class="btn btn-success btn-max">Valider</button>
+              {!! Form::close() !!}
           </div>
         </div>
       </div>
@@ -77,7 +78,6 @@
         success: function (data) {
           let formationId = data['formation'];
           let trainerId = data['trainer'];
-          $('.compteur').html(data);
           console.log(data);
         },
         error: function (e) {

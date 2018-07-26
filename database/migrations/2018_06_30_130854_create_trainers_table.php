@@ -19,6 +19,9 @@ class CreateTrainersTable extends Migration
             $table->string('last_name');
             //$table->string('pseudo');
             $table->string('rank');
+            $table->string('address')->nullable();
+            $table->string('phone_number')->nullable();
+            $table->string('rib')->nullable();
             $table->string('speciality');
             $table->timestamps();
         });
