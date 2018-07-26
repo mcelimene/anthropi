@@ -26,7 +26,7 @@
               <th>Nom</th>
               <th>Prénom</th>
               <th>Région</th>
-              <th>Grade</th>
+              <th>Profession</th>
               <th>Spécialité</th>
               <th>Niveau</th>
               <th>Actions</th>
@@ -37,7 +37,7 @@
                   <td>{{ $trainer->last_name }}</td>
                   <td>{{ $trainer->first_name }}</td>
                   <td>{{ $trainer->region->name }}</td>
-                  <td>{{ $trainer->rank }}</td>
+                  <td>{{ $trainer->job }}</td>
                   <td>{{ $trainer->speciality }}</td>
                   <td>{{ $trainer->level->name }}</td>
                   <td class="td-actions d-flex justify-content-around">

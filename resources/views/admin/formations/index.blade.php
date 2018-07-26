@@ -5,46 +5,7 @@
 
 @section('content')
   <div class="row">
-    <!-- Formations en cours -->
-    <div class="col-md-4">
-      <div class="card">
-        <div class="card-header card-header-perso">
-          <h4 class="card-title ">En cours</h4>
-          <p class="card-category">Formations</p>
-        </div>
-        <div class="card-body">
-          <div class="table-responsive">
-            <table class="table table-striped table-bordered">
-              <thead class=" text-primary">
-                <th>Date de début</th>
-                <th>Nom</th>
-                <th>Lieu</th>
-                <th>Infos</th>
-              </thead>
-              <tbody>
-                @foreach ($formations as $formation)
-                  @if((\Carbon\Carbon::parse($formation->date_start) == $today) || (\Carbon\Carbon::parse($formation->date_end) == $today) || ((\Carbon\Carbon::parse($formation->date_start) < $today) && (\Carbon\Carbon::parse($formation->date_end) > $today)))
-                    <tr>
-                      <td>{{ \Carbon\Carbon::parse($formation->date_start)->format('d/m')}}</td>
-                      <td>{{ $formation->name }}</td>
-                      <td>{{ $formation->place }}</td>
-                      <td class="td-actions d-flex justify-content-around">
-                        <a href="{{ route('formations.show', $formation) }}">
-                          <button type="button" rel="tooltip" class="btn btn-info btn-simple">
-                            <i class="material-icons">assignment</i>
-                          </button>
-                        </a>
-                      </td>
-                    </tr>
-                  @endif
-                @endforeach
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-4">
+    <div class="col-md-6">
       <div class="card">
         <div class="card-header card-header-perso">
           <h4 class="card-title ">A venir</h4>
@@ -83,7 +44,7 @@
       </div>
     </div>
 
-  <div class="col-md-4">
+  <div class="col-md-6">
     <div class="card">
       <div class="card-header card-header-perso">
         <h4 class="card-title ">Non connu des candidats</h4>

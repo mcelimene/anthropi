@@ -26,11 +26,12 @@ class EditTrainerRequest extends FormRequest
         return [
           'first_name' => 'bail|required|min:3',
           'last_name' => 'bail|required|min:3',
-          'email' => 'bail|required|email',
-          'rank' => 'bail|required|min:2',
+          'job' => 'bail|required|min:2',
           'speciality' => 'bail|required|min:2',
           'level_id' => 'bail|required',
-          'region_id' => 'bail|required'
+          'region_id' => 'bail|required',
+          'address' => 'bail|required',
+          'birthdate' => 'bail|required'
         ];
     }
 
@@ -39,11 +40,12 @@ class EditTrainerRequest extends FormRequest
         return [
           'first_name' => 'Prénom',
           'last_name' => 'Nom',
-          'email' => 'E-mail',
-          'rank' => 'Grade',
+          'job' => 'Profession',
           'speciality' => 'Spécialité',
           'level_id' => 'Niveau',
-          'region_id' => 'Région'
+          'region_id' => 'Région',
+          'address' => 'Adresse',
+          'birthdate' => 'Date de naissance'
         ];
     }
 }

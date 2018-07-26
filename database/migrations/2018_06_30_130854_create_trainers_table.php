@@ -17,11 +17,12 @@ class CreateTrainersTable extends Migration
             $table->increments('id');
             $table->string('first_name');
             $table->string('last_name');
-            //$table->string('pseudo');
-            $table->string('rank');
-            $table->string('address')->nullable();
+            $table->string('address');
             $table->string('phone_number')->nullable();
-            $table->string('rib')->nullable();
+            $table->string('social_security')->nullable();
+            $table->date('birthdate');
+            $table->date('senority')->nullable();
+            $table->string('job');
             $table->string('speciality');
             $table->timestamps();
         });

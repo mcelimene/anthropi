@@ -9,6 +9,7 @@ use App\Level;
 use App\Region;
 use App\Trainer;
 use App\User;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\EditTrainerRequest;
@@ -56,10 +57,7 @@ class TrainersController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(EditTrainerRequest $requestTrainer, EditUserRequest $requestUser)
-    {   // Création du mot de passe (et du pseudo en commentaires)
-        /*$first_name = $requestTrainer->input('first_name');
-        $last_name = $requestTrainer->input('last_name');
-        $pseudo = $this->getPseudo($first_name, $last_name);*/
+    {   // Création du mot de passe
         $password = $this->getPassword();
         $password = $this->getPasswordCrypt($password);
         // Insertion du formateur dans la base de données
@@ -91,7 +89,7 @@ class TrainersController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($id)
-    {
+    {   $today = Carbon::today();
         $trainer = Trainer::findOrFail($id);
         $nb_offer = $trainer->formations->count();
         $nb_answer = ['non' => 0, 'oui' => 0, 'en_attente' => 0];
@@ -104,7 +102,7 @@ class TrainersController extends Controller
             $nb_answer['en_attente']++;
           }
         }
-        return view('admin.trainers.show', compact('trainer', 'nb_offer', 'nb_answer'));
+        return view('admin.trainers.show', compact('trainer', 'nb_offer', 'nb_answer', 'today'));
     }
 
     /**
@@ -128,10 +126,14 @@ class TrainersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(EditTrainerRequest $request, $id)
+    public function update(EditTrainerRequest $requestTrainer, EditUserRequest $requestUser, $id)
     {
         $trainer = Trainer::findOrFail($id);
-        $trainer->update($request->all());
+        $user_id = $trainer->user->id;
+        $user = User::findOrFail($user_id);
+        // Insertion de l'utilisateur dans la base de données
+        $trainer->update($requestTrainer->except('email'));
+        $user->update($requestUser->only('email'));
         return redirect(route('trainers.index'));
     }
 

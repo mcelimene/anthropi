@@ -20,9 +20,21 @@
     <div class="card-body">
       <h5>Informations personnelles</h5>
       <ul>
+        <li><strong>Date de naissance </strong> : {{ \Carbon\Carbon::parse($trainer->birthdate)->format('d/m/Y')}}</li>
         <li><strong>E-mail</strong> : {{ $trainer->user->email }}</li>
-        <li><strong>Grade</strong> : {{ $trainer->rank }}</li>
+        <li><strong>Numéro de téléphone </strong> : {{ $trainer->phone_number }}</li>
+        <li><strong>Adresse</strong> : {{ $trainer->address }}</li>
+        <li><strong>Numéro de sécurité sociale</strong> : {{ $trainer->social_security }}</li>
+        <li><strong>Profession</strong> : {{ $trainer->job }}</li>
         <li><strong>Niveau</strong> : {{ $trainer->level->name }}</li>
+        <li>
+          <strong>Ancienneté</strong> : {{ \Carbon\Carbon::parse($trainer->senority)->diffInYears($today) }}
+          @if (\Carbon\Carbon::parse($trainer->senority)->diffInYears($today) == 1)
+            an
+          @else
+            ans
+          @endif  
+        </li>
       </ul>
       <hr>
       <h5>Statistiques formations</h5>

@@ -22,6 +22,7 @@
 
       <div class="row">
         <div class="col">
+          <!-- Prénom -->
           <div class="form-group">
             {!! Form::label('first_name', 'Prénom*', ['class' => 'bmd-label-floating']) !!}
             {!! Form::text('first_name', null, ['class' => 'form-control', 'id' => 'first_name']) !!}
@@ -33,6 +34,7 @@
           @endif
         </div>
         <div class="col">
+          <!-- Nom de famille -->
           <div class="form-group">
             {!! Form::label('last_name', 'Nom*', ['class' => 'bmd-label-floating']) !!}
             {!! Form::text('last_name', null, ['class' => 'form-control', 'id' => 'last_name']) !!}
@@ -44,6 +46,7 @@
           @endif
         </div>
         <div class="col">
+          <!-- Email -->
           <div class="form-group">
             {!! Form::label('email', 'E-mail*', ['class' => 'bmd-label-floating']) !!}
             {!! Form::email('email', null, ['class' => 'form-control', 'id' => 'email']) !!}
@@ -55,7 +58,46 @@
           @endif
         </div>
       </div>
+      <!-- Adresse -->
+      <div class="form-group">
+        {!! Form::label('address', 'Adresse*', ['class' => 'bmd-label-floating']) !!}
+        {!! Form::text('address', null, ['class' => 'form-control', 'id' => 'address']) !!}
+      </div>
+      @if ($errors->has('address'))
+        <div class="alert alert-danger" role="alert">
+          <strong>{{ $errors->first('address') }}</strong>
+        </div>
+      @endif
 
+      <div class="row">
+        <div class="col">
+          <!-- Téléphone -->
+          <div class="form-group">
+            {!! Form::label('phone_number', 'Téléphone', ['class' => 'bmd-label-floating']) !!}
+            {!! Form::text('phone_number', null, ['class' => 'form-control', 'id' => 'phone_number']) !!}
+          </div>
+        </div>
+        <div class="col">
+          <!-- Sécu -->
+          <div class="form-group">
+            {!! Form::label('social_security', 'Numéro de sécurité sociale', ['class' => 'bmd-label-floating']) !!}
+            {!! Form::text('social_security', null, ['class' => 'form-control', 'id' => 'social_security']) !!}
+          </div>
+        </div>
+        <div class="col">
+          <!-- Date de naissance -->
+          <div class="form-group">
+            {!! Form::label('birthdate', 'Date de naissance*') !!}
+            {!! Form::date('birthdate', null, ['class' => 'form-control', 'id' => 'birthdate']) !!}
+          </div>
+          @if ($errors->has('birthdate'))
+            <div class="alert alert-danger" role="alert">
+              <strong>{{ $errors->first('birthdate') }}</strong>
+            </div>
+          @endif
+        </div>
+      </div>
+      <!-- Region -->
       <div class="form-group">
         {!! Form::label('region_id', 'Région*', ['class' => 'bmd-label-floating']) !!}
         {!! Form::select('region_id', $regions, null, ['class' => 'form-control', 'id' => 'region_id', 'placeholder' => 'Sélectionnez une région']) !!}
@@ -67,19 +109,21 @@
       @endif
       <div class="row">
         <div class="col">
+          <!-- Profession -->
           <div class="form-group">
-            {!! Form::label('rank', 'Grade*', ['class' => 'bmd-label-floating']) !!}
-            {!! Form::text('rank', null, ['class' => 'form-control', 'id' => 'rank']) !!}
+            {!! Form::label('job', 'Profession*', ['class' => 'bmd-label-floating']) !!}
+            {!! Form::text('job', null, ['class' => 'form-control', 'id' => 'job']) !!}
           </div>
-          @if ($errors->has('rank'))
+          @if ($errors->has('job'))
             <div class="alert alert-danger" role="alert">
-              <strong>{{ $errors->first('rank') }}</strong>
+              <strong>{{ $errors->first('job') }}</strong>
             </div>
           @endif
         </div>
         <div class="col">
+          <!-- Spécialité -->
           <div class="form-group">
-            {!! Form::label('speciality', 'Profession*', ['class' => 'bmd-label-floating']) !!}
+            {!! Form::label('speciality', 'Spécialité*', ['class' => 'bmd-label-floating']) !!}
             {!! Form::text('speciality', null, ['class' => 'form-control', 'id' => 'speciality']) !!}
           </div>
           @if ($errors->has('speciality'))
@@ -89,7 +133,7 @@
           @endif
         </div>
       </div>
-
+      <!-- Niveau -->
       <div class="form-group">
         {!! Form::label('level_id', 'Niveau*', ['class' => 'bmd-label-floating']) !!}
         {!! Form::select('level_id', $levels, null, [
@@ -102,7 +146,11 @@
             <strong>{{ $errors->first('level_id') }}</strong>
           </div>
         @endif
-
+        <!-- Ancienneté -->
+        <div class="form-group">
+          {!! Form::label('senority', 'Ancienneté') !!}
+          {!! Form::date('senority', null, ['class' => 'form-control', 'id' => 'senority']) !!}
+        </div>
       </div>
     </div>
 
