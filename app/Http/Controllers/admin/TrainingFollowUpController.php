@@ -4,9 +4,11 @@ namespace App\Http\Controllers\admin;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
+use Spatie\GoogleCalendar\Event;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\admin\CalendarController;
 use App\Mail\ConfirmationParticipation;
 use App\Trainer;
 use App\Formation;
@@ -63,6 +65,14 @@ class TrainingFollowUpController extends Controller
               ->send(new ConfirmationParticipation($data));
         }
       }
+      // Quand une formation est validé on la synchronise sur le calendrier google CalendarController
+      Event::create([
+         'name' => $formation->name,
+         'startDateTime' => Carbon::parse($formation->date_start . $formation->time_start),
+         'endDateTime' => Carbon::parse($formation->date_end . $formation->time_end)
+      ]);
+
+      // On redirige vers la page suivi des formations
       return redirect(route('training-follow-up.index'));
     }
 }

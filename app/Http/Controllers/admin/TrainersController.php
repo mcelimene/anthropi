@@ -59,13 +59,13 @@ class TrainersController extends Controller
     public function store(EditTrainerRequest $requestTrainer, EditUserRequest $requestUser)
     {   // Création du mot de passe
         $password = $this->getPassword();
-        $password = $this->getPasswordCrypt($password);
+        $password_crypt = $this->getPasswordCrypt($password);
         // Insertion du formateur dans la base de données
         $trainer = Trainer::create($requestTrainer->except('email'));
         // Insertion de l'utilisateur dans la base de donnée
         $user = User::create(array_merge($requestUser->only('email'),
           [
-            'password' => $password,
+            'password' => $password_crypt,
             'trainer_id' => $trainer->id
           ]));
         // Envoi mail d'inscription au nouveau formateur

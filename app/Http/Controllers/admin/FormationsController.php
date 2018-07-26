@@ -68,10 +68,8 @@ class FormationsController extends Controller
             $trainers = Trainer::where('level_id', $level->id)->get();
             // Données à envoyer aux formateurs
             $data = [
-              'dateStart' => $formation->date_start,
-              'timeStart' => $formation->time_start,
-              'dateEnd' => $formation->date_end,
-              'timeEnd' => $formation->time_end
+              'date_start' => $formation->date_start,
+              'date_end' => $formation->date_end
             ];
             foreach ($trainers as $trainer) {
               // On enregistre les formateurs qui peuvent s'inscrire à la formation dans la base de données

@@ -2,7 +2,7 @@
 <p>Une nouvelle formation vient d'être créée par AntroPi.</p>
 
 <p>
-  Elle aura lieu du <strong>{{ \Carbon\Carbon::parse($email['dateStart'])->format('d/m/Y')}}</strong> à {{ \Carbon\Carbon::parse($email['timeStart'])->format('%h heures and %i minutes')}} au <strong>{{ \Carbon\Carbon::parse($email['dateEnd'])->format('d/m/Y')}}</strong> à {{ \Carbon\Carbon::parse($email['time_end'])->format('%h heures and %i minutes')}}.
+  Elle aura lieu du <strong>{{ \Carbon\Carbon::parse($email['date_start'])->format('d/m/Y')}}</strong> au <strong>{{ \Carbon\Carbon::parse($email['date_end'])->format('d/m/Y')}}</strong>.
 </p>
 
 <p>Etes-vous disponible ?</p>
