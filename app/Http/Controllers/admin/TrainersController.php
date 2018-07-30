@@ -59,16 +59,21 @@ class TrainersController extends Controller
     public function store(EditTrainerRequest $requestTrainer, EditUserRequest $requestUser)
     {
         // Stockage du CV
-        $cv = $requestTrainer->cv->store('public/dataDock');
-        $cv = str_replace('public/', '', $cv);
+        if($requestTrainer->cv){
+          $cv = $requestTrainer->cv->store('public/datadock');
+          $cv = str_replace('public/', '', $cv);
+          // Insertion du formateur dans la base de données
+          $trainer = Trainer::create(array_merge($requestTrainer->except('email', 'cv'),
+              [
+                'cv' => $cv
+              ]));
+        } else {
+          // Insertion du formateur dans la base de données
+          $trainer = Trainer::create($requestTrainer->except('email'));
+        }
         // Création du mot de passe
         $password = $this->getPassword();
         $password_crypt = $this->getPasswordCrypt($password);
-        // Insertion du formateur dans la base de données
-        $trainer = Trainer::create(array_merge($requestTrainer->except('email', 'cv'),
-            [
-              'cv' => $cv
-            ]));
         // Insertion de l'utilisateur dans la base de donnée
         $user = User::create(array_merge($requestUser->only('email'),
           [
