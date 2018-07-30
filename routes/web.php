@@ -38,6 +38,9 @@ Route::post('users/create', 'admin\UsersController@store')->name('users.store');
 Route::get('levels/create', 'admin\LevelsController@create')->name('levels.create');
 Route::post('levels/create', 'admin\LevelsController@store')->name('levels.store');
 
+Route::get('datadock', 'admin\DatadockController@index')->name('datadock.index');
+Route::get('datadock/create', 'admin\DatadockController@create')->name('datadock.create');
+Route::post('datadock/create', 'admin\DatadockController@store')->name('datadock.store');
 
 // Route pour les Formateurs
 Route::get('registration-formations', 'trainer\RegistrationFormationsController@index')->name('registration-formations.index');

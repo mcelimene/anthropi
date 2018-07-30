@@ -62,6 +62,12 @@
                 <p>Formateurs</p>
               </a>
             </li>
+            <li class="nav-item {{ Request::is('datadock', 'datadock/*') ? 'active' : '' }}">
+              <a class="nav-link" href="{{ route('datadock.index') }}">
+                <i class="material-icons">attach_file</i>
+                <p>Datadock</p>
+              </a>
+            </li>
           @else
             <li class="nav-item {{ Request::is('registration-formations', 'registration-formations/*') ? 'active' : '' }}">
               <a class="nav-link" href="{{ route('registration-formations.index') }}">
