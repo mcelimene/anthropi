@@ -42,6 +42,7 @@ class MessagesController extends Controller
               'content' => $request->input('content'),
               'subject' => $request->input('subject')
             );
+            //dd($data['content']);
             Mail::to($trainer->user->email)
                 ->send(new Message($data));
           }

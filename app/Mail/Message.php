@@ -36,6 +36,6 @@ class Message extends Mailable
     {
         return $this->from(Auth::user()->email)
                     ->subject($this->email['subject'])
-                    ->view('emails.message', ['contentMessage' => $this->email['content']]);
+                    ->text('emails.message');
     }
 }

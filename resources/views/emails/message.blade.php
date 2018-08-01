@@ -1,7 +1,7 @@
-<p>{{ $email['content'] }}</p>
+{{ $email['content'] }}
 
 <p>
-  <em>L'equipe d'Anthropi</em>
+  <em>L'équipe d'Anthropi</em>
 </p>
 <figure>
   <img src="{{ asset('images/logo.png')}}" alt="Logo AntroPi" style="width:10%;">
