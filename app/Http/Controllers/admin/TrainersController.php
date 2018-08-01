@@ -5,6 +5,7 @@ namespace App\Http\Controllers\admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use PDF;
+use Egulias\EmailValidator\Validation\RFCValidation;
 use App\Level;
 use App\Region;
 use App\Trainer;
@@ -60,7 +61,7 @@ class TrainersController extends Controller
     {
         // Stockage du CV
         if($requestTrainer->cv){
-          $cv = $requestTrainer->cv->store('public/datadock');
+          $cv = $requestTrainer->cv->store('public/datadock/cv');
           $cv = str_replace('public/', '', $cv);
           // Insertion du formateur dans la base de données
           $trainer = Trainer::create(array_merge($requestTrainer->except('email', 'cv'),
@@ -141,7 +142,7 @@ class TrainersController extends Controller
     public function update(EditTrainerRequest $requestTrainer, EditUserRequest $requestUser, $id)
     {
         // Stockage du CV
-        $cv = $requestTrainer->cv->store('public/dataDock');
+        $cv = $requestTrainer->cv->store('public/datadock/cv');
         $cv = str_replace('public/', '', $cv);
         $trainer = Trainer::findOrFail($id);
         $user_id = $trainer->user->id;
@@ -160,11 +161,18 @@ class TrainersController extends Controller
      */
     public function destroy($id)
     {
-        $trainer = Trainer::findOrFail($id);
-        $user = $trainer->user;
-        $trainer->delete();
-        $user->delete();
-        return redirect('trainers');
+      $trainer = Trainer::findOrFail($id);
+      $user = $trainer->user;
+      // Suppression du CV
+      if($trainer->cv){
+        unlink(storage_path('app/public/'.$trainer->cv));
+      }
+
+      // Suppression du formateur
+      $trainer->delete();
+      // Suppression du compte utilisateur
+      $user->delete();
+      return redirect('trainers');
     }
 
     public function pdfView(Request $request){
@@ -189,24 +197,6 @@ class TrainersController extends Controller
       $password = HASH::make($password);
       return $password;
     }
-
-    /*private function skip_accents($str, $charset='utf-8') {
-      $str = htmlentities( $str, ENT_NOQUOTES, $charset );
-      $str = preg_replace( '#&([A-za-z])(?:acute|cedil|caron|circ|grave|orn|ring|slash|th|tilde|uml);#', '\1', $str );
-      $str = preg_replace( '#&([A-za-z]{2})(?:lig);#', '\1', $str );
-      $str = preg_replace( '#&[^;]+;#', '', $str );
-      return $str;
-    }*/
-
-
-    /*private function getPseudo($first_name, $last_name){
-      $pseudo = substr($first_name, 0, 1) . $last_name;
-      // Minuscules
-      $pseudo = strtolower($pseudo);
-      // sans accent
-      $pseudo = $this->skip_accents($pseudo);
-      return $pseudo;
-    }*/
 
 
 }

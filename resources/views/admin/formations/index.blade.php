@@ -130,7 +130,7 @@
                       <i class="material-icons">edit</i>
                     </button>
                   </a>
-                  {!! Form::open(['method' => 'DELETE', 'route' => ['formations.destroy', $formation->id]]) !!}
+                  {!! Form::open(['method' => 'DELETE', 'url' => route('formations.destroy', $formation->id), 'onsubmit' => 'return ConfirmDelete()']) !!}
                   <button type="submit" rel="tooltip" class="btn btn-danger btn-simple">
                     <i class="material-icons">close</i>
                   </button>
@@ -149,4 +149,18 @@
     </a>
   </div>
 </div>
+@endsection
+
+
+@section('script')
+  <script>
+    function ConfirmDelete() {
+      let confirmation = confirm('Etes-vous sûr de vouloir supprimer cette formation de la base de données ?');
+      if(confirmation){
+        return true;
+     } else {
+       return false;
+     }
+   };
+  </script>
 @endsection

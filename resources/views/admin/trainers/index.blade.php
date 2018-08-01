@@ -51,11 +51,11 @@
                         <i class="material-icons">edit</i>
                       </button>
                     </a>
-                    {!! Form::open(['method' => 'DELETE', 'route' => ['trainers.destroy', $trainer->id]]) !!}
-                      <button type="submit" rel="tooltip" class="btn btn-danger btn-simple">
+                    {!! Form::open(['method'=>'delete', 'url' => route('trainers.destroy', $trainer->id), 'onsubmit' => 'return ConfirmDelete()']) !!}
+                      <button type="submit" rel="tooltip" class="btn btn-danger btn-simple delete" data-id="{{ $trainer->id }}" data-name="{{ $trainer->first_name }} {{ $trainer->last_name }}">
                         <i class="material-icons">close</i>
                       </button>
-                    {!! Form::close() !!}
+                      {!! Form::close() !!}
                   </td>
                 </tr>
               @endforeach
@@ -71,4 +71,18 @@
     </a>
   </div>
 </div>
+@endsection
+
+
+@section('script')
+  <script>
+    function ConfirmDelete() {
+      let confirmation = confirm('Etes-vous sûr de vouloir supprimer ce formateur de la base de données ?');
+      if(confirmation){
+        return true;
+     } else {
+       return false;
+     }
+   };
+  </script>
 @endsection

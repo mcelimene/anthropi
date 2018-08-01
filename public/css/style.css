@@ -63,3 +63,15 @@ ul {
   display: flex;
   justify-content: center;
 }
+
+.form-check .form-check-label .circle .check{
+  background-color: #94b5e5;
+}
+
+.form-check .form-check-input:checked ~ .circle {
+    border-color: #94b5e5;
+}
+
+.form-hidden {
+  display: none;
+}
