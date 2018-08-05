@@ -52,7 +52,7 @@
                       </button>
                     </a>
                     {!! Form::open(['method'=>'delete', 'url' => route('trainers.destroy', $trainer->id), 'onsubmit' => 'return ConfirmDelete()']) !!}
-                      <button type="submit" rel="tooltip" class="btn btn-danger btn-simple delete" data-id="{{ $trainer->id }}" data-name="{{ $trainer->first_name }} {{ $trainer->last_name }}">
+                      <button type="submit" rel="tooltip" class="btn btn-danger btn-simple delete" data-id="{{ $trainer->id }}">
                         <i class="material-icons">close</i>
                       </button>
                       {!! Form::close() !!}

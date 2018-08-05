@@ -4,8 +4,6 @@
 @section('pageName', 'Tableau de bord')
 
 @section('content')
-
-    @if(\Auth::user()->role == 'admin')
         <div class="row">
     <div class="col-md-3 offset-md-3">
       <div class="card card-home d-flex align-items-center justify-content-center">
@@ -40,13 +38,5 @@
       </div>
     </div>
   </div>
-  @elseif (\Auth::user()->role == 'user')
-    <div class="row">
-      <div class="col-md-6 offset-md-3">
-        <h2 class="text-center">Vos statistiques</h2>
-        <hr>
-      </div>
-    </div>
-@endif
 
 @endsection

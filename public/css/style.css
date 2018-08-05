@@ -68,10 +68,14 @@ ul {
   background-color: #94b5e5;
 }
 
-.form-check .form-check-input:checked ~ .circle {
+.form-check .form-check-input:checked ~ .circle, .hr-blue {
     border-color: #94b5e5;
 }
 
 .form-hidden {
   display: none;
+}
+
+.title-blue {
+  color: #94b5e5;
 }

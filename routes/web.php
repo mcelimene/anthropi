@@ -11,10 +11,10 @@
 |
 */
 
-Route::get('/', 'HomeController@index');
 
 
 // Route pour les Admins
+Route::get('/', 'HomeController@index');
 Route::resource('trainers', 'admin\TrainersController');
 Route::resource('formations', 'admin\FormationsController');
 /* Suivi formations */
@@ -39,12 +39,14 @@ Route::get('levels/create', 'admin\LevelsController@create')->name('levels.creat
 Route::post('levels/create', 'admin\LevelsController@store')->name('levels.store');
 /*Datadock */
 Route::get('datadock', 'admin\DatadockController@index')->name('datadock.index');
+Route::get('datadock/all', 'admin\DatadockController@all')->name('datadock.all');
 Route::get('datadock/create', 'admin\DatadockController@create')->name('datadock.create');
 Route::post('datadock/create', 'admin\DatadockController@store')->name('datadock.store');
 Route::get('datadock/data-trainers', 'admin\DatadockController@dataTrainers')->name('datadock.dataTrainers');
 Route::post('datadock/data-trainers', 'admin\DatadockController@dataTrainersStore')->name('datadock.dataTrainersStore');
 
 // Route pour les Formateurs
+Route::get('/home-trainer', 'trainer\HomeController@index');
 Route::get('registration-formations', 'trainer\RegistrationFormationsController@index')->name('registration-formations.index');
 Route::post('registration-formations/{id}', 'trainer\RegistrationFormationsController@store')->name('registration-formations.store');
 Route::get('password-change', 'trainer\PasswordController@edit')->name('password-change.edit');

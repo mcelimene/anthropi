@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use App\Trainer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -19,14 +20,12 @@ class HomeController extends Controller
     }
 
     /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Http\Response
+     * Show the application dashboard.nse
      */
     public function index()
     {
         $admin_id = Auth::user()->id;
         $admin = User::findOrFail($admin_id);
-        return view('home', compact('admin'));
+        return view('admin.home', compact('admin'));
     }
 }

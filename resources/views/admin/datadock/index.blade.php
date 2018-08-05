@@ -23,7 +23,7 @@
     </div>
     <div class="col-md-6 offset-md-3">
       <div class="card card-home d-flex align-items-center justify-content-center">
-        <a href="">
+        <a href="{{ route('datadock.all')}}">
           <i class="material-icons fa-5x">folder</i>
           <h4>Tous les documents</h4>
         </a>

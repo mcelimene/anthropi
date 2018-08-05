@@ -31,13 +31,13 @@
       </div>
       <div class="sidebar-wrapper">
         <ul class="nav">
-          <li class="nav-item {{ Request::is('/') ? 'active' : '' }}">
-            <a class="nav-link" href="{{ url('/') }}">
-              <i class="material-icons">dashboard</i>
-              <p>Tableau de bord</p>
-            </a>
-          </li>
-          @if(auth()->user()->isAdmin())
+          @if(\Auth::user()->role == 'admin')
+            <li class="nav-item {{ Request::is('home', 'home/*') ? 'active' : '' }}">
+              <a class="nav-link" href="{{ url('/home') }}">
+                <i class="material-icons">dashboard</i>
+                <p>Tableau de bord</p>
+              </a>
+            </li>
             <li class="nav-item {{ Request::is('calendar') ? 'active' : '' }}">
               <a class="nav-link" href="{{ route('calendar.index')}}">
                 <i class="material-icons">calendar_today</i>
@@ -69,6 +69,12 @@
               </a>
             </li>
           @else
+            <li class="nav-item {{ Request::is('home-trainer', 'home-trainer/*') ? 'active' : '' }}">
+              <a class="nav-link" href="{{ url('/home-trainer') }}">
+                <i class="material-icons">dashboard</i>
+                <p>Tableau de bord</p>
+              </a>
+            </li>
             <li class="nav-item {{ Request::is('registration-formations', 'registration-formations/*') ? 'active' : '' }}">
               <a class="nav-link" href="{{ route('registration-formations.index') }}">
                 <i class="material-icons">assignment</i>

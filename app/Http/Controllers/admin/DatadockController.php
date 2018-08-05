@@ -13,6 +13,10 @@ use App\Datadock;
 
 class DatadockController extends Controller
 {
+  public function __construct()
+  {
+      $this->middleware('admin');
+  }
     public function index(){
       return view('admin.datadock.index');
     }
@@ -46,6 +50,14 @@ class DatadockController extends Controller
       // On créé le fichier PDF avec les données de formateurs précédement sélectionnés
       $pdf = PDF::loadView('pdf.datadock', compact('trainers', 'name'));
       return $pdf->download('liste_formateurs.pdf');
+    }
+
+    public function all(){
+      // On récupère tous les fichiers
+      $files = Datadock::get();
+      // On récupère tous les formateurs ayant un cv
+      $trainers = Trainer::whereNotNull('cv')->orderBy('last_name', 'ASC')->get();
+      return view('admin.datadock.all', compact('files', 'trainers'));
     }
 
 }

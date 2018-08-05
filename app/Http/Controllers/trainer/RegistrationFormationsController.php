@@ -29,7 +29,7 @@ class RegistrationFormationsController extends Controller
       foreach ($formations_id as $formation_id) {
         array_push($data, $formation_id->formation_id);
       }
-
+      // On affiche les formation qui lui sont proposés
       $formations = Formation::whereIn('id', $data)->get();
       return view('trainer.registrationFormations.index', compact('formations', 'today'));
     }
