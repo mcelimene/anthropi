@@ -75,6 +75,12 @@
                 <p>Inscriptions</p>
               </a>
             </li>
+            <li class="nav-item {{ Request::is('password-change', 'password-change/*') ? 'active' : '' }}">
+              <a class="nav-link" href="{{ route('password-change.edit') }}">
+                <i class="material-icons">vpn_key</i>
+                <p>Modifier mot de passe</p>
+              </a>
+            </li>
           @endif
           <!-- your sidebar here -->
         </ul>

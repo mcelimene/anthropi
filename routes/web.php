@@ -46,6 +46,9 @@ Route::post('datadock/data-trainers', 'admin\DatadockController@dataTrainersStor
 
 // Route pour les Formateurs
 Route::get('registration-formations', 'trainer\RegistrationFormationsController@index')->name('registration-formations.index');
+Route::post('registration-formations/{id}', 'trainer\RegistrationFormationsController@store')->name('registration-formations.store');
+Route::get('password-change', 'trainer\PasswordController@edit')->name('password-change.edit');
+Route::put('password-change/{id}', 'trainer\PasswordController@update')->name('password-change.update');
 
 // Authentification
 Auth::routes();
