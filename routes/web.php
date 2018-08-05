@@ -59,3 +59,8 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 // Appels à des fonctions Ajax
 Route::put('/ajax', 'AjaxController@trainingFollowUp');
+
+// Route pour Datadock
+Route::get('home-datadock', 'datadock\HomeController@index');
+Route::get('settings', 'datadock\SettingsController@edit')->name('settings.edit');
+Route::put('settings', 'datadock\SettingsController@update')->name('settings.update');

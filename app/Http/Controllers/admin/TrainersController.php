@@ -141,14 +141,19 @@ class TrainersController extends Controller
      */
     public function update(EditTrainerRequest $requestTrainer, EditUserRequest $requestUser, $id)
     {
-        // Stockage du CV
-        $cv = $requestTrainer->cv->store('public/datadock/cv');
-        $cv = str_replace('public/', '', $cv);
         $trainer = Trainer::findOrFail($id);
         $user_id = $trainer->user->id;
         $user = User::findOrFail($user_id);
+        // Stockage du CV
+        if($requestTrainer->cv){
+          $cv = $requestTrainer->cv->store('public/datadock/cv');
+          $cv = str_replace('public/', '', $cv);
+          $trainer->update(array_merge($requestTrainer->except('email','cv'), ['cv' => $cv]));
+        }  else {
+          $trainer->update($requestTrainer->except('email'));
+        }
         // Insertion de l'utilisateur dans la base de données
-        $trainer->update(array_merge($requestTrainer->except('email','cv'), ['cv' => $cv]));
+
         $user->update($requestUser->only('email'));
         return redirect(route('trainers.index'));
     }

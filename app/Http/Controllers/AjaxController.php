@@ -9,7 +9,7 @@ use App\Formation;
 
 class AjaxController extends Controller
 {
-    public function ajaxTrainingFollowUp(Request $request){
+    public function trainingFollowUp(Request $request){
       //$nb_accept = [];
       // On récupère les données envoyées en ajax
       $data = $request->all();

@@ -68,7 +68,7 @@
                 <p>Datadock</p>
               </a>
             </li>
-          @else
+          @elseif(\Auth::user()->role == 'user')
             <li class="nav-item {{ Request::is('home-trainer', 'home-trainer/*') ? 'active' : '' }}">
               <a class="nav-link" href="{{ url('/home-trainer') }}">
                 <i class="material-icons">dashboard</i>
@@ -85,6 +85,19 @@
               <a class="nav-link" href="{{ route('password-change.edit') }}">
                 <i class="material-icons">vpn_key</i>
                 <p>Modifier mot de passe</p>
+              </a>
+            </li>
+          @else
+            <li class="nav-item {{ Request::is('home-datadock', 'home-datadock/*') ? 'active' : '' }}">
+              <a class="nav-link" href="{{ url('/home-datadock') }}">
+                <i class="material-icons">dashboard</i>
+                <p>Tableau de bord</p>
+              </a>
+            </li>
+            <li class="nav-item {{ Request::is('settings', 'settings/*') ? 'active' : '' }}">
+              <a class="nav-link" href="{{ url('/settings') }}">
+                <i class="material-icons">dashboard</i>
+                <p>Paramètres</p>
               </a>
             </li>
           @endif

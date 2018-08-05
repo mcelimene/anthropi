@@ -26,6 +26,6 @@ class PasswordController extends Controller
       $user->password = $password_crypt;
     }
     $user->save();
-    return redirect(url('/'));
+    return redirect(url('/home-trainer'));
   }
 }
