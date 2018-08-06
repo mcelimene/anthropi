@@ -73,6 +73,8 @@ class TrainingFollowUpController extends Controller
       ]);
 
       // On redirige vers la page suivi des formations
-      return redirect(route('training-follow-up.index'));
+      return redirect()->route('training-follow-up.index')
+                       ->with('success', 'La formation a été validé')
+                       ->with('success', 'Un email de validation a été envoyé aux formateurs concernés');
     }
 }

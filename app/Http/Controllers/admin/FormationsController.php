@@ -83,7 +83,9 @@ class FormationsController extends Controller
           }
         }
       }
-      return redirect(route('formations.index'));
+      return redirect()->route('formations.index')
+                       ->with('success', 'La formation a été créée')
+                       ->with('success', 'Un email a été envoyé aux formateurs concernés');
     }
 
     /**
@@ -121,7 +123,8 @@ class FormationsController extends Controller
     {
       $formation = Formation::findOrFail($id);
       $formation->update($request->all());
-      return redirect(route('admin.formations.index'));
+      return redirect()->route('admin.formations.index')
+                       ->with('success', 'La formation a été modifié');
     }
 
     /**
@@ -134,7 +137,8 @@ class FormationsController extends Controller
     {
       $formation = Formation::findOrFail($id);
       $formation->delete();
-      return redirect('formations');
+      return redirect()->route('formations.index')
+                       ->with('danger', 'La formation a été supprimé');
     }
 
     private function sendEmails($trainers, $formation){

@@ -32,7 +32,8 @@ class DatadockController extends Controller
       // Insertion du fichier dans la base de données
       $datadock = Datadock::create(array_merge($request->except('_token', 'file'), ['path' => $file]));
 
-      return redirect(route('datadock.index'));
+      return redirect()->route('datadock.index')
+                       ->with('success', 'Le fichier a été ajouté');
     }
 
     public function dataTrainers(){

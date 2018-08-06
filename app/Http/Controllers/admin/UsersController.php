@@ -29,6 +29,7 @@ class UsersController extends Controller
       // Mot de passe crypté
       $password = Hash::make('000000');
       User::create(array_merge($request->all(),['password' => $password, 'role' => 'admin']));
-      return redirect(url('/'));
+      return redirect()->route('home')
+                       ->with('success', 'Le nouvel administrateur a bien été ajouté');
     }
 }

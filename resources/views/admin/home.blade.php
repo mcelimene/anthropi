@@ -4,7 +4,7 @@
 @section('pageName', 'Tableau de bord')
 
 @section('content')
-        <div class="row">
+  <div class="row">
     <div class="col-md-3 offset-md-3">
       <div class="card card-home d-flex align-items-center justify-content-center">
         <a href="{{ route('messages.create')}}">

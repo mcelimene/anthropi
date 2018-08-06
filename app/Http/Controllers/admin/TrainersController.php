@@ -91,8 +91,9 @@ class TrainersController extends Controller
         Mail::send('emails.registration', $data, function($message) use ($data) {
                 $message->to($data['email'])->subject('Inscription AnthroPi');
         });
-
-        return redirect(route('trainers.index'));
+        return redirect()->route('trainers.index')
+                         ->with('success', 'Le formateur a été créé')
+                         ->with('success', 'Un email lui a été envoyé avec ses identifiants de connexion');
     }
 
     /**
@@ -155,7 +156,8 @@ class TrainersController extends Controller
         // Insertion de l'utilisateur dans la base de données
 
         $user->update($requestUser->only('email'));
-        return redirect(route('trainers.index'));
+        return redirect()->route('trainers.index')
+                         ->with('success', 'Le formateur a été modifié')
     }
 
     /**
@@ -177,7 +179,8 @@ class TrainersController extends Controller
       $trainer->delete();
       // Suppression du compte utilisateur
       $user->delete();
-      return redirect('trainers');
+      return redirect()->route('trainers.index')
+                       ->('danger', 'Le formateur a été supprimé');
     }
 
     public function pdfView(Request $request){

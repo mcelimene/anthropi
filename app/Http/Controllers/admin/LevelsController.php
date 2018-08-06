@@ -25,6 +25,7 @@ class LevelsController extends Controller
 
     public function store(LevelRequest $request){
       Level::create($request->except('_token'));
-      return redirect(url('/'));
+      return redirect()->route('home')
+                       ->with('success', 'Le nouveau niveau a bien été ajouté');
     }
 }
