@@ -1,7 +1,9 @@
-<h1>Bonjour {{ $email['nameTrainer'] }} !</h1>
-<p>Une nouvelle formation vient d'être créée par AntroPi.</p>
+<h1>Bonjour {{ $email['name_trainer'] }} !</h1>
+
+<p>Vous n'avez toujours pas répondu à une demande d'inscription à une formation.</p>
 
 @if($email['date_start'] == $email['date_end'])
+<p>
   Elle aura lieu le <strong>{{ \Carbon\Carbon::parse($email['date_start'])->format('d/m/Y')}}</strong>.
 </p>
 @else
@@ -10,9 +12,8 @@
   </p>
 @endif
 
-<p>Etes-vous disponible ?</p>
 
-<p>Veuillez-vous <a href="http://localhost/8000">connecter à votre compte</a> afin de candidater</p>
+<p>Pensez-bien à vous inscrire sur la plateforme d'<a href="http://localhost:8000">AnthroPi</a> dans l'onglet "Inscription" afin de candidater.</p>
 <p>
   En vous remerciant,<br><br>
 <em>L'équipe d'AnthroPi</em>

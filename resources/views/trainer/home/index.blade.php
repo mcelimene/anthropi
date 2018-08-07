@@ -38,6 +38,7 @@
       </ul>
     </div>
   </div>
+  @if(!$formations->isEmpty())
   <div class="row mt-5">
     <div class="col-md-6 offset-md-3">
       <h2 class="text-center title-blue">Vos prochaines formations</h2>
@@ -55,5 +56,6 @@
       @endif
     </div>
   </div>
+@endif
 
 @endsection

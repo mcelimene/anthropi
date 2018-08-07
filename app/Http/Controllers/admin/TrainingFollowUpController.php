@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\admin;
 
+use App\Mail\MessageRecovery;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Spatie\GoogleCalendar\Event;
@@ -75,5 +76,26 @@ class TrainingFollowUpController extends Controller
       // On redirige vers la page suivi des formations
       return redirect()->route('training-follow-up.index')
                        ->with('success', 'Un email de validation a été envoyé aux formateurs concernés');
+    }
+
+    public function sendEmails($id){
+      // On récupère la formation avec son ID
+      $formation = Formation::findOrFail($id);
+      // On stocke les données qu'on veut envoyer à la vue
+      $data = [
+        'date_start' => $formation->date_start,
+        'date_end' => $formation->date_end
+      ];
+      // On envoie un mail à tous les formateurs qui n'ont pas validé leur inscription sur la formation en cours
+      foreach ($formation->trainers as $formation_trainer) {
+        if($formation_trainer->pivot->answer_trainer == 'en attente'){
+          $trainer = Trainer::findOrFail($formation_trainer->pivot->trainer_id);
+          $data['name_trainer'] = $trainer->first_name;
+          Mail::to($trainer->user->email)
+              ->send(new MessageRecovery($data));
+        }
+      }
+      return redirect()->route('training-follow-up.index')
+                       ->with('success', 'Un email de relance a été envoyé aux formateurs non-inscrits');
     }
 }

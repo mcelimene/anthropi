@@ -5,13 +5,6 @@
 
 @section('content')
 
-  <a href="{{ url('/') }}">
-    <button class="btn btn-default btn-sm">
-      <i class="material-icons">arrow_back_ios</i>
-      Retour
-    </button>
-  </a>
-
   <div class="card">
     <div class="card-header card-header-perso">
       <div>

@@ -7,10 +7,19 @@
   <div class="row">
     <!-- On affiche toutes les formations qui ne sont pas encore validé -->
     @foreach($formations as $formation)
-      <div class="col-md-4">
+      <div class="col-md-6">
         <div class="card">
           <div class="card-header card-header-perso">
+            <div class=" d-flex justify-content-between">
+
             <h4 class="card-title">{{ $formation->name }}</h4>
+            {!! Form::open(['method' => 'POST', 'url' => route('training-follow-up.sendEmails', $formation->id)])!!}
+              <button class="btn btn-warning btn-sm" type="submit">
+                <i class="material-icons">mail</i>
+                 Relance
+              </button>
+            {!! Form::close() !!}
+          </div>
             <p class="card-category">
               Début dans <strong>{{ \Carbon\Carbon::parse($formation->date_start)->diffInDays($today) }}
                 @if(\Carbon\Carbon::parse($formation->date_start)->diffInDays($today) == '1')
