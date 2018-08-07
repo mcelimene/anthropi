@@ -25,7 +25,13 @@ class ResetPasswordController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+     if ( \Auth::user()->role == 'admin' ) {
+       return redirect('/home');
+     } elseif(\Auth::user()->role == 'user'){
+       return redirect('/home-trainer');
+     } else {
+       return redirect('/home-datadock');
+     }
 
     /**
      * Create a new controller instance.
