@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\DB;
 use App\Trainer;
 use App\Formation;
 
@@ -35,7 +35,25 @@ class AjaxController extends Controller
           // On sauvegarde la réponse dans la base de données
           $trainer_formation->pivot->save();
 
-          return response()->json(['formation' => $formation_id, 'trainer' => $trainer_id]);
+          // On récupère les id des formateurs sélectionnés
+          $trainers_accept = DB::table('formation_trainer')
+              ->where('formation_id', $formation_id)
+              ->where('answer_admin', true)
+              ->get();
+          $trainers_accept_id = [];
+          // On met ces ID dans un tableau
+          foreach ($trainers_accept as $trainer) {
+            array_push($trainers_accept_id, $trainer->trainer_id);
+          }
+          // On récupère les formateurs grâce à leur id puis on extrait les différents niveaux
+          $trainers = Trainer::whereIn('id', $trainers_accept_id)->get();
+          $count_level = [];
+          // On compte le nombre de participants par niveau
+          foreach ($trainers as $trainer) {
+            @$count_level[$trainer->level_id]++;
+          }
+
+          return response()->json(['formation' => $formation_id, 'trainer' => $trainer_id, 'levels' => $count_level]);
         }
       }
     }

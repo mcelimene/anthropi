@@ -99,22 +99,6 @@
         </div>
       </div>
 
-      <div class="row">
-        @foreach ($levels as $level)
-          <div class="col">
-            <div class="form-group">
-              {!! Form::label($level->id, $level->name, ['class' => 'bmd-label-floating']) !!}
-              {!! Form::number($level->id, 0, ['class' => 'form-control']) !!}
-            </div>
-            @if ($errors->has($level->id))
-              <div class="alert alert-danger" role="alert">
-                <strong>{{ $errors->first($level->id) }}</strong>
-              </div>
-            @endif
-          </div>
-        @endforeach
-      </div>
-
       <div class="form-group">
         {!! Form::label('educational_objective', 'Objectifs pédagogiques*', ['class' => 'bmd-label-floating']) !!}
         {!! Form::textarea('educational_objective', $formation->educational_objective, ['class' => 'form-control', 'id' => 'educational_objective']) !!}
@@ -132,10 +116,37 @@
             Soumettre à candidatures ?
           </label>
         </div>
+        <div class="row form-hidden" id="form-levels">
+          @foreach ($levels as $level)
+            <div class="col">
+              <div class="form-group">
+                {!! Form::label($level->id, $level->name, ['class' => 'bmd-label-floating']) !!}
+                {!! Form::number($level->id, 0, ['class' => 'form-control']) !!}
+              </div>
+              @if ($errors->has($level->id))
+                <div class="alert alert-danger" role="alert">
+                  <strong>{{ $errors->first($level->id) }}</strong>
+                </div>
+              @endif
+            </div>
+          @endforeach
+        </div>
       @endif
     </div>
     <div class="d-flex justify-content-center">
       <button type="submit" class="btn btn-perso">Modifier</button>
     </div>
     {!! Form::close() !!}
+  @endsection
+
+  @section('script')
+    <script>
+      $('input[type=checkbox]').click(function(){
+        if($('#form-levels').hasClass('form-hidden')){
+          $('#form-levels').removeClass('form-hidden');
+        } else {
+          $('#form-levels').addClass('form-hidden');
+        }
+      });
+    </script>
   @endsection

@@ -55,9 +55,9 @@ class DatadockController extends Controller
 
     public function all(){
       // On récupère tous les fichiers
-      $files = Datadock::get();
+      $files = Datadock::orderBy('created_at', 'DESC')->paginate(10);
       // On récupère tous les formateurs ayant un cv
-      $trainers = Trainer::whereNotNull('cv')->orderBy('last_name', 'ASC')->get();
+      $trainers = Trainer::whereNotNull('cv')->orderBy('last_name', 'ASC')->paginate(10);
       return view('admin.datadock.all', compact('files', 'trainers'));
     }
 

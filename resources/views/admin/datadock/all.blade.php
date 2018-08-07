@@ -36,6 +36,7 @@
             </tbody>
           </table>
         </div>
+        {{ $files->render()}}
       </div>
     </div>
 
@@ -71,6 +72,7 @@
             </tbody>
           </table>
         </div>
+        {{ $trainers->render()}}
       </div>
     </div>
 @endsection

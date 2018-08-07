@@ -23,22 +23,20 @@
           <strong>Lieu</strong> : {{ $formation->place }}
         </li>
         <li>
-          <strong>Dates</strong> : Du {{ $formation->date_start }} au {{ $formation->date_end }}
+          <strong>Dates</strong> : Du {{ \Carbon\Carbon::parse($formation->date_start)->format('d/m/Y')}} à {{ \Carbon\Carbon::parse($formation->time_start)->format('h:i')}}h au {{ \Carbon\Carbon::parse($formation->date_end)->format('d/m/Y')}} à {{ \Carbon\Carbon::parse($formation->time_end)->format('h:i') }}h
         </li>
         <li>
           <strong>Nombre de participants</strong> :
-          @if($formation->number_of_trainers > 0)
-            {{ $formation->number_of_trainers }} formateur(s)/
-          @endif
-          @if($formation->number_of_assistant_trainers > 0)
-            {{ $formation->number_of_assistant_trainers }} assistant-formateur(s)/
-          @endif
-          @if($formation->number_of_instructors > 0)
-            {{ $formation->number_of_instructors }} instructeur(s)/
-          @endif
-          @if($formation->number_of_course_directors > 0)
-            {{ $formation->number_of_course_directors }} directeur(s) de cours
-          @endif
+          <ul>
+            @foreach ($levels as $level)
+              @foreach ($formation->levels as $formation_level)
+                @if($level->id == $formation_level->pivot->level_id)
+                <li>{{ $level->name }} : {{ $formation_level->pivot->number_of_vacancies }} participant(s)</li>
+                @endif
+              @endforeach
+            @endforeach
+          </ul>
+
         </li>
         <li>
           <strong>Objectifs pédagogiques</strong> : {{ $formation->educational_objective }}

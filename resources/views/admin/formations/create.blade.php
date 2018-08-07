@@ -97,7 +97,23 @@
         </div>
       </div>
 
-      <div class="row">
+      <div class="form-group">
+        {!! Form::label('educational_objective', 'Objectifs pédagogiques*', ['class' => 'bmd-label-floating']) !!}
+        {!! Form::textarea('educational_objective', null, ['class' => 'form-control', 'id' => 'educational_objective']) !!}
+      </div>
+      @if ($errors->has('educational_objective'))
+        <div class="alert alert-danger" role="alert">
+          <strong>{{ $errors->first('educational_objective') }}</strong>
+        </div>
+      @endif
+
+      <div class="form-check">
+        <label class="form-check">
+          {!! Form::checkbox('send_email', 1)!!}
+          Soumettre à candidatures ?
+        </label>
+      </div>
+      <div class="row form-hidden" id="form-levels">
         @foreach ($levels as $level)
           <div class="col">
             <div class="form-group">
@@ -112,26 +128,20 @@
           </div>
         @endforeach
       </div>
-
-      <div class="form-group">
-        {!! Form::label('educational_objective', 'Objectifs pédagogiques*', ['class' => 'bmd-label-floating']) !!}
-        {!! Form::textarea('educational_objective', null, ['class' => 'form-control', 'id' => 'educational_objective']) !!}
-      </div>
-      @if ($errors->has('educational_objective'))
-        <div class="alert alert-danger" role="alert">
-          <strong>{{ $errors->first('educational_objective') }}</strong>
-        </div>
-      @endif
-
-      <div class="form-check">
-        <label class="form-check">
-          {!! Form::checkbox('send_email', 1) !!}
-          Soumettre à candidatures ?
-        </label>
-      </div>
-    </div>
     <div class="d-flex justify-content-center">
       <button type="submit" class="btn btn-perso">Ajouter</button>
     </div>
     {!! Form::close() !!}
+  @endsection
+
+  @section('script')
+    <script>
+      $('input[type=checkbox]').click(function(){
+        if($('#form-levels').hasClass('form-hidden')){
+          $('#form-levels').removeClass('form-hidden');
+        } else {
+          $('#form-levels').addClass('form-hidden');
+        }
+      });
+    </script>
   @endsection

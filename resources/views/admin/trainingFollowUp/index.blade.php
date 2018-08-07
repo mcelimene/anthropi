@@ -26,7 +26,9 @@
               <!-- On affiche les niveaux demandés pour la formation en question -->
               @foreach ($formation->levels as $level)
                 <h5 class="text-gray mt-4">
-                  {{ $level->pivot->number_of_vacancies }} {{ $level->name }}
+                  {{ $level->name }}
+                  <span id='level{{ $level->id }}'>0</span>
+                  / {{ $level->pivot->number_of_vacancies }}
                 </h5>
 
                 <!-- On affiche tous les formateurs inscrits pour chaque niveau et chaque formation -->
@@ -35,7 +37,7 @@
                   {!! Form::open() !!}
                   @if(($trainer->level_id == $level->id) && ($trainer->pivot->answer_trainer == 'oui'))
                     <div class="d-flex justify-content-between">
-                      <span>{{ $trainer->first_name }} {{ strtoupper($trainer->last_name) }}</span>
+                      <span>{{ $trainer->first_name }} {{ mb_strtoupper($trainer->last_name) }}</span>
                       <!-- Si answer_admin est true on coche la case sinon on la décoche -->
                       @if($trainer->pivot->answer_admin == true)
                         <input name="answer_admin" value="1" checked type="checkbox" id="trainer{{ $trainer->id }}-formation{{ $formation->id }}">
@@ -78,7 +80,11 @@
         success: function (data) {
           let formationId = data['formation'];
           let trainerId = data['trainer'];
-          console.log(data);
+          let levels = data['levels'];
+          $('[id^=level]').html(0);
+          for(let value in levels){
+            $('#level' + value).html(levels[value]);
+          }
         },
         error: function (e) {
           console.log('=========== ERREUR ==============');
