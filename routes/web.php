@@ -22,7 +22,7 @@ Route::get('training-follow-up', 'admin\TrainingFollowUpController@index')->name
 Route::post('training-follow-up/{id}','admin\TrainingFollowUpController@sendEmails')->name('training-follow-up.sendEmails');
 Route::put('training-follow-up/{id}', 'admin\TrainingFollowUpController@validateFormation')->name('training-follow-up.validateFormation');
 /* PDF */
-Route::get('pdfview',array('as'=>'pdfview','uses'=>'admin\TrainersController@pdfview'));
+Route::get('statistics',array('as'=>'statistics','uses'=>'admin\TrainersController@statistics'));
 /* Calendrier */
 Route::get('calendar', 'admin\CalendarController@index')->name('calendar.index');
 /* Messages groupés */

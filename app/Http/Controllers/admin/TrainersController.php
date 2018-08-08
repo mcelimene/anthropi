@@ -7,9 +7,11 @@ use App\Http\Controllers\Controller;
 use PDF;
 use Egulias\EmailValidator\Validation\RFCValidation;
 use App\Level;
+use App\Formation;
 use App\Region;
 use App\Trainer;
 use App\User;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Hash;
@@ -182,17 +184,35 @@ class TrainersController extends Controller
                        ->with('danger', 'Le formateur a été supprimé');
     }
 
-    public function pdfView(Request $request){
-      $trainers = Trainer::get();
-      view()->share('trainers', $trainers);
-
+    // Renvoie les statistiques des formateurs
+    public function statistics(Request $request){
+      // Tous les Formateurs
+      $trainers = Trainer::orderBy('last_name')->get();
+      // Tous les Niveaux
+      $levels = Level::get();
+      // Nombre de formations proposées par formateurs
+      $nb_formations_proposed = Trainer::countFormationsPerTrainer();
+      // Renvoi toutes les données sur les formateurs qui ont participés aux formations (du plus grand nombre jusqu'au plus petit)
+      $statistics_total = Trainer::trainersFormationsTotal();
+      // Renvoi toutes les données sur les formateurs ayant le plus candidaté mais dont la candidature a été le moins retenu
+      $statistics_refused = Trainer::trainersFormationsRefused();
+      // Tableau de données à passer à la vue
+      $data = [
+        'statistics_total' => $statistics_total,
+        'nb_formations_proposed' => $nb_formations_proposed,
+        'trainers' => $trainers,
+        'levels' => $levels,
+        'statistics_refused' => $statistics_refused
+      ];
+      view()->share('data', $data);
       if($request->has('download')){
-        $pdf = PDF::loadView('pdfview');
-        return $pdf->download('liste_formateurs.pdf');
+        $pdf = PDF::loadView('pdf.statistics');
+        return $pdf->download('statistiques.pdf');
       }
-      return view('pdfview');
+      return view('pdf.statistics');
     }
 
+    // Génère un mot de passe aléatoire de 8 caractères
     private function getPassword(){
       $caracters = 'ABCDEFGHIJKMLNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
       $mixed = str_shuffle($caracters);
@@ -200,6 +220,7 @@ class TrainersController extends Controller
       return $password;
     }
 
+    // Crypte les mots de passe
     private function getPasswordCrypt($password){
       $password = HASH::make($password);
       return $password;

@@ -7,7 +7,7 @@
   <div class="row">
     <!-- On affiche toutes les formations qui ne sont pas encore validé -->
     @foreach($formations as $formation)
-      <div class="col-md-6">
+      <div class="col-md-6" id='formation-{{ $formation->id }}'>
         <div class="card">
           <div class="card-header card-header-perso">
             <div class=" d-flex justify-content-between">
@@ -72,6 +72,16 @@
 
 @section('script')
   <script>
+    $(document).ready(function(){
+      let essai = {{ json_encode($formations) }};
+      console.log(essai);
+      let formations = JSON.parse(localStorage.getItem("formations"));
+      formations.forEach(function(formation){
+        console.log(formation);
+      });
+    });
+    let formationsLevels = [];
+    let formations = [];
     $('input').click(function(){
       let infos;
       infos = $(this).attr('id');
@@ -90,9 +100,13 @@
           let formationId = data['formation'];
           let trainerId = data['trainer'];
           let levels = data['levels'];
+          formationsLevels[formationId] = levels;
+          formations.push(formationId);
+          sessionStorage.setItem('formationsLevels', JSON.stringify(formationsLevels));
           $('[id^=level]').html(0);
           for(let value in levels){
             $('#level' + value).html(levels[value]);
+            ;
           }
         },
         error: function (e) {

@@ -11,10 +11,10 @@
           <p class="card-category">Liste</p>
         </div>
         <div>
-          <a href="{{ route('pdfview',['download'=>'pdf']) }}">
+          <a href="{{ route('statistics',['download'=>'pdf']) }}">
             <button class="btn btn-warning btn-sm">
               <i class="material-icons">save_alt</i>
-               PDF
+               Statistiques
             </button>
           </a>
         </div>

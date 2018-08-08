@@ -85,5 +85,13 @@ class UserTableSeeder extends Seeder
             'role' => 'admin'
           ]
         );
+        User::create(
+          [
+            'name' => 'Datadock',
+            'email' => 'contact@data-dock.fr',
+            'password' => '$2y$10$ftPXgH1obzWN6CC1qWhBrexaydguU8h0Zpu0MLXeMjXnApsuEf2CC',
+            'role' => 'datadock'
+          ]
+        );
     }
 }
