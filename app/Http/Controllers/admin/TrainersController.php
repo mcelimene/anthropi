@@ -191,18 +191,33 @@ class TrainersController extends Controller
       // Tous les Niveaux
       $levels = Level::get();
       // Nombre de formations proposées par formateurs
-      $nb_formations_proposed = Trainer::countFormationsPerTrainer();
+      $formations_proposed = Trainer::formationsPerTrainer();
+      // Nombre de mails de candidature reçu par formateur
+      $emails_received = Trainer::emailsReceveidPerTrainer();
       // Renvoi toutes les données sur les formateurs qui ont participés aux formations (du plus grand nombre jusqu'au plus petit)
-      $statistics_total = Trainer::trainersFormationsTotal();
+      $formations_participated = Trainer::formationTrainerValidate();
       // Renvoi toutes les données sur les formateurs ayant le plus candidaté mais dont la candidature a été le moins retenu
-      $statistics_refused = Trainer::trainersFormationsRefused();
-      // Tableau de données à passer à la vue
+      $formations_refused = Trainer::formationsTrainerRefused();
+      // Renvoi toutes les données sur les formateurs ayant le plus répondu aux mails de candidatures
+      $emails_response = Trainer::emailsResponse();
+      // Renvoi toutes les données sur les formateurs ayant le moins répondu aux mails de candidatures
+      $emails_no_response = Trainer::emailsNoResponse();
+      // Renvoi toutes les données sur les formateurs ayant le plus répondu favorablement aux mails de candidatures
+      $emails_favorable = Trainer::emailsResponseFavorable();
+      // Renvoi toutes les données sur les formateurs ayant le plus répondu défavorablement aux mails de candidatures
+      $emails_unfavorable = Trainer::emailsResponseUnfavorable();
+      // Tableau de; données à passer à la vue
       $data = [
-        'statistics_total' => $statistics_total,
-        'nb_formations_proposed' => $nb_formations_proposed,
+        'emails_received' => $emails_received,
+        'formations_proposed' => $formations_proposed,
+        'formations_participated' => $formations_participated,
         'trainers' => $trainers,
         'levels' => $levels,
-        'statistics_refused' => $statistics_refused
+        'formations_refused' => $formations_refused,
+        'emails_response' => $emails_response,
+        'emails_no_response' => $emails_no_response,
+        'emails_favorable' => $emails_favorable,
+        'emails_unfavorable' => $emails_unfavorable
       ];
       view()->share('data', $data);
       if($request->has('download')){
