@@ -11,6 +11,10 @@ use App\Http\Controllers\Controller;
 class PasswordController extends Controller
 {
 
+  public function __construct()
+  {
+      $this->middleware('auth');
+  }
 
   public function edit(){
     $admin_id = Auth::user()->id;
@@ -24,8 +28,10 @@ class PasswordController extends Controller
     if($request->input('password')){
       $password_crypt = HASH::make($request->input('password'));
       $user->password = $password_crypt;
+      $user->save();
+      return redirect()->route('home-trainer.index')->with('success', 'Votre mot de passe a été modifié avec succès');
+    } else {
+      return redirect()->route('home-trainer.index');
     }
-    $user->save();
-    return redirect(url('/home-trainer'));
   }
 }

@@ -29,16 +29,12 @@
         <li><strong>Niveau</strong> : {{ $trainer->level->name }}</li>
         <li>
           <strong>Ancienneté</strong> :
-          @if ($trainer->senority->isNull())
-            Non renseigné
-          @else
             {{ \Carbon\Carbon::parse($trainer->senority)->diffInYears($today) }}
-          @endif
-          @if (\Carbon\Carbon::parse($trainer->senority)->diffInYears($today) == 1)
-            an
-          @else
-            ans
-          @endif
+            @if (\Carbon\Carbon::parse($trainer->senority)->diffInYears($today) == 1)
+              an
+            @else
+              ans
+            @endif
         </li>
         @if($trainer->cv)
           <li><strong>CV</strong> : <a href="{{ url('storage/' . $trainer->cv)}}">Voir</a> </li>

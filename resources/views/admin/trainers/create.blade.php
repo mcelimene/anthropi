@@ -148,7 +148,7 @@
         @endif
         <!-- Ancienneté -->
         <div class="form-group">
-          {!! Form::label('senority', 'Ancienneté') !!}
+          {!! Form::label('senority', 'Ancienneté*') !!}
           {!! Form::date('senority', null, ['class' => 'form-control', 'id' => 'senority']) !!}
         </div>
         <!-- CV -->

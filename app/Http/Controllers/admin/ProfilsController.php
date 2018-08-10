@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\admin;
 
+use Validator;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -34,6 +35,7 @@ class ProfilsController extends Controller
       if($request->input('password')){
         $password_crypt = HASH::make($request->input('password'));
         $user->password = $password_crypt;
+        $user->save();
       }
 
       $user->name = $request->name;

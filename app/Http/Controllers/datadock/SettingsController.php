@@ -14,7 +14,7 @@ class SettingsController extends Controller
   {
       $this->middleware('auth');
   }
-  
+
     public function edit(){
       $id = \Auth::user()->id;
       $datadock = User::findOrFail($id);
@@ -32,8 +32,8 @@ class SettingsController extends Controller
       if($request->input('password')){
         $password_crypt = HASH::make($request->input('password'));
         $datadock->password = $password_crypt;
+        $datadock->save();
       }
-      $datadock->save();
-      return redirect('/home-datadock');
+      return redirect('/home-datadock')->with('success', 'Votre profil a été modifé avec succès');
     }
 }

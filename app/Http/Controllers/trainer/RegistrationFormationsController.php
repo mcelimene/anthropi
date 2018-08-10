@@ -13,6 +13,10 @@ use App\Formation;
 class RegistrationFormationsController extends Controller
 {
 
+  public function __construct()
+  {
+      $this->middleware('auth');
+  }
 
 
     public function index(){
@@ -48,7 +52,7 @@ class RegistrationFormationsController extends Controller
             ->where('trainer_id', $user_id)
             ->update(['answer_trainer' => 'non']);
       }
-      return redirect('registration-formations');
+      return redirect('registration-formations')->with('success', 'Votre réponse a bien été prise en compte');
 
     }
 }

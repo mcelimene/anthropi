@@ -141,27 +141,17 @@
           </div>
         </div>
       </div>
-      <!---<footer class="footer">
+      <footer class="footer">
         <div class="container-fluid">
-          <nav class="float-left">
-            <ul>
-              <li>
-                <a href="https://www.creative-tim.com">
-                  Creative Tim
-                </a>
-              </li>
-            </ul>
-          </nav>
           <div class="copyright float-right">
             &copy;
             <script>
               document.write(new Date().getFullYear())
-            </script>, made with <i class="material-icons">favorite</i> by
-            <a href="https://www.creative-tim.com" target="_blank">Creative Tim</a> for a better web.
+            </script> - Fait par 
+            <a href="https://www.melodiecelimene.fr" target="_blank"><img src="{{ asset('images/logo-mc.png')}}" alt="Logo de la développeuse web Mélodie Célimène" id='logo-mc'></a>
           </div>
-           your footer here
         </div>
-      </footer>-->
+      </footer>
     </div>
   </div>
   <!--   Core JS Files   -->

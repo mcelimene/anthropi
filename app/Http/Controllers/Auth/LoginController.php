@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use Auth;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Trainer;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
 class LoginController extends Controller
@@ -31,11 +32,11 @@ class LoginController extends Controller
      protected function authenticated(Request $request, $user)
       {
           if ( \Auth::user()->role == 'admin' ) {
-            return redirect('/home');
+            return redirect('home')->with('info', 'Bonjour '. \Auth::user()->name . ' !');
           } elseif(\Auth::user()->role == 'user'){
-            return redirect('/home-trainer');
+            return redirect('home-trainer');
           } else {
-            return redirect('/home-datadock');
+            return redirect('home-datadock');
           }
       }
 

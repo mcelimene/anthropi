@@ -5,7 +5,7 @@
 
 @section('content')
 
-  <a href="{{ url('/') }}">
+  <a href="{{ url('/home') }}">
     <button class="btn btn-default btn-sm">
       <i class="material-icons">arrow_back_ios</i>
       Retour
@@ -48,8 +48,8 @@
       @endif
 
       <div class="form-group">
-        {!! Form::label('password', 'Nouveau mot de passe', ['class' => 'bmd-label-floating']) !!}
-        {!! Form::password('password', ['class' => 'form-control', 'id' => 'password']) !!}
+        {!! Form::label('password', 'Nouveau mot de passe') !!}
+        {!! Form::password('password', ['class' => 'form-control', 'id' => 'password', 'placeholder' => '(6 caractères minimum)']) !!}
       </div>
       @if ($errors->has('password'))
         <div class="alert alert-danger" role="alert">

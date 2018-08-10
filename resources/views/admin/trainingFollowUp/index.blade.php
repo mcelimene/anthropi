@@ -6,6 +6,7 @@
 @section('content')
   <div class="row">
     <!-- On affiche toutes les formations qui ne sont pas encore validé -->
+    @if(!$formations->isEmpty())
     @foreach($formations as $formation)
       <div class="col-md-6" id='formation-{{ $formation->id }}'>
         <div class="card">
@@ -67,6 +68,9 @@
         </div>
       </div>
     @endforeach
+  @else
+    Vous n'avez pas de formations en cours de traitement.
+  @endif
   </div>
 @endsection
 

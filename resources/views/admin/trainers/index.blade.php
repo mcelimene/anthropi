@@ -4,6 +4,7 @@
 @section('pageName', 'Gestion des formateurs')
 
 @section('content')
+  @if(!$trainers->isEmpty())
     <div class="card">
       <div class="card-header card-header-perso d-flex justify-content-between">
         <div>
@@ -34,7 +35,7 @@
             <tbody>
               @foreach ($trainers as $trainer)
                 <tr>
-                  <td>{{ $trainer->last_name }}</td>
+                  <td>{{ mb_strtoupper($trainer->last_name) }}</td>
                   <td>{{ $trainer->first_name }}</td>
                   <td>{{ $trainer->region->name }}</td>
                   <td>{{ $trainer->job }}</td>
@@ -65,12 +66,15 @@
       </div>
       {{ $trainers->render()}}
     </div>
+  @else
+    <p>Vous n'avez pas encore créé de formateurs</p>
+    @endif
+
   <div class="d-flex justify-content-center">
     <a href="{{ route('trainers.create') }}">
       <button class="btn btn-perso">Ajouter un nouveau formateur</button>
     </a>
   </div>
-</div>
 @endsection
 
 

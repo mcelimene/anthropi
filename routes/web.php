@@ -14,7 +14,7 @@
 
 
 // Route pour les Admins
-Route::get('/', 'HomeController@index');
+Route::get('/home', 'HomeController@index');
 Route::resource('trainers', 'admin\TrainersController');
 Route::resource('formations', 'admin\FormationsController');
 /* Suivi formations */
@@ -47,7 +47,7 @@ Route::get('datadock/data-trainers', 'admin\DatadockController@dataTrainers')->n
 Route::post('datadock/data-trainers', 'admin\DatadockController@dataTrainersStore')->name('datadock.dataTrainersStore');
 
 // Route pour les Formateurs
-Route::get('/home-trainer', 'trainer\HomeController@index');
+Route::get('/home-trainer', 'trainer\HomeController@index')->name('home-trainer.index');
 Route::get('registration-formations', 'trainer\RegistrationFormationsController@index')->name('registration-formations.index');
 Route::post('registration-formations/{id}', 'trainer\RegistrationFormationsController@store')->name('registration-formations.store');
 Route::get('password-change', 'trainer\PasswordController@edit')->name('password-change.edit');
@@ -62,6 +62,6 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::put('/ajax', 'AjaxController@trainingFollowUp');
 
 // Route pour Datadock
-Route::get('home-datadock', 'datadock\HomeController@index');
+Route::get('home-datadock', 'datadock\HomeController@index')->name('home-datadock.index');
 Route::get('settings', 'datadock\SettingsController@edit')->name('settings.edit');
 Route::put('settings', 'datadock\SettingsController@update')->name('settings.update');

@@ -14,7 +14,7 @@ class HomeController extends Controller
   {
       $this->middleware('auth');
   }
-  
+
   public function index(){
     // On récupère tous les fichiers
     $files = Datadock::orderBy('created_at', 'DESC')->get();

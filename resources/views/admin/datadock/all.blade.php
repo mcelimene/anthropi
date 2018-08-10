@@ -4,6 +4,7 @@
 @section('pageName', 'Document Datadock')
 
 @section('content')
+  @if(!$files->isEmpty())
     <div class="card">
       <div class="card-header card-header-perso d-flex justify-content-between">
         <div>
@@ -39,7 +40,8 @@
         {{ $files->render()}}
       </div>
     </div>
-
+  @endif
+  @if(!$trainers->isEmpty())
     <div class="card mt-5">
       <div class="card-header card-header-perso d-flex justify-content-between">
         <div>
@@ -75,4 +77,5 @@
         {{ $trainers->render()}}
       </div>
     </div>
+  @endif
 @endsection

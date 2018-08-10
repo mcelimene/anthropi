@@ -12,6 +12,12 @@ use App\Formation;
 
 class HomeController extends Controller
 {
+
+  public function __construct()
+  {
+      $this->middleware('auth');
+  }
+  
     public function index(){
       // Date du jour
       // On récupère l'Id de l'utilisateur

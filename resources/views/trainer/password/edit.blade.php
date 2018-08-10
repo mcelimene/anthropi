@@ -16,8 +16,8 @@
       {!! Form::open(['method' => 'put', 'url' => route('password-change.update', $user)]) !!}
 
       <div class="form-group">
-        {!! Form::label('password', 'Nouveau mot de passe', ['class' => 'bmd-label-floating']) !!}
-        {!! Form::password('password', ['class' => 'form-control', 'id' => 'password']) !!}
+        {!! Form::label('password', 'Nouveau mot de passe') !!}
+        {!! Form::password('password', ['class' => 'form-control', 'id' => 'password', 'placeholder' => '6 caractères minimum']) !!}
       </div>
       @if ($errors->has('password'))
         <div class="alert alert-danger" role="alert">

@@ -1,5 +1,5 @@
 <h1>Bonjour {{ $first_name }} !</h1>
-<p>Vous êtes désormais inscrit sur la plateforme d'AntroPi</p>
+<p>Vous êtes désormais inscrit sur la plateforme d'AntroPi.</p>
 
 <p>
   Vous pouvez dès maintenant vous connectez avec votre mot de passe : <strong> {{ $password }}</strong>.<br>

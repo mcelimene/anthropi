@@ -39,7 +39,7 @@
 
         </li>
         <li>
-          <strong>Objectifs pédagogiques</strong> : {{ $formation->educational_objective }}
+          <strong>Objectifs pédagogiques</strong> : {!! nl2br(e($formation->educational_objective)) !!}
         </li>
         <li>
           <strong>Ouverte à candidatures ?</strong> :

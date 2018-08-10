@@ -5,7 +5,7 @@
 
 @section('content')
 
-  <a href="{{ url('/') }}">
+  <a href="{{ url('/home') }}">
     <button class="btn btn-default btn-sm">
       <i class="material-icons">arrow_back_ios</i>
       Retour
