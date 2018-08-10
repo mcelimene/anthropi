@@ -10,7 +10,7 @@
 		}
 		h2 {
 			padding: 0 20px;
-			font-size: 1.3- em;
+			font-size: 1.3 em;
 			color: #94b5e5;
 		}
 		td, th {

@@ -25,6 +25,10 @@ class RegistrationFormationsController extends Controller
       $user_id = Auth::user()->trainer_id;
       /// On récupère les formations qui lui sont proposés et auxquels il n'a pas répondu
       $formations_id = DB::table('formation_trainer')
+          ->join('formations', function($join){
+            $join->on('formation_trainer.formation_id', '=', 'formations.id')
+                  ->where('formations.validation_registrations', '=', 'false');
+          })
           ->where('trainer_id', $user_id)
           ->where('answer_trainer', 'en attente')
           ->get();
@@ -52,7 +56,7 @@ class RegistrationFormationsController extends Controller
             ->where('trainer_id', $user_id)
             ->update(['answer_trainer' => 'non']);
       }
-      return redirect('registration-formations')->with('success', 'Votre réponse a bien été prise en compte');
+      return redirect('registration-formations')->with('success', 'Votre réponse a bien été prise en compte. Vous recevrez un mail de confirmation si votre candidature a été accepté');
 
     }
 }

@@ -148,8 +148,8 @@
             &copy;
             <script>
               document.write(new Date().getFullYear())
-            </script> - Fait par
-            <a href="https://www.melodiecelimene.fr" target="_blank"><img src="{{ asset('images/logo-mc.png')}}" alt="Logo de la développeuse web Mélodie Célimène" id='logo-mc'></a>
+            </script> - Fait par Mélodie Célimène
+            <a href="https://www.melodiecelimene.fr" target="_blank"><img src="{{ asset('images/logo-mc.png')}}" alt="Logo Mélodie Célimène" id='logo-mc'></a>
           </div>
         </div>
       </footer>
