@@ -7,6 +7,7 @@
   <link rel="icon" type="image/png" href="assets/img/favicon.png">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <title>AnthroPi @yield('title')</title>
+  <link rel="icon" href="{{ asset('images/logo.png')}}" type="images/png">
   <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
   <!--     Fonts and icons     -->
   <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
@@ -26,7 +27,7 @@
     -->
       <div class="logo">
         <a href="#" class="simple-text logo-normal">
-          AnthoPi
+          AnthroPi
         </a>
       </div>
       <div class="sidebar-wrapper">
@@ -147,7 +148,7 @@
             &copy;
             <script>
               document.write(new Date().getFullYear())
-            </script> - Fait par 
+            </script> - Fait par
             <a href="https://www.melodiecelimene.fr" target="_blank"><img src="{{ asset('images/logo-mc.png')}}" alt="Logo de la développeuse web Mélodie Célimène" id='logo-mc'></a>
           </div>
         </div>
