@@ -34,7 +34,7 @@ class Message extends Mailable
      */
     public function build()
     {
-        return $this->from(Auth::user()->email)
+        return $this->from('team@anthropi.fr')
                     ->subject($this->email['subject'])
                     ->text('emails.message');
     }

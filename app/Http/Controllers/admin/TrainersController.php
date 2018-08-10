@@ -91,7 +91,7 @@ class TrainersController extends Controller
           );
 
         Mail::send('emails.registration', $data, function($message) use ($data) {
-                $message->to($data['email'])->subject('Inscription AnthroPi');
+                $message->from('team@anthropi.fr')->to($data['email'])->subject('Inscription AnthroPi');
         });
         return redirect()->route('trainers.index')
                          ->with('success', 'Le formateur a été créé. Un email lui a été envoyé avec ses identifiants de connexion');

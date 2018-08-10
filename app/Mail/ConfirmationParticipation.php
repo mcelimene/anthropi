@@ -30,7 +30,7 @@ class ConfirmationParticipation extends Mailable
      */
     public function build()
     {
-      return $this->from('noreply@anthropi.fr')
+      return $this->from('team@anthropi.fr')
                   ->subject("Confirmation inscription - AnthroPi")
                   ->view('emails.confirmationParticipation');
     }

@@ -12,7 +12,7 @@
 
 <p>Etes-vous disponible ?</p>
 
-<p>Veuillez-vous <a href="http://localhost/8000">connecter à votre compte</a> afin de candidater</p>
+<p>Veuillez-vous <a href="{{ env('APP_URL') }}">connecter à votre compte</a> afin de candidater</p>
 <p>
   En vous remerciant,<br><br>
 <em>L'équipe d'AnthroPi</em>

@@ -8,10 +8,11 @@
     @if($email['date_start'] == $email['date_end'])
       <li><strong>Date et heures</strong> : {{ \Carbon\Carbon::parse($email['date_start'])->format('d/m/Y')}} de {{ \Carbon\Carbon::parse($email['time_start'])->format('h:i')}}h à {{ \Carbon\Carbon::parse($email['time_end'])->format('h:i')}}h</li>
     @else
-      <li><strong>Date et heure de début </strong> : {{ \Carbon\Carbon::parse($email['date_start'])->format('d/m/Y')}} - {{ \Carbon\Carbon::parse($email['time_start'])->format('h:i')}}h </li>
-      <li><strong>Date et heure de fin </strong> : {{ \Carbon\Carbon::parse($email['date_end'])->format('d/m/Y')}} - {{ \Carbon\Carbon::parse($email['time_end'])->format('h:i')}}h </li>
+      <li><strong>Date et heure de départ </strong> : {{ \Carbon\Carbon::parse($email['date_start'])->format('d/m/Y')}} - {{ \Carbon\Carbon::parse($email['time_start'])->format('h:i')}}h </li>
+      <li><strong>Date et heure de retour </strong> : {{ \Carbon\Carbon::parse($email['date_end'])->format('d/m/Y')}} - {{ \Carbon\Carbon::parse($email['time_end'])->format('h:i')}}h (environ)</li>
     @endif
   </ul>
+  L'équipe vous donne RDV au bureau 30 mins avant le départ!!! 
 </p>
 
 <em>L'équipe d'AnthroPi</em>

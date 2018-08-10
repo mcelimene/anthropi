@@ -31,7 +31,7 @@ class MessageRecovery extends Mailable
      */
     public function build()
     {
-      return $this->from('contact@anthropi.fr')
+      return $this->from('team@anthropi.fr')
                   ->subject('Relance inscription formation - AnthroPi')
                   ->view('emails.messageRecovery');
     }

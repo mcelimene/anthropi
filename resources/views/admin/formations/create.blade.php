@@ -59,7 +59,7 @@
         <div class="col">
           <!-- Heure de début de la formation -->
           <div class="form-group">
-            {!! Form::label('time_start', 'Heure de début*') !!}
+            {!! Form::label('time_start', 'Heure de départ*') !!}
             {!! Form::time('time_start', null, ['class' => 'form-control', 'id' => 'time_start']) !!}
           </div>
           @if ($errors->has('time_start'))
@@ -86,7 +86,7 @@
         <div class="col">
           <!-- Heure de fin de la formation -->
           <div class="form-group">
-            {!! Form::label('time_end', 'Heure de fin*') !!}
+            {!! Form::label('time_end', 'Heure de retour*') !!}
             {!! Form::time('time_end', null, ['class' => 'form-control', 'id' => 'time_end']) !!}
           </div>
           @if ($errors->has('time_end'))

@@ -63,7 +63,7 @@
         </div>
         <div class="col">
           <div class="form-group">
-            {!! Form::label('time_start', 'Heure de début*') !!}
+            {!! Form::label('time_start', 'Heure de départ*') !!}
             {!! Form::time('time_start', $formation->time_start, ['class' => 'form-control', 'id' => 'time_start']) !!}
           </div>
           @if ($errors->has('time_start'))
@@ -88,7 +88,7 @@
         </div>
         <div class="col">
           <div class="form-group">
-            {!! Form::label('time_end', 'Heure de fin*') !!}
+            {!! Form::label('time_end', 'Heure de retour*') !!}
             {!! Form::time('time_end', $formation->time_end, ['class' => 'form-control', 'id' => 'time_end']) !!}
           </div>
           @if ($errors->has('time_end'))

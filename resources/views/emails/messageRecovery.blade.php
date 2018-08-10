@@ -13,7 +13,7 @@
 @endif
 
 
-<p>Pensez-bien à vous inscrire sur la plateforme d'<a href="http://localhost:8000">AnthroPi</a> dans l'onglet "Inscription" afin de candidater.</p>
+<p>Pensez-bien à vous inscrire sur la plateforme d'<a href="{{ env('APP_URL') }}">AnthroPi</a> dans l'onglet "Inscription" afin de candidater.</p>
 <p>
   En vous remerciant,<br><br>
 <em>L'équipe d'AnthroPi</em>

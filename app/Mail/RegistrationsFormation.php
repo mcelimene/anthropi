@@ -30,7 +30,7 @@ class RegistrationsFormation extends Mailable
      */
     public function build()
     {
-        return $this->from('noreply@anthropi.fr')
+        return $this->from('team@anthropi.fr')
                     ->subject('Demande de disponibilité (formation) - AnthroPi')
                     ->view('emails.subscriptionRequest');
     }
