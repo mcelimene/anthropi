@@ -15,8 +15,9 @@ class DatadockController extends Controller
 {
   public function __construct()
   {
-      $this->middleware('admin');
+      $this->middleware('auth');
   }
+  
     public function index(){
       return view('admin.datadock.index');
     }

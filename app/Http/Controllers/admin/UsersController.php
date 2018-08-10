@@ -16,10 +16,10 @@ class UsersController extends Controller
      *
      * @return void
      */
-    public function __construct()
-    {
-        $this->middleware('admin');
-    }
+     public function __construct()
+     {
+         $this->middleware('auth');
+     }
 
     public function create(){
       return view('admin.users.create');

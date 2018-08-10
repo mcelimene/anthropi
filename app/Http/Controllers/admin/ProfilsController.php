@@ -17,10 +17,10 @@ class ProfilsController extends Controller
      *
      * @return void
      */
-    public function __construct()
-    {
-        $this->middleware('admin');
-    }
+     public function __construct()
+     {
+         $this->middleware('auth');
+     }
 
     public function edit(){
       $admin_id = Auth::user()->id;

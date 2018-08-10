@@ -9,6 +9,12 @@ use App\Formation;
 
 class AjaxController extends Controller
 {
+
+  public function __construct()
+  {
+      $this->middleware('auth');
+  }
+  
     public function trainingFollowUp(Request $request){
       //$nb_accept = [];
       // On récupère les données envoyées en ajax

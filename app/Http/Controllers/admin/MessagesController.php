@@ -19,10 +19,10 @@ class MessagesController extends Controller
      *
      * @return void
      */
-    public function __construct()
-    {
-        $this->middleware('admin');
-    }
+     public function __construct()
+     {
+         $this->middleware('auth');
+     }
 
     public function create(){
       $levels = Level::pluck('name', 'id');
