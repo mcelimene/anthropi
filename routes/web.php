@@ -14,7 +14,7 @@
 
 
 // Route pour les Admins
-Route::get('/home', 'HomeController@index');
+Route::get('/', 'HomeController@index');
 Route::resource('trainers', 'admin\TrainersController');
 Route::resource('formations', 'admin\FormationsController');
 /* Suivi formations */
