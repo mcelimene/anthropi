@@ -11,8 +11,9 @@
         <div class="card">
           <div class="card-header card-header-perso">
             <div class=" d-flex justify-content-between">
-
-            <h4 class="card-title">{{ $formation->name }}</h4>
+              <a href="{{ route('formations.show', $formation) }}">
+                <h4 class="card-title">{{ $formation->name }}</h4>
+              </a>
             {!! Form::open(['method' => 'POST', 'url' => route('training-follow-up.sendEmails', $formation->id)])!!}
               <button class="btn btn-warning btn-sm" type="submit">
                 <i class="material-icons">mail</i>
@@ -34,11 +35,10 @@
             <div class="table-responsive">
               <!-- On affiche les niveaux demandés pour la formation en question -->
               @foreach ($formation->levels as $level)
-                <h5 class="text-gray mt-4">
-                  {{ $level->name }}
-                  <span id='level{{ $level->id }}'>0</span>
-                  / {{ $level->pivot->number_of_vacancies }}
-                </h5>
+                  <h5 class="text-gray mt-4 d-flex justify-content-between">
+                    {{ $level->name }}
+                    <span>{{ $level->pivot->number_of_vacancies }}</span>
+                  </h5>
 
                 <!-- On affiche tous les formateurs inscrits pour chaque niveau et chaque formation -->
                 @foreach ($formation->trainers as $trainer)
@@ -72,14 +72,6 @@
 
 @section('script')
   <script>
-    $(document).ready(function(){
-      let essai = {{ json_encode($formations) }};
-      console.log(essai);
-      let formations = JSON.parse(localStorage.getItem("formations"));
-      formations.forEach(function(formation){
-        console.log(formation);
-      });
-    });
     let formationsLevels = [];
     let formations = [];
     $('input').click(function(){
@@ -99,15 +91,12 @@
         success: function (data) {
           let formationId = data['formation'];
           let trainerId = data['trainer'];
-          let levels = data['levels'];
-          formationsLevels[formationId] = levels;
-          formations.push(formationId);
-          sessionStorage.setItem('formationsLevels', JSON.stringify(formationsLevels));
+          /*let levels = data['levels'];
           $('[id^=level]').html(0);
           for(let value in levels){
             $('#level' + value).html(levels[value]);
             ;
-          }
+          }*/
         },
         error: function (e) {
           console.log('=========== ERREUR ==============');

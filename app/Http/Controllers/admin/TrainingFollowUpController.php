@@ -65,17 +65,22 @@ class TrainingFollowUpController extends Controller
           Mail::to($trainer->user->email)
               ->send(new ConfirmationParticipation($data));
         }
-      }
-      // Quand une formation est validé on la synchronise sur le calendrier google CalendarController
-      Event::create([
-         'name' => $formation->name,
-         'startDateTime' => Carbon::parse($formation->date_start . $formation->time_start),
-         'endDateTime' => Carbon::parse($formation->date_end . $formation->time_end)
-      ]);
 
-      // On redirige vers la page suivi des formations
-      return redirect()->route('training-follow-up.index')
-                       ->with('success', 'Un email de validation a été envoyé aux formateurs concernés');
+        // Quand une formation est validé on la synchronise sur le calendrier google CalendarController
+        Event::create([
+           'name' => $formation->name,
+           'startDateTime' => Carbon::parse($formation->date_start . $formation->time_start),
+           'endDateTime' => Carbon::parse($formation->date_end . $formation->time_end)
+        ]);
+
+        // On redirige vers la page suivi des formations
+        return redirect()->route('training-follow-up.index')
+                         ->with('success', 'Un email de validation a été envoyé aux formateurs concernés');
+      } else {
+        return redirect()->route('training-follow-up.index')
+                          ->with('error', 'Le nombre de formateurs validés ne correspond au nombre de participants');
+      }
+
     }
 
     public function sendEmails($id){
