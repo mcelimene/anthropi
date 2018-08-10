@@ -21,7 +21,7 @@ class CreateTrainersTable extends Migration
             $table->string('phone_number')->default('Non renseigné');
             $table->string('social_security')->default('Non renseigné');
             $table->date('birthdate');
-            $table->date('senority')->default('Non renseigné');
+            $table->date('senority')->nullable();
             $table->string('job');
             $table->string('speciality');
             $table->string('cv')->nullable();

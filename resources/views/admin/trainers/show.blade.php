@@ -28,7 +28,12 @@
         <li><strong>Profession</strong> : {{ $trainer->job }}</li>
         <li><strong>Niveau</strong> : {{ $trainer->level->name }}</li>
         <li>
-          <strong>Ancienneté</strong> : {{ \Carbon\Carbon::parse($trainer->senority)->diffInYears($today) }}
+          <strong>Ancienneté</strong> :
+          @if ($trainer->senority->isNull())
+            Non renseigné
+          @else
+            {{ \Carbon\Carbon::parse($trainer->senority)->diffInYears($today) }}
+          @endif
           @if (\Carbon\Carbon::parse($trainer->senority)->diffInYears($today) == 1)
             an
           @else

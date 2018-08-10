@@ -79,8 +79,8 @@ class UserTableSeeder extends Seeder
     {
         User::create(
           [
-            'name' => 'Administrateur',
-            'email' => 'admin@gmail.com',
+            'name' => 'Florent',
+            'email' => 'florent.darocha@anthropi.fr',
             'password' => '$2y$10$ftPXgH1obzWN6CC1qWhBrexaydguU8h0Zpu0MLXeMjXnApsuEf2CC',
             'role' => 'admin'
           ]
