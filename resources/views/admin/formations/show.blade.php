@@ -1,7 +1,7 @@
 @extends('template')
 
 @section('title', ' - Gestion des formations')
-@section('pageName', 'Gestion des formateurs')
+@section('pageName', 'Gestion des formations')
 
 @section('content')
   <a href="{{ route('formations.index') }}">
